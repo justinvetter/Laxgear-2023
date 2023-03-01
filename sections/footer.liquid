@@ -1,34 +1,58 @@
-{% capture theme_settings_link %}<a href="/admin/themes/{{ theme.id }}/settings">{{ 'layout.footer.theme_settings' | t }}</a>{% endcapture %}
-
+{% render 'newsletter-form' %}
 <footer class="site-footer small--text-center" role="contentinfo">
+<div class="social">
+<img src="{{ 'laxgear-footer-logo.png' | asset_url }}">
+<div class="social-icons">
+</div>
+</div>
+
+<nav>
+  <div>
+  <h5>Company</h5>
+  <ul>
+  {% for link in linklists.footer-company.links  -%}
+    <li>{{ link.title | link_to: link.url }}</li>
+  {%- endfor %}
+  </ul>
+  </div>
+
+  <div>
+    <h5>Customer support</h5>
+    <ul>
+    {% for link in linklists.footer-customer-support.links  -%}
+      <li>{{ link.title | link_to: link.url }}</li>
+    {%- endfor %}
+    </ul>
+    </div>
+
+  <div>
+    <h5>Services</h5>
+    <ul>
+    {% for link in linklists.footer-services.links  -%}
+      <li>{{ link.title | link_to: link.url }}</li>
+    {%- endfor %}
+    </ul>
+    </div>
+</nav>
+
   <div class="wrapper">
 
-    <div class="grid">
 
+
+
+
+
+
+
+
+
+
+
+    <div class="grid">
     {% for block in section.blocks %}
 
-      {% case block.settings.width %}
-        {% when '16%' %}
-          {%- assign block_width = 'small--one-whole two-twelfths' -%}
-        {% when '25%' %}
-          {%- assign block_width = 'small--one-whole one-quarter' -%}
-        {% when '33%' %}
-          {%- assign block_width = 'small--one-whole one-third' -%}
-        {% when '50%' %}
-          {%- assign block_width = 'small--one-whole one-half' -%}
-        {% when '66%' %}
-          {%- assign block_width = 'small--one-whole two-thirds' -%}
-        {% when '75%' %}
-          {%- assign block_width = 'small--one-whole three-quarters' -%}
-        {% when '100%' %}
-          {%- assign block_width = 'one-whole' -%}
-      {% endcase %}
-
-
     <div class="grid-item {{ block_width }}">
-      {% if block.settings.title %}
-        <h3>{{ block.settings.title | escape }}</h3>
-      {% endif %}
+
 
       {% case block.type %}
 
@@ -45,6 +69,8 @@
           {% endfor %}
         </ul>
 
+
+
         {% when 'text' %}
 
             {% if block.settings.richtext != blank %}
@@ -54,17 +80,22 @@
             {% endif %}
 
 
-        {% when 'newsletter' %}
-          {% include 'newsletter-form' %}
         {% endcase %}
       </div>
     {% endfor %}
-
   </div>
 
+
+
+
+
+
+
   {% if section.settings.social_enabled or section.settings.legal_menu != blank %}
-  <hr class="hr--small">
   {% endif %}
+
+
+
 
     <div class="grid">
     {% if section.settings.legal_menu != blank %}
@@ -80,6 +111,10 @@
           </ul>
       </div>
       {% endif %}
+
+
+
+
       {% if section.settings.social_enabled %}
       <div class="grid-item{% if section.settings.legal_menu != blank %} large--three-fifths text-right{% else %} one-whole text-center{% endif %}">
           <ul class="inline-list social-icons">
@@ -91,6 +126,12 @@
                  </a>
                </li>
              {% endif %}
+
+
+
+
+
+
              {% if settings.social_facebook_link != blank %}
                <li>
                  <a class="icon-fallback-text" href="{{ settings.social_facebook_link | escape }}" target="_blank" title="{{ 'layout.footer.store_on_social_network' | t: store_name: shop.name, social_network: 'Facebook' | escape }}">
@@ -99,6 +140,11 @@
                  </a>
                </li>
              {% endif %}
+
+
+
+
+
              {% if settings.social_pinterest_link != blank %}
                <li>
                  <a class="icon-fallback-text" href="{{ settings.social_pinterest_link | escape }}" target="_blank" title="{{ 'layout.footer.store_on_social_network' | t: store_name: shop.name, social_network: 'Pinterest' | escape }}">
@@ -107,6 +153,11 @@
                  </a>
                </li>
              {% endif %}
+
+
+
+
+
              {% if settings.social_google_plus_link != blank %}
                <li>
                  <a class="icon-fallback-text" href="{{ settings.social_google_plus_link | escape }}" target="_blank" title="{{ 'layout.footer.store_on_social_network' | t: store_name: shop.name, social_network: 'Google' | escape }}" rel="publisher">
@@ -173,37 +224,14 @@
         </div>
       {% endif %}
       </div>
-      <hr class="hr--small">
       <div class="grid">
       <div class="grid-item{% unless shop.enabled_payment_types == empty %} large--two-fifths{% endunless %}">
           <ul class="legal-links inline-list">
               <li>
                 &copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}
               </li>
-              <li>
-                {{ powered_by_link }}
-              </li>
           </ul>
       </div>
-
-      {% unless shop.enabled_payment_types == empty %}
-        <div class="grid-item large--three-fifths large--text-right">
-          {% assign payment_icons_available = 'amazon_payments,american_express,apple_pay,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,visa' | split: ',' %}
-          <ul class="inline-list payment-icons">
-            {% for type in shop.enabled_payment_types %}
-              {% if payment_icons_available contains type %}
-                <li>
-                  <span class="icon-fallback-text">
-                    <span class="icon icon-{{ type }}" aria-hidden="true"></span>
-                    <span class="fallback-text">{{ type | replace: '_',' ' }}</span>
-                  </span>
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        </div>
-      {% endunless %}
-
     </div>
 
   </div>
@@ -211,180 +239,180 @@
 </footer>
 
 {% schema %}
-  {
-    "name": "Footer",
-    "class": "footer-section",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "social_enabled",
-        "label": "Show social media icons",
-        "info": "Add accounts in Social media section"
-      },
-      {
-        "type": "link_list",
-        "id": "legal_menu",
-        "label": "Legal menu"
-      }
-    ],
-    "max_blocks": 9,
-    "blocks": [
-      {
-        "type": "menu",
-        "name": "Menu",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Heading",
-            "default": "Quick links"
-          },
-          {
-            "type": "link_list",
-            "id": "menu",
-            "label": "Menu"
-          },
-          {
-            "type": "select",
-            "id": "width",
-            "label": "Container width",
-            "default": "16%",
-            "options": [
-              {
-                "value": "16%",
-                "label": "16%"
-              },
-              {
-                "value": "25%",
-                "label": "25%"
-              },
-              {
-                "value": "33%",
-                "label": "33%"
-              },
-              {
-                "value": "50%",
-                "label": "50%"
-              },
-              {
-                "value": "66%",
-                "label": "66%"
-              },
-              {
-                "value": "75%",
-                "label": "75%"
-              },
-              {
-                "value": "100%",
-                "label": "100%"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "name": "Rich text",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Heading",
-            "default": "Get in touch"
-          },
-          {
-            "type": "richtext",
-            "id": "richtext",
-            "label": "Text",
-            "default": "<p>Use this text to share information about your brand with your customers.</p>"
-          },
-          {
-            "type": "select",
-            "id": "width",
-            "label": "Container width",
-            "default": "50%",
-            "options": [
-              {
-                "value": "16%",
-                "label": "16%"
-              },
-              {
-                "value": "25%",
-                "label": "25%"
-              },
-              {
-                "value": "33%",
-                "label": "33%"
-              },
-              {
-                "value": "50%",
-                "label": "50%"
-              },
-              {
-                "value": "66%",
-                "label": "66%"
-              },
-              {
-                "value": "75%",
-                "label": "75%"
-              },
-              {
-                "value": "100%",
-                "label": "100%"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "newsletter",
-        "name": "Newsletter signup",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Heading",
-            "default": "Newsletter"
-          },
-          {
-            "type": "paragraph",
-            "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
-          },
-          {
-            "type": "select",
-            "id": "width",
-            "label": "Container width",
-            "default": "33%",
-            "options": [
-              {
-                "value": "25%",
-                "label": "25%"
-              },
-              {
-                "value": "33%",
-                "label": "33%"
-              },
-              {
-                "value": "50%",
-                "label": "50%"
-              },
-              {
-                "value": "66%",
-                "label": "66%"
-              },
-              {
-                "value": "75%",
-                "label": "75%"
-              },
-              {
-                "value": "100%",
-                "label": "100%"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+{
+  "name": "Footer",
+  "class": "footer-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "social_enabled",
+      "label": "Show social media icons",
+      "info": "Add accounts in Social media section"
+    },
+    {
+      "type": "link_list",
+      "id": "legal_menu",
+      "label": "Legal menu"
+    }
+  ],
+  "max_blocks": 9,
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Quick links"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Container width",
+          "default": "16%",
+          "options": [
+            {
+              "value": "16%",
+              "label": "16%"
+            },
+            {
+              "value": "25%",
+              "label": "25%"
+            },
+            {
+              "value": "33%",
+              "label": "33%"
+            },
+            {
+              "value": "50%",
+              "label": "50%"
+            },
+            {
+              "value": "66%",
+              "label": "66%"
+            },
+            {
+              "value": "75%",
+              "label": "75%"
+            },
+            {
+              "value": "100%",
+              "label": "100%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Rich text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Get in touch"
+        },
+        {
+          "type": "richtext",
+          "id": "richtext",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your brand with your customers.</p>"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Container width",
+          "default": "50%",
+          "options": [
+            {
+              "value": "16%",
+              "label": "16%"
+            },
+            {
+              "value": "25%",
+              "label": "25%"
+            },
+            {
+              "value": "33%",
+              "label": "33%"
+            },
+            {
+              "value": "50%",
+              "label": "50%"
+            },
+            {
+              "value": "66%",
+              "label": "66%"
+            },
+            {
+              "value": "75%",
+              "label": "75%"
+            },
+            {
+              "value": "100%",
+              "label": "100%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter signup",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Newsletter"
+        },
+        {
+          "type": "paragraph",
+          "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Container width",
+          "default": "33%",
+          "options": [
+            {
+              "value": "25%",
+              "label": "25%"
+            },
+            {
+              "value": "33%",
+              "label": "33%"
+            },
+            {
+              "value": "50%",
+              "label": "50%"
+            },
+            {
+              "value": "66%",
+              "label": "66%"
+            },
+            {
+              "value": "75%",
+              "label": "75%"
+            },
+            {
+              "value": "100%",
+              "label": "100%"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}

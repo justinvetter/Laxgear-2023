@@ -6686,3 +6686,79 @@ fieldset .radio-field label {
     display: none;
   }
 }
+
+
+
+
+
+.signup-form{
+  padding: 5em;
+  background-image: url({{ 'signup-bg-80.jpg' | asset_url }});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: bottom center;
+  align-items:center;
+  width: 100%;
+  h4{
+    color: white;
+    text-align: center;
+    font-size: 2.5em;
+    text-transform: none;
+  }
+  form{
+    margin-bottom: 0;
+    width: 30%;
+    input[type="email"]{
+      background-color: #e5e1da;
+    }
+
+    .input-group{
+      display: flex;
+      gap: 2em;
+      .input-group-btn{
+        button.btn-secondary.btn--small{
+          color: white;
+          background-color: #e92829;
+          padding: 0 40px;
+          border: solid 1px #e92829;
+          &:hover{
+            background-color: white;
+            color: #e92829;
+          }
+        }
+      }
+    }
+  }
+}
+
+footer.site-footer{
+  margin: 0 15vw;
+  padding: 3em 0;
+  .social{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4em;
+  }
+  nav{
+    display: flex;
+    gap: 6em;
+    h5{
+      text-transform: none;
+      padding-bottom: 1em;
+      margin-bottom: 1.1em;
+      border-bottom: solid 2px #585858;
+    }
+    ul{
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      gap: .5em;
+      li{
+        margin-bottom: 0;
+      }
+    }
+  }
+}
