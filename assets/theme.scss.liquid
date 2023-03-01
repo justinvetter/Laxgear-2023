@@ -879,9 +879,6 @@ $colorNavText: {{ settings.color_nav_text }};
 // Mobile Nav Bar
 $mobileNavBarHeight: 50px;
 
-// Site Footer
-$colorFooterBg: {{ settings.color_footer_bg }};
-$colorFooterText: {{ settings.color_footer_text }};
 
 // Helper colors
 $disabledGrey: #f6f6f6;
@@ -1880,9 +1877,6 @@ hr {
     border-top-color: transparent;
   }
 
-  footer & {
-    border-top-color: darken($colorFooterBg, 5%);
-  }
 
   @include at-query ($min, $large) {
     &.hr--offset-left {
@@ -3468,43 +3462,8 @@ $shareBorderColor: #ececec;
 /*============================================================================
   #Site Footer
 ==============================================================================*/
-.site-footer {
-  background-color: $colorFooterBg;
-  padding: $gutter 0 10px;
-  color: $colorFooterText;
+footer.site-footer{
 
-  @include at-query ($min, $large) {
-    padding: $gutter*2 0 $gutter/5;
-  }
-
-  h3 {
-    margin: 0 0 $gutter/2 0;
-  }
-
-  a {
-    color: $colorFooterText;
-
-    &:hover {
-      color: darken($colorFooterText, 20%);
-    }
-  }
-}
-
-.legal-links {
-  margin-bottom: 0;
-
-  @include at-query($max, $medium) {
-    margin-bottom: $gutter/2;
-  }
-
-  & + & {
-    margin-bottom: $gutter/2;
-  }
-
-  li {
-    padding: 0 $gutter/2 0 0;
-    font-size: 13px;
-  }
 }
 
 /*============================================================================
@@ -5646,21 +5605,6 @@ $color-blankstate-background: rgba($colorTextBody, 0.1);
   font-size: em(floor($baseFontSize * 0.93));
 }
 
-
-// Additions 10/17/2017
-// Adds body background image
-body {
-    background-image: url({{ 'lax-background.png' | asset_url }});
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover
-}
-
-
 // Makes the content white
 .main-content {
   background-color: #fff;
@@ -6423,18 +6367,6 @@ p {
     background-position: center center;
     background-repeat: no-repeat;
     width: 100%;
-  }
-}
-
-
-/* Footer Link Colors */
-.site-footer {
-  .icon-facebook {
-    color: #3b5998;
-  }
-  
-  .icon-twitter {
-    color: #55acee;
   }
 }
 
