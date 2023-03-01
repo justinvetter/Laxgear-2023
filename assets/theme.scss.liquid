@@ -6689,17 +6689,22 @@ fieldset .radio-field label {
 
 
 
+/////////////////////////////
+// 2023 Theme updates ///////
+/////////////////////////////
+
+// TODO remove all old styles
 
 
 .signup-form{
   padding: 5em;
   background-image: url({{ 'signup-bg-80.jpg' | asset_url }});
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center bottom;
   background-size: cover;
   display: flex;
   flex-direction: column;
-  justify-content: bottom center;
+  justify-content: center;
   align-items:center;
   width: 100%;
   h4{
@@ -6707,23 +6712,28 @@ fieldset .radio-field label {
     text-align: center;
     font-size: 2.5em;
     text-transform: none;
+    line-height: 1;
   }
   form{
+    width: 100%;
     margin-bottom: 0;
-    width: 30%;
     input[type="email"]{
       background-color: #e5e1da;
+      max-width: 350px;
     }
 
     .input-group{
       display: flex;
+      justify-content: center;
       gap: 2em;
       .input-group-btn{
+        width: unset;
         button.btn-secondary.btn--small{
           color: white;
           background-color: #e92829;
           padding: 0 40px;
           border: solid 1px #e92829;
+          display: inline-block;
           &:hover{
             background-color: white;
             color: #e92829;
@@ -6732,15 +6742,63 @@ fieldset .radio-field label {
       }
     }
   }
+  @media (max-width: 700px) {
+    padding: 3em;
+    gap: 2em;
+    h4{
+      font-size: 2em;
+      margin-bottom: 0;
+      padding: 0;
+    }
+    form{
+    .input-group{
+      flex-direction: column;
+      align-items: center;
+      justify-content: stretch;
+      gap: 1.75em;
+      .input-group-btn{
+        min-width: 100%;
+        display: flex;
+        justify-content: center;
+      button.btn-secondary.btn--small{
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+        max-width: 350px;
+      }
+    }
+    }
+    }
+  }
 }
 
 footer.site-footer{
   margin: 0 15vw;
-  padding: 3em 0;
+  padding: 3em 0 4em 0;
+  display: flex;
+  flex-direction: column;
   .social{
     display: flex;
     justify-content: space-between;
     margin-bottom: 4em;
+    .social_icons{
+      margin-top: 1em;
+      display: flex;
+      gap: 1.25em;
+      justify-content: flex-start;
+      align-items: flex-start;
+      a{
+        span{
+        font-size: 1rem;
+        transition: all .2s ease-in-out;
+        }
+        &:hover{
+          span{
+            color: #e92829;
+          }
+        }
+      }
+    }
   }
   nav{
     display: flex;
@@ -6758,7 +6816,44 @@ footer.site-footer{
       gap: .5em;
       li{
         margin-bottom: 0;
+        transition: all .2s ease-in-out;
+        &:hover{
+          a{
+            color: #e92829;
+          }
+        }
       }
+    }
+  }
+  .copyright{
+    margin-top: 3em;
+    align-self: flex-end;
+  }
+
+  @media (max-width: 750px) {
+    gap: 2rem;
+    .social{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+      gap: 2rem;
+      .social_icons{
+        gap: 1.5rem;
+        margin-top: 0;
+        a{
+          span{
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+    nav{
+      display: none;
+    }
+    .copyright{
+      align-self: center;
+      margin-top: 0;
     }
   }
 }

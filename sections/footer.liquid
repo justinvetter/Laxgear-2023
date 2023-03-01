@@ -1,121 +1,26 @@
 {% render 'newsletter-form' %}
 <footer class="site-footer small--text-center" role="contentinfo">
 <div class="social">
-<img src="{{ 'laxgear-footer-logo.png' | asset_url }}">
-<div class="social-icons">
-</div>
-</div>
-
-<nav>
-  <div>
-  <h5>Company</h5>
-  <ul>
-  {% for link in linklists.footer-company.links  -%}
-    <li>{{ link.title | link_to: link.url }}</li>
-  {%- endfor %}
-  </ul>
-  </div>
-
-  <div>
-    <h5>Customer support</h5>
-    <ul>
-    {% for link in linklists.footer-customer-support.links  -%}
-      <li>{{ link.title | link_to: link.url }}</li>
-    {%- endfor %}
-    </ul>
-    </div>
-
-  <div>
-    <h5>Services</h5>
-    <ul>
-    {% for link in linklists.footer-services.links  -%}
-      <li>{{ link.title | link_to: link.url }}</li>
-    {%- endfor %}
-    </ul>
-    </div>
-</nav>
-
-  <div class="wrapper">
+  <img src="{{ 'laxgear-footer-logo.png' | asset_url }}">
 
 
+  {% if section.settings.social_enabled %}
+  <div class="social_icons">
+    <a href="{{ settings.social_instagram_link | escape }}" target="_blank" title="Instagram">
+    <span class="fa-brands fa-instagram"></span>
+    </a>
+    <a href="{{ settings.social_facebook_link | escape }}" target="_blank" title="Facebook">
+    <span class="fa-brands fa-facebook-f"></span>
+  </a>
+    <a href="{{ settings.social_twitter_link | escape }}" target="_blank" title="Twitter">
+    <span class="fa-brands fa-twitter"></span>
+  </a>
+    <a href="{{ settings.social_email_link | escape }}" target="_blank" title="Email">
+    <span class="fa-regular fa-envelope"></span>
+  </a>
+{% endif %}
 
-
-
-
-
-
-
-
-
-
-    <div class="grid">
-    {% for block in section.blocks %}
-
-    <div class="grid-item {{ block_width }}">
-
-
-      {% case block.type %}
-
-        {% when 'menu' %}
-        <ul>
-          {% for link in linklists[block.settings.menu].links %}
-            {%- comment %}<locksmith:11ff>{% endcomment -%}
-              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists[block.settings.menu], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-            {%- comment %}</locksmith:11ff>{% endcomment -%}
-            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-          {% else %}
-            {% capture theme_settings_footer_linklist_path %}<strong>Footer</strong> > <strong>Quick links link list</strong>{% endcapture %}
-            {{ 'layout.footer.instructions_for_linklist_html' | t: theme_settings_link: theme_settings_link, theme_settings_footer_linklist_path: theme_settings_footer_linklist_path }}
-          {% endfor %}
-        </ul>
-
-
-
-        {% when 'text' %}
-
-            {% if block.settings.richtext != blank %}
-              {{ block.settings.richtext }}
-            {% else %}
-              <p>{{ 'layout.footer.instructions_for_text_content_html' | t: theme_settings_link: theme_settings_link }}</p>
-            {% endif %}
-
-
-        {% endcase %}
-      </div>
-    {% endfor %}
-  </div>
-
-
-
-
-
-
-
-  {% if section.settings.social_enabled or section.settings.legal_menu != blank %}
-  {% endif %}
-
-
-
-
-    <div class="grid">
-    {% if section.settings.legal_menu != blank %}
-      <div class="grid-item{% if section.settings.social_enabled %} large--two-fifths{% else %} one-whole text-center{% endif %}">
-
-          <ul class="legal-links inline-list">
-            {% for link in linklists[section.settings.legal_menu].links %}
-              {%- comment %}<locksmith:37b4>{% endcomment -%}
-                {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists[section.settings.legal_menu], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-              {%- comment %}</locksmith:37b4>{% endcomment -%}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-            {% endfor %}
-          </ul>
-      </div>
-      {% endif %}
-
-
-
-
-      {% if section.settings.social_enabled %}
+      {% comment %} {% if section.settings.social_enabled %}
       <div class="grid-item{% if section.settings.legal_menu != blank %} large--three-fifths text-right{% else %} one-whole text-center{% endif %}">
           <ul class="inline-list social-icons">
              {% if settings.social_twitter_link != blank %}
@@ -222,21 +127,54 @@
              </li>
            </ul>
         </div>
-      {% endif %}
-      </div>
-      <div class="grid">
-      <div class="grid-item{% unless shop.enabled_payment_types == empty %} large--two-fifths{% endunless %}">
-          <ul class="legal-links inline-list">
-              <li>
-                &copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}
-              </li>
-          </ul>
-      </div>
+      {% endif %} {% endcomment %}
+
+
+
+  </div>
+</div>
+
+<nav>
+  <div>
+  <h5>Company</h5>
+  <ul>
+  {% for link in linklists.footer-company.links  -%}
+    <li>{{ link.title | link_to: link.url }}</li>
+  {%- endfor %}
+  </ul>
+  </div>
+
+  <div>
+    <h5>Customer support</h5>
+    <ul>
+    {% for link in linklists.footer-customer-support.links  -%}
+      <li>{{ link.title | link_to: link.url }}</li>
+    {%- endfor %}
+    </ul>
     </div>
 
+  <div>
+    <h5>Services</h5>
+    <ul>
+    {% for link in linklists.footer-services.links  -%}
+      <li>{{ link.title | link_to: link.url }}</li>
+    {%- endfor %}
+    </ul>
+    </div>
+</nav>
+
+
+
+
+  <div class="copyright">
+    <span>&copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}</div>
   </div>
 
 </footer>
+
+
+
+
 
 {% schema %}
 {
