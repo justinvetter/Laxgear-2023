@@ -1,0 +1,57 @@
+<link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+<form action="/cart/add" method="post" enctype="multipart/form-data" id="addToCartForm-{{ section.id }}">
+
+
+  <select name="id" id="productSelect-{{ section.id }}" class="product-variants product-variants-{{ section.id }}">
+    {% for variant in product.variants %}
+    {% if variant.available %}
+
+    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+    {% else %}
+    <option disabled="disabled">
+      {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+    </option>
+    {% endif %}
+    {% endfor %}
+  </select>
+  {% if product.available and product.variants.size > 1 %}
+  {% include 'swatch' with 'Color' %}
+  {% endif %}
+
+  {% if section.settings.product_quantity_enable %}
+  <label for="quantity" class="quantity-selector quantity-selector-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+  <input type="number" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
+  <style>#quantity { padding:5px; width:35px; border: 1px solid #555; }</style>
+  {% endif %}
+
+  <button type="submit" name="add" id="addToCart-{{ section.id }}" class="btn">
+    <span class="icon icon-cart"></span>
+    <span id="addToCartText-{{ section.id }}">{{ 'products.product.add_to_cart' | t }}</span>
+  </button>
+
+  {% if section.settings.product_quantity_message%}
+  <span id="variantQuantity-{{ section.id }}" class="variant-quantity {% if variant.inventory_management and variant.inventory_quantity < 10 and variant.inventory_quantity > 0 %} is-visible{% endif %}">
+    {% if variant.inventory_management and variant.inventory_quantity < 10 and variant.inventory_quantity > 0 %}
+    {% assign qty = variant.inventory_quantity %}
+    {{ 'products.product.only_left' | t: count: qty }}
+    {% endif %}
+  </span>
+  {% endif %}
+
+  {% if section.settings.product_incoming_message %}
+  <span id="variantIncoming-{{ section.id }}" class="variant-quantity {% if variant.inventory_management and variant.inventory_quantity <= 0 and variant.incoming %} is-visible{% endif %}">
+    {% if variant.inventory_management and variant.inventory_quantity == 0 or variant.inventory_quantity < 0 and current_variant.incoming %}
+    {% if variant.available %}
+    {% assign date = variant.next_incoming_date | date: "month_day_year" %}
+    {{ 'products.product.will_not_ship_until' | t: date: date  }}
+    {% else %}
+    {% assign date = variant.next_incoming_date | date: "month_day_year" %}
+    {{ 'products.product.will_be_in_stock_after' | t: date: date }}
+    {% endif %}
+    {% endif %}
+  </span>
+  {% endif %}
+
+</form>

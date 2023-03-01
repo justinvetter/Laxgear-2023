@@ -1,0 +1,434 @@
+{%- include 'bold-product' with product, hide_action: 'break', output: 'none' -%}
+<div id="ProductSection" data-section-id="{{ section.id }}" data-section-type="product-template" data-zoom-toggle="zoom-in" data-zoom-enabled="{{ section.settings.product_image_zoom_enable }}" data-related-enabled="{{ section.settings.product_related_enable }}" data-social-sharing="{{ section.settings.social_sharing }}" data-show-compare-at-price="{{ section.settings.product_show_compare_at_price }}" data-stock="{{ section.settings.product_quantity_message }}" data-incoming-transfer="{{ section.settings.product_incoming_message }}" data-ajax-cart-method="{{ settings.ajax_cart_method }}">
+{% include 'breadcrumb' %}
+
+<div class="grid" itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
+
+  <div class="grid-item large--two-fifths">
+    <div class="grid">
+      <div class="grid-item large--eleven-twelfths text-center">
+        <div class="product-photo-container" id="productPhotoContainer-{{ section.id }}">
+          {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+          {% for image in product.images %}
+            {% capture img_wrapper_id %}productPhotoWrapper-{{ section.id }}-{{ image.id }}{% endcapture %}
+            {% capture img_id %}productPhotoImg-{{ section.id }}-{{ image.id }}{% endcapture %}
+
+            <div class="lazyload__image-wrapper no-js product__image-wrapper{% unless image == featured_image %} hide{% endunless %}" id="{{ img_wrapper_id }}" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;" data-image-id="{{ image.id }}">
+              {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              	<a href="{{ image | img_url: '1024x1024', scale: 2 }}" class="fancybox">
+                <img id="{{ img_id }}"
+                  {% if forloop.first == true %}
+                  src="{{ featured_image | img_url: '300x300' }}"
+                  {% endif %}
+                  class="lazyload no-js lazypreload"
+                  data-src="{{ img_url }}"
+                  data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                  data-aspectratio="{{ image.aspect_ratio }}"
+                  data-sizes="auto"
+                  alt="{{ image.alt | escape }}"
+                  {% if section.settings.product_image_zoom_enable %} data-zoom="{{ image | img_url: '1024x1024', scale: 2 }}"{% endif %}>
+              	</a>
+            </div>
+            {% if forloop.first == true %}
+              <noscript>
+                <img src="{{ image | img_url: '580x' }}"
+                  srcset="{{ image | img_url: '580x' }} 1x, {{ image | img_url: '580x', scale: 2 }} 2x"
+                  alt="{{ image.alt }}" style="opacity:1;">
+              </noscript>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        {% if product.images.size > 1 %}
+          <ul class="product-photo-thumbs grid-uniform" id="productThumbs-{{ section.id }}">
+
+            {% for image in product.images %}
+              <li class="grid-item medium-down--one-quarter large--one-quarter">
+                <a href="{{ image.src | img_url: '1024x1024', scale: 2 }}" rel="gallery" class="product-photo-thumb product-photo-thumb-{{ section.id }}" data-image-id="{{ image.id }}">
+                  <img class="product-image-thumb" src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+                </a>
+              </li>
+            {% endfor %}
+
+          </ul>
+        {% endif %}
+
+      </div>
+    </div>
+    <div id="rotate-viewer-container"></div>
+    <div class="product-image-left">
+    </div>
+  </div>
+
+  <div class="grid-item large--three-fifths">
+
+    <h1 class="h2" itemprop="name">{{ product.title }}</h1>
+
+    {% if section.settings.product_vendor_enable %}
+      <p class="product-meta" itemprop="brand">{{ product.vendor }}</p>
+    {% endif %}
+
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+
+      {% assign variant = product.selected_or_first_available_variant %}
+
+      <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+      <meta itemprop="price" content="{{ variant.price | divided_by: 100.00 }}">
+
+      <ul class="inline-list product-meta">
+        <li>
+          <span id="productPrice-{{ section.id }}" class="h1">
+            {% if product.tags.size > 0 %}
+            {% for tag in product.tags %}
+                {% if tag != "Custom" %}
+            		{% include 'price' with variant.price %}
+                {% else %}
+            		<p style="color:red">Taking orders for Fall 2019 – Contact us for Pricing</p>
+            	{% endif %}
+            {% endfor %}
+            {% else %}
+            	{% include 'price' with variant.price %}
+            {% endif %}
+          </span>
+        </li>
+        {% if product.compare_at_price_max > product.price and section.settings.product_show_saved_amount %}
+        <li>
+          <span id="comparePrice-{{ section.id }}" class="sale-tag large">
+            {% assign compare_price = variant.compare_at_price %}
+            {% assign product_price = variant.price %}
+            {% include 'price-sale' %}
+          </span>
+        </li>
+        {% endif %}
+        {% if section.settings.product_reviews_enable %}
+          <li class="product-meta--review">
+            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+          </li>
+        {% endif %}
+      </ul>
+
+      <div class="product-notification" style="display: none;">
+        <h3>Preorder your Laxpack with Cooler today! Bags will ship out early February 2019</h3>
+      </div>
+      
+      <hr id="variantBreak" class="hr--clear hr--small">
+
+      <!-- jQuery UI Dialog Box - Embroidery Message -->
+      {% if product.title != "Custom Equipment Bag" and product.title != "Factory Custom Mega Duffel" and product.title != "Laxgear Gift Card" %}
+	  <div id = "dialog-box">Please Note: Personalized embroidery will add 5-7 business days to your order.</div>
+      {% endif %}
+      	{% if product.tags contains "Custom" %}
+            <div class="contact-form-container">
+              {% form 'contact' %}
+
+                {% if form.posted_successfully? %}
+                  <p class="note form-success">
+                    {{ 'contact.form.post_success' | t }}
+                  </p>
+                {% endif %}
+
+                {% include 'form-errors-custom' %}
+
+                <div id="contactFormWrapper">
+                  <h3><strong>Send LAXGEAR your team info to get started</strong></h3>
+                  <label for="product" class="hidden-label">{{ 'contact.form.product' | t }}</label>
+                  <input type="hidden" id="product" name="contact[product]" value="{{ product.title }}">
+                  
+                  <label for="contactFormName" class="hidden-label">{{ 'contact.form.name' | t }}</label>
+                  <input type="text" id="contactFormName" name="contact[name]" placeholder="{{ 'contact.form.name' | t }}" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" required>
+
+                  <label for="contactFormEmail" class="hidden-label">{{ 'contact.form.email' | t }}</label>
+                  <input type="email" id="contactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required>
+
+                  <label for="contactFormPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
+                  <input type="tel" id="contactFormPhone" name="contact[phone]" placeholder="{{ 'contact.form.phone' | t }}" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+
+            	  <label for="contactFormTeamName" class="hidden-label">{{ 'contact.form.teamName' | t }}</label>
+            	  <input type="text" id="contactFormTeamName" name="contact[teamName]" placeholder="Team Name"/>
+                  
+                  <label for="contactFormTeamColor" class="hidden-label">{{ 'contact.form.teamColor' | t }}</label>
+            	  <input type="text" id="contactFormTeamColor" name="contact[teamColor]" placeholder="Team Color"/>
+                  
+                  <label for="contactFormNumberOfBags" class="hidden-label">{{ 'contact.form.numberOfBags' | t }}</label>
+            	  <input type="text" pattern="[0-9]+" oninvalid="this.setCustomValidity('Enter a number')" oninput="setCustomValidity('')" id="contactFormNumberOfBags" name="contact[numberOfBags]" placeholder="Number Of Bags"/>
+                  
+                  <label for="contactFormMessage" class="hidden-label">{{ 'contact.form.message' | t }}</label>
+                  <textarea rows="10" id="contactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+                  <input type="submit" class="btn right" value="{{ 'contact.form.send' | t }}">
+                </div>
+
+              {% endform %}
+         	</div>
+      	{% else %}
+      		{% include 'product-fields' %}
+    	{% endif %}
+      <hr>
+
+    </div>
+
+    <div class="product-description rte" itemprop="description">
+      {{ product.description }}
+    </div>
+
+    {% if section.settings.social_sharing_products %}
+      {% include 'social-sharing' %}
+    {% endif %}
+    
+    <div class="product-image-desc">
+      <p class="product-image-container">
+        <img src="//cdn.shopify.com/s/files/1/2459/7365/files/coaches-elite-large_medium.jpg?v=1508346529" alt="Coaches Elite" class="coaches-elite-img product-elite-img" />
+      </p>
+      <div class="coaches-btn-container">
+        <button class="coaches-btn btn">Join Coaches Elite</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+{% if section.settings.related_products_enable %}
+  {% assign grid_item_width = 'large--one-fifth medium--one-third small--one-half' %}
+  {% include 'related-products' %}
+{% endif %}
+
+{% if section.settings.product_reviews_enable %}
+  <hr>
+  <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+{% endif %}
+
+{% unless product == empty %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+  </script>
+  {% if section.settings.product_quantity_message or section.settings.product_incoming_message %}
+    <script type="application/json" id="VariantJson-{{ section.id }}">
+      [
+        {% for variant in product.variants %}
+          {
+             "incoming": {% if variant.incoming == 'null' or variant.next_incoming_date == null %}false{% else %}{{ variant.incoming | default: false | json }}{% endif %},
+             "next_incoming_date": {{ variant.next_incoming_date | date: format: 'month_day_year' | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    </script>
+  {% endif %}
+{% endunless %}
+  
+{% if product.variants.size > 1 %}
+<script>
+  var variantImages = {},
+    thumbnails,
+    variant,
+    variantImage,
+    optionValue,
+    productOptions = [];
+    {% for variant in product.variants %}
+       variant = {{ variant | json }};
+       if ( typeof variant.featured_image !== 'undefined' && variant.featured_image !== null ) {
+         variantImage =  variant.featured_image.src.split('?')[0].replace(/http(s)?:/,'');
+         variantImages[variantImage] = variantImages[variantImage] || {};
+         {% for option in product.options %}
+         
+           {% assign option_value = variant.options[forloop.index0] %}
+           {% assign option_key = 'option-' | append: forloop.index0 %}
+         	
+           if (typeof variantImages[variantImage][{{ option_key | json }}] === 'undefined') {
+             variantImages[variantImage][{{ option_key | json }}] = {{ option_value | json }};
+           }
+           else {
+             var oldValue = variantImages[variantImage][{{ option_key | json }}];
+             if ( oldValue !== null && oldValue !== {{ option_value | json }} )  {
+               variantImages[variantImage][{{ option_key | json }}] = null;
+             }
+           }
+         {% endfor %}
+       }
+       productOptions.push(variant);
+    {% endfor %}
+</script> 
+{% endif %}
+
+<!-- This might be fixing bug that ocassionally happens with jQuery UI dialog -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+  
+<script type="text/javascript" src="{{ 'jquery.fancybox-buttons.js' | asset_url }}"></script>
+  
+<script type="text/javascript">    
+  var textUpperCase = setInterval(function() {
+    var setCheckbox =  $("#addToCartForm-product-template input:checkbox");
+    if (setCheckbox.length) {
+      setCheckbox.on("change", function() {
+        $('input').keyup(function(){
+          $(this).val($(this).val().toUpperCase());
+          console.log(this.val);
+        });
+      });
+    }
+  }, 100);
+</script>
+  
+<script type="text/javascript">
+  $(document).ready(function($) {
+    $(window).bind("load", function() {
+	// Ensures that the callback function can only be invoked once per page load    
+    var runOnce = function(fn, context) { 
+    	var result;
+        return function() { 
+            if (fn) {
+                result = fn.apply(context || this, arguments);
+                fn = null;
+            }
+            return result;
+        };
+	}
+
+    $("#dialog-box").dialog({
+      autoOpen: false,
+      // Fixes bug where X button doesn't show in box
+      buttons: [{text: "Close", click: function() {$(this).dialog("close")}}],
+    });
+    
+//     var dialogMessage = setInterval(function() {
+//         var dialogCheckbox =  $("#dialog-checkbox");
+//       	if (dialogCheckbox.length) {
+
+//             dialogCheckbox.dialog({
+//               autoOpen: false,
+//               // Fixes bug where X button doesn't show in box
+//               buttons: [{text: "Close", click: function() {$(this).dialog("close")}}],
+//             });
+
+//           	clearInterval(dialogMessage);
+//         }
+//     }, 100);
+//     var waitForEl = function(selector, callback) {
+//       if (jQuery(selector).length) {
+//         callback(selector);
+//       } else {
+//         setTimeout(function() {
+//           waitForEl(selector, callback);
+//         }, 100);
+//       }
+//     };
+
+//     waitForEl("#dialog-box", function(selector) {
+//       $(selector).dialog({
+//         autoOpen: false,
+//         // Fixes bug where X button doesn't show in box
+//         buttons: [{text: "Close", click: function() {$(this).dialog("close")}}],
+//       });
+//     });
+    
+//     $.fn.onAvailable = function(fn){
+//     var sel = this.selector;
+//     var timer;
+//     var self = this;
+//     if (this.length > 0) {
+//         fn.call(this);   
+//     }
+//     else {
+//         timer = setInterval(function(){
+//             if ($(sel).length > 0) {
+//                 fn.call($(sel));
+//                 clearInterval(timer);  
+//             }
+//         },500);  
+//     }
+// };
+// $("#dialog-box").onAvailable(function(){
+//     $(this).dialog({
+//       autoOpen: false,
+//       // Fixes bug where X button doesn't show in box
+//       buttons: [{text: "Close", click: function() {$(this).dialog("close")}}],
+//     });       
+// });
+    
+    // Checks to make sure the checkboxes from the Product Option are in the DOM, and then attaches change event listeners to checkboxes
+    // so that an alert message is shown when one is clicked.
+    var embroideryMessage = setInterval(function() {
+        var embroideryCheckbox =  $("#addToCartForm-product-template input:checkbox");
+      	if (embroideryCheckbox.length) {
+            embroideryCheckbox.on("change", runOnce(function() {
+            	$("#dialog-box").dialog("open");
+          	}));
+          	clearInterval(embroideryMessage);
+        }
+    }, 100);
+    
+
+    $(".fancybox").fancybox();
+	{% if product.tags contains "Custom" %}
+        $(".product-photo-thumb").fancybox();
+    {% endif %}
+ 
+    }); // End window on load
+  });
+</script>
+</div>
+
+{% schema %}
+  {
+    "name": "Product",
+    "class": "product-template-section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "product_image_zoom_enable",
+        "label": "Enable image zoom"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_quantity_enable",
+        "label": "Show quantity selector"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_quantity_message",
+        "label": "Show remaining quantity message"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_incoming_message",
+        "label": "Show incoming stock transfer message when sold out"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_vendor_enable",
+        "label": "Show product vendor"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_show_saved_amount",
+        "label": "Show saved amount",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "product_show_compare_at_price",
+        "label": "Show compare at price",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "related_products_enable",
+        "label": "Show related products"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_sharing_products",
+        "label": "Enable product sharing",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "product_reviews_enable",
+        "label": "Enable product reviews",
+        "info": "Install the free Shopify [Product Reviews](https:\/\/apps.shopify.com\/product-reviews) app to add product reviews."
+      }
+    ]
+  }
+{% endschema %}
