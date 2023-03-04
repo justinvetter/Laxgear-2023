@@ -4,61 +4,73 @@
 
 // TODO remove all old styles
 
+ul {
+  padding-left: 0;
+}
 
+.template-index {
+  #shopify-section-header {
+    position: absolute;
+    width: 100%;
+  }
+}
 
-header#header{
+header#header {
+  position: relative;
   margin: 0 15vw;
-  padding: 3em 0 4em 0;
+  padding: 3em 0 1em 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  nav{
+  nav {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    .left-nav, .right-nav{
-      ul{
-      display: flex;
-      gap: 2.5em;
-        li{
+    .left-nav,
+    .right-nav {
+      ul {
+        display: flex;
+        gap: 2.5em;
+        li {
           font-size: 1rem;
-          font-weight:700;
+          font-weight: 700;
         }
       }
     }
-    .search{
-    .uk-navbar-dropdown{
-      box-shadow: 4px 4px 13px -5px rgba($lax-text-color, 0.19);
+    .search {
+      .uk-navbar-dropdown {
+        box-shadow: 4px 4px 13px -5px rgba($lax-text-color, 0.19);
+      }
     }
-  }
   }
   @media (max-width: 1500px) {
     margin: 0 6vw;
     padding: 1em 0 2em 0;
-    nav{
-      .left-nav, .right-nav{
-        ul{
+    nav {
+      .left-nav,
+      .right-nav {
+        ul {
           gap: 20px;
         }
       }
     }
   }
-  @media (max-width: 820px){
+  @media (max-width: 820px) {
     justify-content: space-between;
     flex-direction: row-reverse;
-    .logo{
+    .logo {
       max-width: 150px;
     }
-    nav{
+    nav {
       display: none;
     }
   }
-  }
+}
 
-.mobile-toggle{
+.mobile-toggle {
   font-size: 1.25rem;
 }
 
@@ -66,23 +78,21 @@ header#header{
   width: 100%;
   background: #e92829;
   padding: 10px 0px;
-  
-  	a {
-      color: white;
-    }
 
-	p {
-      	color: white;
-  		font-size: 14px;
-  		font-weight: 600;
-  		text-align: center;
-  		margin: 0;
-	}
+  a {
+    color: white;
+  }
+
+  p {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+  }
 }
 
-
-
-.signup-form{
+.signup-form {
   padding: 5em;
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -90,36 +100,36 @@ header#header{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:center;
+  align-items: center;
   width: 100%;
-  h4{
+  h4 {
     color: white;
     text-align: center;
     font-size: 2.5em;
     text-transform: none;
     line-height: 1;
   }
-  form{
+  form {
     width: 100%;
     margin-bottom: 0;
-    input[type="email"]{
+    input[type="email"] {
       background-color: #e5e1da;
       max-width: 350px;
     }
 
-    .input-group{
+    .input-group {
       display: flex;
       justify-content: center;
       gap: 2em;
-      .input-group-btn{
+      .input-group-btn {
         width: unset;
-        button.btn-secondary.btn--small{
+        button.btn-secondary.btn--small {
           color: white;
           background-color: #e92829;
           padding: 0 40px;
           border: solid 1px #e92829;
           display: inline-block;
-          &:hover{
+          &:hover {
             background-color: white;
             color: #e92829;
           }
@@ -130,125 +140,123 @@ header#header{
   @media (max-width: 700px) {
     padding: 3em;
     gap: 2em;
-    h4{
+    h4 {
       font-size: 2em;
       margin-bottom: 0;
       padding: 0;
     }
-    form{
-    .input-group{
-      flex-direction: column;
-      align-items: center;
-      justify-content: stretch;
-      gap: 1.75em;
-      .input-group-btn{
-        min-width: 100%;
-        display: flex;
-        justify-content: center;
-      button.btn-secondary.btn--small{
-        width: 100%;
-        display: block;
-        box-sizing: border-box;
-        max-width: 350px;
+    form {
+      .input-group {
+        flex-direction: column;
+        align-items: center;
+        justify-content: stretch;
+        gap: 1.75em;
+        .input-group-btn {
+          min-width: 100%;
+          display: flex;
+          justify-content: center;
+          button.btn-secondary.btn--small {
+            width: 100%;
+            display: block;
+            box-sizing: border-box;
+            max-width: 350px;
+          }
+        }
       }
-    }
-    }
     }
   }
 }
 
-footer.site-footer{
+footer.site-footer {
   margin: 0 15vw;
   padding: 3em 0 4em 0;
   display: flex;
   flex-direction: column;
-  .social{
+  .social {
     display: flex;
     justify-content: space-between;
     margin-bottom: 4em;
-    .social_icons{
+    .social_icons {
       margin-top: 1em;
       display: flex;
       gap: 1.25em;
       justify-content: flex-start;
       align-items: flex-start;
-      a{
-        span{
-        font-size: 1rem;
-        transition: all .2s ease-in-out;
+      a {
+        span {
+          font-size: 1rem;
+          transition: all 0.2s ease-in-out;
         }
-        &:hover{
-          span{
+        &:hover {
+          span {
             color: #e92829;
           }
         }
       }
     }
   }
-  nav{
+  nav {
     display: flex;
     gap: 6em;
-    h5{
+    h5 {
       text-transform: none;
       padding-bottom: 1em;
       margin-bottom: 1.1em;
       border-bottom: solid 2px #585858;
     }
-    ul{
+    ul {
       margin-bottom: 0;
       display: flex;
       flex-direction: column;
-      gap: .5em;
-      padding-left: 0;
-      li{
+      gap: 0.5em;
+      li {
         margin-bottom: 0;
-        transition: all .2s ease-in-out;
-        &:hover{
-          a{
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          a {
             color: #e92829;
           }
         }
       }
     }
   }
-  .copyright{
+  .copyright {
     margin-top: 3em;
     align-self: flex-end;
   }
 
   @media (max-width: 750px) {
     gap: 2rem;
-    .social{
+    .social {
       flex-direction: column;
       justify-content: center;
       align-items: center;
       margin-bottom: 0;
       gap: 2rem;
-      .social_icons{
+      .social_icons {
         gap: 1.5rem;
         margin-top: 0;
-        a{
-          span{
+        a {
+          span {
             font-size: 1.5rem;
           }
         }
       }
     }
-    nav{
+    nav {
       display: none;
     }
-    .copyright{
+    .copyright {
       align-self: center;
       margin-top: 0;
     }
   }
 }
 
-
-.uk-navbar-dropdown{
+.uk-navbar-dropdown {
   padding: 5px 10px 5px 5px;
 }
 
-.uk-search-navbar .uk-search-input{
+.uk-search-navbar .uk-search-input {
   font-size: 1rem;
 }
