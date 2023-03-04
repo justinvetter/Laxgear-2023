@@ -1,170 +1,68 @@
 {% render 'newsletter-form' %}
 <footer class="site-footer small--text-center" role="contentinfo">
-<div class="social">
-  <img src="{{ 'laxgear-footer-logo.png' | asset_url }}">
+  <div class="social">
+    <img src="{{ 'laxgear-footer-logo.png' | asset_url }}">
 
 
-  {% if section.settings.social_enabled %}
-  <div class="social_icons">
-    <a href="{{ settings.social_instagram_link | escape }}" target="_blank" title="Instagram">
-    <span class="fa-brands fa-instagram"></span>
-    </a>
-    <a href="{{ settings.social_facebook_link | escape }}" target="_blank" title="Facebook">
-    <span class="fa-brands fa-facebook-f"></span>
-  </a>
-    <a href="{{ settings.social_twitter_link | escape }}" target="_blank" title="Twitter">
-    <span class="fa-brands fa-twitter"></span>
-  </a>
-    <a href="{{ settings.social_email_link | escape }}" target="_blank" title="Email">
-    <span class="fa-regular fa-envelope"></span>
-  </a>
-{% endif %}
+    {% if section.settings.social_enabled %}
+      <div class="social_icons">
+        <a
+          href="{{ settings.social_instagram_link | escape }}"
+          target="_blank"
+          title="Instagram">
+          <span class="fa-brands fa-instagram"></span>
+        </a>
+        <a
+          href="{{ settings.social_facebook_link | escape }}"
+          target="_blank"
+          title="Facebook">
+          <span class="fa-brands fa-facebook-f"></span>
+        </a>
+        <a
+          href="{{ settings.social_twitter_link | escape }}"
+          target="_blank"
+          title="Twitter">
+          <span class="fa-brands fa-twitter"></span>
+        </a>
+        <a
+          href="{{ settings.social_email_link | escape }}"
+          target="_blank"
+          title="Email">
+          <span class="fa-regular fa-envelope"></span>
+        </a>
+      {% endif %}
 
-      {% comment %} {% if section.settings.social_enabled %}
-      <div class="grid-item{% if section.settings.legal_menu != blank %} large--three-fifths text-right{% else %} one-whole text-center{% endif %}">
-          <ul class="inline-list social-icons">
-             {% if settings.social_twitter_link != blank %}
-               <li>
-                 <a class="icon-fallback-text" href="{{ settings.social_twitter_link | escape }}" target="_blank" title="{{ 'layout.footer.store_on_social_network' | t: store_name: shop.name, social_network: 'Twitter' | escape }}">
-                   <span class="icon icon-twitter" aria-hidden="true"></span>
-                   <span class="fallback-text">Twitter</span>
-                 </a>
-               </li>
-             {% endif %}
-
-
-
-
-
-
-             {% if settings.social_facebook_link != blank %}
-               <li>
-                 <a class="icon-fallback-text" href="{{ settings.social_facebook_link | escape }}" target="_blank" title="{{ 'layout.footer.store_on_social_network' | t: store_name: shop.name, social_network: 'Facebook' | escape }}">
-                   <span class="icon icon-facebook" aria-hidden="true"></span>
-                   <span class="fallback-text">Facebook</span>
-                 </a>
-               </li>
-             {% endif %}
-
-
-
-
-
-             {% if settings.social_pinterest_link != blank %}
-               <li>
-                 <a class="icon-fallback-text" href="{{ settings.social_pinterest_link | escape }}" target="_blank" title="{{ 'layout.footer.store_on_social_network' | t: store_name: shop.name, social_network: 'Pinterest' | escape }}">
-                   <span class="icon icon-pinterest" aria-hidden="true"></span>
-                   <span class="fallback-text">Pinterest</span>
-                 </a>
-               </li>
-             {% endif %}
-
-
-
-
-
-             {% if settings.social_google_plus_link != blank %}
-               <li>
-                 <a class="icon-fallback-text" href="{{ settings.social_google_plus_link | escape }}" target="_blank" title="{{ 'layout.footer.store_on_social_network' | t: store_name: shop.name, social_network: 'Google' | escape }}" rel="publisher">
-                   <span class="icon icon-google_plus" aria-hidden="true"></span>
-                   <span class="fallback-text">Google</span>
-                 </a>
-               </li>
-             {% endif %}
-             {% if settings.social_instagram_link != blank %}
-               <li>
-                 <a class="icon-fallback-text" href="{{ settings.social_instagram_link | escape }}" target="_blank" title="{{ 'layout.footer.store_on_social_network' | t: store_name: shop.name, social_network: 'Instagram' | escape }}">
-                   <span class="icon icon-instagram" aria-hidden="true"></span>
-                   <span class="fallback-text">Instagram</span>
-                 </a>
-               </li>
-             {% endif %}
-             {% if settings.social_snapchat_link != blank %}
-               <li>
-                 <a class="icon-fallback-text" href="{{ settings.social_snapchat_link }}" target="_blank" title="{{ 'layout.footer.store_on_social_network' | t: store_name: shop.name, social_network: 'Snapchat' | escape }}">
-                   <span class="icon icon-snapchat" aria-hidden="true"></span>
-                   <span class="fallback-text">Snapchat</span>
-                 </a>
-               </li>
-             {% endif %}
-             {% if settings.social_tumblr_link != blank %}
-               <li>
-                 <a class="icon-fallback-text" href="{{ settings.social_tumblr_link | escape }}" target="_blank" title="{{ 'layout.footer.store_on_social_network' | t: store_name: shop.name, social_network: 'Tumblr' | escape }}">
-                   <span class="icon icon-tumblr" aria-hidden="true"></span>
-                   <span class="fallback-text">Tumblr</span>
-                 </a>
-               </li>
-             {% endif %}
-             {% if settings.social_youtube_link != blank %}
-               <li>
-                 <a class="icon-fallback-text" href="{{ settings.social_youtube_link | escape }}" target="_blank" title="{{ 'layout.footer.store_on_social_network' | t: store_name: shop.name, social_network: 'YouTube' | escape }}">
-                   <span class="icon icon-youtube" aria-hidden="true"></span>
-                   <span class="fallback-text">YouTube</span>
-                 </a>
-               </li>
-             {% endif %}
-             {% if settings.social_vimeo_link != blank %}
-               <li>
-                 <a class="icon-fallback-text" href="{{ settings.social_vimeo_link | escape }}" target="_blank" title="{{ 'layout.footer.store_on_social_network' | t: store_name: shop.name, social_network: 'Vimeo' | escape }}">
-                   <span class="icon icon-vimeo" aria-hidden="true"></span>
-                   <span class="fallback-text">Vimeo</span>
-                 </a>
-               </li>
-             {% endif %}
-             {% if settings.social_fancy_link != blank %}
-               <li>
-                 <a class="icon-fallback-text" href="{{ settings.social_fancy_link | escape }}" target="_blank" title="{{ 'layout.footer.store_on_social_network' | t: store_name: shop.name, social_network: 'Fancy' | escape }}">
-                   <span class="icon icon-fancy" aria-hidden="true"></span>
-                   <span class="fallback-text">Fancy</span>
-                 </a>
-               </li>
-             {% endif %}
-             <li>
-               <a class="icon-fallback-text" href="https://visitor.r20.constantcontact.com/manage/optin?v=001dtCr-TZ5ZGYckch46XQ0XzL02-WaZX-BMLbdFlzQqBDCP64hYWj7-LoS9X8v9yAmH7xqYjyeCE4IJXvVt9uJlPbWEFQFhtX16WIstU2PSms%3D" target="_blank" title="{{ 'layout.footer.store_on_social_network' | t: store_name: shop.name, social_network: 'Constant Contact' | escape }}">
-                 <span class="fa fa-envelope fa-2x" aria-hidden="true"></span>
-                 <span class="fallback-text">Constant Contact</span>
-               </a>
-             </li>
-           </ul>
-        </div>
-      {% endif %} {% endcomment %}
-
-
-
-  </div>
-</div>
-
-<nav>
-  <div>
-  <h5>Company</h5>
-  <ul>
-  {% for link in linklists.footer-company.links  -%}
-    <li>{{ link.title | link_to: link.url }}</li>
-  {%- endfor %}
-  </ul>
+    </div>
   </div>
 
-  <div>
-    <h5>Customer support</h5>
-    <ul>
-    {% for link in linklists.footer-customer-support.links  -%}
-      <li>{{ link.title | link_to: link.url }}</li>
-    {%- endfor %}
-    </ul>
+  <nav>
+    <div>
+      <h5>Company</h5>
+      <ul>
+        {% for link in linklists.footer-company.links -%}
+          <li>{{ link.title | link_to: link.url }}</li>
+        {%- endfor %}
+      </ul>
     </div>
 
-  <div>
-    <h5>Services</h5>
-    <ul>
-    {% for link in linklists.footer-services.links  -%}
-      <li>{{ link.title | link_to: link.url }}</li>
-    {%- endfor %}
-    </ul>
+    <div>
+      <h5>Customer support</h5>
+      <ul>
+        {% for link in linklists.footer-customer-support.links -%}
+          <li>{{ link.title | link_to: link.url }}</li>
+        {%- endfor %}
+      </ul>
     </div>
-</nav>
 
-
-
+    <div>
+      <h5>Services</h5>
+      <ul>
+        {% for link in linklists.footer-services.links -%}
+          <li>{{ link.title | link_to: link.url }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </nav>
 
   <div class="copyright">
     <span>&copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}</div>
@@ -173,184 +71,164 @@
 </footer>
 
 
-
-
-
 {% schema %}
-{
-  "name": "Footer",
-  "class": "footer-section",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "social_enabled",
-      "label": "Show social media icons",
-      "info": "Add accounts in Social media section"
-    },
-    {
-      "type": "link_list",
-      "id": "legal_menu",
-      "label": "Legal menu"
-    }
-  ],
-  "max_blocks": 9,
-  "blocks": [
-    {
-      "type": "menu",
-      "name": "Menu",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Heading",
-          "default": "Quick links"
-        },
-        {
-          "type": "link_list",
-          "id": "menu",
-          "label": "Menu"
-        },
-        {
-          "type": "select",
-          "id": "width",
-          "label": "Container width",
-          "default": "16%",
-          "options": [
-            {
-              "value": "16%",
-              "label": "16%"
-            },
-            {
-              "value": "25%",
-              "label": "25%"
-            },
-            {
-              "value": "33%",
-              "label": "33%"
-            },
-            {
-              "value": "50%",
-              "label": "50%"
-            },
-            {
-              "value": "66%",
-              "label": "66%"
-            },
-            {
-              "value": "75%",
-              "label": "75%"
-            },
-            {
-              "value": "100%",
-              "label": "100%"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "Rich text",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Heading",
-          "default": "Get in touch"
-        },
-        {
-          "type": "richtext",
-          "id": "richtext",
-          "label": "Text",
-          "default": "<p>Use this text to share information about your brand with your customers.</p>"
-        },
-        {
-          "type": "select",
-          "id": "width",
-          "label": "Container width",
-          "default": "50%",
-          "options": [
-            {
-              "value": "16%",
-              "label": "16%"
-            },
-            {
-              "value": "25%",
-              "label": "25%"
-            },
-            {
-              "value": "33%",
-              "label": "33%"
-            },
-            {
-              "value": "50%",
-              "label": "50%"
-            },
-            {
-              "value": "66%",
-              "label": "66%"
-            },
-            {
-              "value": "75%",
-              "label": "75%"
-            },
-            {
-              "value": "100%",
-              "label": "100%"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "newsletter",
-      "name": "Newsletter signup",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Heading",
-          "default": "Newsletter"
-        },
-        {
-          "type": "paragraph",
-          "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
-        },
-        {
-          "type": "select",
-          "id": "width",
-          "label": "Container width",
-          "default": "33%",
-          "options": [
-            {
-              "value": "25%",
-              "label": "25%"
-            },
-            {
-              "value": "33%",
-              "label": "33%"
-            },
-            {
-              "value": "50%",
-              "label": "50%"
-            },
-            {
-              "value": "66%",
-              "label": "66%"
-            },
-            {
-              "value": "75%",
-              "label": "75%"
-            },
-            {
-              "value": "100%",
-              "label": "100%"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+  {
+    "name": "Footer",
+    "class": "footer-section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "social_enabled",
+        "label": "Show social media icons",
+        "info": "Add accounts in Social media section"
+      }, {
+        "type": "link_list",
+        "id": "legal_menu",
+        "label": "Legal menu"
+      }
+    ],
+    "max_blocks": 9,
+    "blocks": [
+      {
+        "type": "menu",
+        "name": "Menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Quick links"
+          }, {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Menu"
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "16%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              }, {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      }, {
+        "type": "text",
+        "name": "Rich text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Get in touch"
+          }, {
+            "type": "richtext",
+            "id": "richtext",
+            "label": "Text",
+            "default": "<p>Use this text to share information about your brand with your customers.</p>"
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              }, {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      }, {
+        "type": "newsletter",
+        "name": "Newsletter signup",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Newsletter"
+          }, {
+            "type": "paragraph",
+            "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "33%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}
