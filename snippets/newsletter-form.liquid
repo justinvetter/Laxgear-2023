@@ -1,11 +1,17 @@
-<div class="signup-form">
+<div
+  class="signup-form"
+  data-src="{{ 'signup-bg-80.jpg' | asset_url }}"
+  uk-img>
   <h4>Sign up for the newsletter</h4>
   {% form 'customer' %}
     {{ form.errors | default_errors }}
     {% if form.posted_successfully? %}
       <p class="note form-success">{{ 'layout.footer.newsletter_confirmation' | t }}</p>
     {% else %}
-      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input
+        type="hidden"
+        name="contact[tags]"
+        value="newsletter">
       <div class="input-group">
         <label for="Email" class="visually-hidden">E-mail</label>
         <input
@@ -17,10 +23,13 @@
           class="input-group-field"
           aria-label="{{ 'layout.footer.newsletter_email_placeholder' | t }}"
           autocorrect="off"
-          autocapitalize="off"
-        >
+          autocapitalize="off">
         <span class="input-group-btn">
-          <button type="submit" class="btn-secondary btn--small" name="commit" id="subscribe">
+          <button
+            type="submit"
+            class="btn-secondary btn--small"
+            name="commit"
+            id="subscribe">
             {{ 'layout.footer.newsletter_sign_up' | t }}
           </button>
         </span>
