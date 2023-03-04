@@ -1,0 +1,254 @@
+/////////////////////////////
+// 2023 Theme updates ///////
+/////////////////////////////
+
+// TODO remove all old styles
+
+
+
+header#header{
+  margin: 0 15vw;
+  padding: 3em 0 4em 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .left-nav, .right-nav{
+      ul{
+      display: flex;
+      gap: 2.5em;
+        li{
+          font-size: 1rem;
+          font-weight:700;
+        }
+      }
+    }
+    .search{
+    .uk-navbar-dropdown{
+      box-shadow: 4px 4px 13px -5px rgba($lax-text-color, 0.19);
+    }
+  }
+  }
+  @media (max-width: 1500px) {
+    margin: 0 6vw;
+    padding: 1em 0 2em 0;
+    nav{
+      .left-nav, .right-nav{
+        ul{
+          gap: 20px;
+        }
+      }
+    }
+  }
+  @media (max-width: 820px){
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    .logo{
+      max-width: 150px;
+    }
+    nav{
+      display: none;
+    }
+  }
+  }
+
+.mobile-toggle{
+  font-size: 1.25rem;
+}
+
+.annoucement-bar {
+  width: 100%;
+  background: #e92829;
+  padding: 10px 0px;
+  
+  	a {
+      color: white;
+    }
+
+	p {
+      	color: white;
+  		font-size: 14px;
+  		font-weight: 600;
+  		text-align: center;
+  		margin: 0;
+	}
+}
+
+
+
+.signup-form{
+  padding: 5em;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  width: 100%;
+  h4{
+    color: white;
+    text-align: center;
+    font-size: 2.5em;
+    text-transform: none;
+    line-height: 1;
+  }
+  form{
+    width: 100%;
+    margin-bottom: 0;
+    input[type="email"]{
+      background-color: #e5e1da;
+      max-width: 350px;
+    }
+
+    .input-group{
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      .input-group-btn{
+        width: unset;
+        button.btn-secondary.btn--small{
+          color: white;
+          background-color: #e92829;
+          padding: 0 40px;
+          border: solid 1px #e92829;
+          display: inline-block;
+          &:hover{
+            background-color: white;
+            color: #e92829;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 700px) {
+    padding: 3em;
+    gap: 2em;
+    h4{
+      font-size: 2em;
+      margin-bottom: 0;
+      padding: 0;
+    }
+    form{
+    .input-group{
+      flex-direction: column;
+      align-items: center;
+      justify-content: stretch;
+      gap: 1.75em;
+      .input-group-btn{
+        min-width: 100%;
+        display: flex;
+        justify-content: center;
+      button.btn-secondary.btn--small{
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+        max-width: 350px;
+      }
+    }
+    }
+    }
+  }
+}
+
+footer.site-footer{
+  margin: 0 15vw;
+  padding: 3em 0 4em 0;
+  display: flex;
+  flex-direction: column;
+  .social{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4em;
+    .social_icons{
+      margin-top: 1em;
+      display: flex;
+      gap: 1.25em;
+      justify-content: flex-start;
+      align-items: flex-start;
+      a{
+        span{
+        font-size: 1rem;
+        transition: all .2s ease-in-out;
+        }
+        &:hover{
+          span{
+            color: #e92829;
+          }
+        }
+      }
+    }
+  }
+  nav{
+    display: flex;
+    gap: 6em;
+    h5{
+      text-transform: none;
+      padding-bottom: 1em;
+      margin-bottom: 1.1em;
+      border-bottom: solid 2px #585858;
+    }
+    ul{
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      gap: .5em;
+      padding-left: 0;
+      li{
+        margin-bottom: 0;
+        transition: all .2s ease-in-out;
+        &:hover{
+          a{
+            color: #e92829;
+          }
+        }
+      }
+    }
+  }
+  .copyright{
+    margin-top: 3em;
+    align-self: flex-end;
+  }
+
+  @media (max-width: 750px) {
+    gap: 2rem;
+    .social{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+      gap: 2rem;
+      .social_icons{
+        gap: 1.5rem;
+        margin-top: 0;
+        a{
+          span{
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+    nav{
+      display: none;
+    }
+    .copyright{
+      align-self: center;
+      margin-top: 0;
+    }
+  }
+}
+
+
+.uk-navbar-dropdown{
+  padding: 5px 10px 5px 5px;
+}
+
+.uk-search-navbar .uk-search-input{
+  font-size: 1rem;
+}
