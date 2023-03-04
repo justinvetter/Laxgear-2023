@@ -1,0 +1,38 @@
+<div class="search">
+  <a class="" href="#">
+    <span class="fa-solid fa-magnifying-glass"></span>
+  </a>
+  <div class="uk-navbar-dropdown uk-margin-large-top uk-width-1-6@l uk-width-auto" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !.uk-navbar; flip: false; pos: bottom-left;">
+
+    <div class="uk-grid-small uk-flex-middle" uk-grid>
+      <div class="uk-width-expand">
+        <form
+          class="uk-text-small uk-search uk-search-navbar uk-width-1-1"
+          action="/search"
+          method="get"
+          class="search-bar"
+          role="search">
+          <input
+            type="hidden"
+            name="type"
+            value="product">
+          <input
+            class="uk-search-input uk-text-normal"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            autofocus
+            name="q"
+            value="{{ search.terms | escape }}">
+        </form>
+      </div>
+      <div class="uk-width-auto">
+        <a
+          class="uk-drop-close"
+          href="#"
+          uk-close></a>
+      </div>
+    </div>
+
+  </div>
+</div>
