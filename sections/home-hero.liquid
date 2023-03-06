@@ -1,0 +1,43 @@
+<section
+  class="home-hero uk-background-top-center@s uk-background-center-center"
+  data-src="{{ 'hero-bg-80.jpg' | asset_url }}"
+  uk-img="loading: eager;">
+  <h1 class="uk-heading-medium uk-text-uppercase uk-text-bold uk-margin-remove-bottom ">{{ section.settings.header }}</h1>
+  <p class="uk-text-large uk-margin-remove uk-text-normal">{{ section.settings.sub-header }}</p>
+  {% if section.settings.cta-product != blank %}
+    <a class="uk-button uk-button-primary uk-text-bold uk-margin-medium-top" href="{{ section.settings.cta-product.url }}">{{ section.settings.cta-product.title }}</a>
+  {% endif %}
+</section>
+
+
+{% style %}
+  body.template-index .wrapper {
+    max-width: unset;
+    padding: unset;
+  }
+{% endstyle %}
+
+
+{% schema %}
+  {
+    "name": "Home Hero",
+    "limit": 1,
+    "settings": [
+      {
+        "type": "text",
+        "id": "header",
+        "label": "Header",
+        "default": "Hit the field prepared"
+      }, {
+        "type": "text",
+        "id": "sub-header",
+        "label": "Sub Head",
+        "default": "With The Ultimate Lacrosse Bag"
+      }, {
+        "type": "product",
+        "id": "cta-product",
+        "label": "Select Product"
+      }
+    ]
+  }
+{% endschema %}
