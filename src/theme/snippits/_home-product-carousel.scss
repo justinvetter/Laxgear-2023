@@ -1,0 +1,111 @@
+.home-product-carousel {
+  .product-img {
+    width: 300px;
+    height: 300px;
+    img {
+      object-fit: contain;
+      height: 300px;
+    }
+  }
+  .bold_options {
+    display: none;
+  }
+  .variants {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    .color-box {
+      width: 20px;
+      height: 20px;
+      border: solid 1px $lax-text-color;
+      &.black {
+        background-color: #000000;
+      }
+      
+      &.carolina-blue {
+        background-color: #99BADD;
+      }
+      
+      &.forest-green {
+        background-color: #228B22;
+      }
+      
+      &.maroon {
+        background-color: #800000;
+      }
+      
+      &.navy-blue {
+        background-color: #000080;
+      }
+      
+      &.orange {
+        background-color: #FFA500;
+      }
+      
+      &.red {
+        background-color: #ED2427;
+      }
+      
+      &.royal-blue {
+        background-color: #4169E1;
+      }
+      
+      &.vegas-gold {
+        background-color: #C5B358;
+      }
+      
+      &.athletic-gold {
+        background-color: #FFDF00;
+      }
+      
+      &.kelly-green {
+        background-color: #4cbb17;
+      }
+      
+      &.purple {
+        background-color: #800080;
+      }
+      
+      &.silver {
+        background-color: #C0C0C0;
+      }
+      
+      &.yellow {
+        background-color: #FFFF00;
+        
+        i {
+          color: #000000 !important;
+        }
+      }
+      
+      &.flor-green {
+        background-color: #39ff14;
+        
+        i {
+          color: #000000 !important;
+        }
+      }
+      
+      &.flor-yellow {
+        background-color: #ccff00;
+        
+        i {
+          color: #000000 !important;
+        }
+      }
+      
+      &.pink {
+        background-color: #FFC0CB;
+        
+        i {
+          color: #000000 !important;
+        }
+      }
+    }
+  }
+  form{
+    label{
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,103 @@
+<section class="home-product-carousel uk-container">
+  <div uk-slider="sets: true">
+    <div class="uk-position-relative">
+      <div class="uk-slider-container">
+        <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@m uk-grid">
+          {% for product in collections['frontpage'].products %}
+            <li>
+              <div>
+                <div class="product-img" data-src="">
+                  <img id="{{ product.title | replace: ' ', '-' | downcase}}" src="{{ product.featured_image | image_url }}">
+                </div>
+                {{ product.title }}<br>
+                {{ product.price | money }}
+                <form method="post" action="/cart/add">
+                  <div class="variants">
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                        {% if variant == product.variants[0] %}
+                          <label uk-tooltip="{{ variant.title }}" class="color-box {{ variant.title | replace: ' ', '-' | downcase }}" for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"></label>
+                          <input
+                            type="radio"
+                            id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
+                            name="id"
+                            value="{{ variant.id }}"
+                            checked
+                            hidden
+                            class="chngRadio"
+                            data-index="{{ forloop.index }}"
+                            data-image="{{ variant.image | image_url }}"
+                            data-product="{{ product.title | replace: ' ', '-' | downcase}}">
+                        {% else %}
+                          <label uk-tooltip="{{ variant.title }}" class="color-box {{ variant.title | replace: ' ', '-' | downcase }}" for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"></label>
+                          <input
+                            type="radio"
+                            id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
+                            name="id"
+                            value="{{ variant.id }}"
+                            hidden
+                            class="chngRadio"
+                            data-index="{{ forloop.index }}"
+                            data-image="{{ variant.image | image_url }}"
+                            data-product="{{ product.title | replace: ' ', '-' | downcase}}">
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <input
+                    type="submit"
+                    value="Add to cart"
+                    class="uk-button uk-button-default" />
+                </form>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Carousel nav -->
+      <div class="uk-hidden@s uk-light">
+        <a
+          class="uk-position-center-left uk-position-small"
+          href="#"
+          uk-slidenav-previous
+          uk-slider-item="previous"></a>
+        <a
+          class="uk-position-center-right uk-position-small"
+          href="#"
+          uk-slidenav-next
+          uk-slider-item="next"></a>
+      </div>
+
+      <div class="uk-visible@s">
+        <a
+          class="uk-position-center-left-out uk-position-small"
+          href="#"
+          uk-slidenav-previous
+          uk-slider-item="previous"></a>
+        <a
+          class="uk-position-center-right-out uk-position-small"
+          href="#"
+          uk-slidenav-next
+          uk-slider-item="next"></a>
+      </div>
+    </div>
+    <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+  </div>
+</section>
+
+<script>
+
+  var matches = document.querySelectorAll('.chngRadio');
+
+  for (match in matches) {
+    matches[match].onchange = function() {
+      document.getElementById(this.dataset.product).src = this.dataset.image
+
+    }
+  }
+</script>
+
+{% style %}
+  
+{% endstyle %}
