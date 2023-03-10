@@ -9,4 +9,8 @@ $lax-text-color: #585858;
 $global-primary-background: $lax-primary;
 $global-link-color: $lax-text-color;
 $global-link-hover-color: $lax-primary;
-$breakpoint-small: 820px
+$breakpoint-small: 820px;
+
+$slidenav-color: rgba($lax-primary, 0.5) !default;
+$slidenav-hover-color: rgba($lax-primary, 0.9) !default;
+$slidenav-active-color: rgba($lax-primary, 0.5) !default;

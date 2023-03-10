@@ -1,18 +1,19 @@
 <section class="home-product-carousel uk-container">
+  <h4 class="uk-text-bold uk-margin-medium-top">You might like</h4>
   <div uk-slider="sets: true">
     <div class="uk-position-relative">
       <div class="uk-slider-container">
-        <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@m uk-grid">
-          {% for product in collections['frontpage'].products %}
+        <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-3@m uk-grid">
+          {% for product in section.settings.featured_product_list %}
             <li>
-              <div>
-                <div class="product-img" data-src="">
+              <div class="uk-text-center uk-width-expand">
+                <div class="product-img uk-margin-small-bottom uk-flex uk-flex-center" data-src="">
                   <img id="{{ product.title | replace: ' ', '-' | downcase}}" src="{{ product.featured_image | image_url }}">
                 </div>
-                {{ product.title }}<br>
+                <span class="uk-text-bold">{{ product.title }}</span><br>
                 {{ product.price | money }}
                 <form method="post" action="/cart/add">
-                  <div class="variants">
+                  <div class="variants uk-flex- uk-flex-center uk-padding-small">
                     {% for variant in product.variants %}
                       {% if variant.available %}
                         {% if variant == product.variants[0] %}
@@ -47,7 +48,7 @@
                   <input
                     type="submit"
                     value="Add to cart"
-                    class="uk-button uk-button-default" />
+                    class="uk-button uk-button-default uk-text-bold" />
                 </form>
               </div>
             </li>
@@ -56,14 +57,14 @@
       </div>
 
       <!-- Carousel nav -->
-      <div class="uk-hidden@s uk-light">
+      <div class="uk-hidden@s">
         <a
-          class="uk-position-center-left uk-position-small"
+          class="uk-position-center-left uk-position-small uk-slidenav-large"
           href="#"
           uk-slidenav-previous
           uk-slider-item="previous"></a>
         <a
-          class="uk-position-center-right uk-position-small"
+          class="uk-position-center-right uk-position-small uk-slidenav-large"
           href="#"
           uk-slidenav-next
           uk-slider-item="next"></a>
@@ -71,12 +72,12 @@
 
       <div class="uk-visible@s">
         <a
-          class="uk-position-center-left-out uk-position-small"
+          class="uk-position-center-left-out uk-position-small uk-slidenav-large"
           href="#"
           uk-slidenav-previous
           uk-slider-item="previous"></a>
         <a
-          class="uk-position-center-right-out uk-position-small"
+          class="uk-position-center-right-out uk-position-small uk-slidenav-large"
           href="#"
           uk-slidenav-next
           uk-slider-item="next"></a>
@@ -101,3 +102,18 @@
 {% style %}
   
 {% endstyle %}
+
+{% schema %}
+  {
+    "name": "Home Featured Carousel",
+    "limit": 1,
+    "settings": [
+      {
+        "type": "product_list",
+        "id": "featured_product_list",
+        "label": "Products",
+        "limit": 10
+      }
+    ]
+  }
+{% endschema %}

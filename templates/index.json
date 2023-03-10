@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "hero": {
+      "type": "home-hero",
+      "settings": {
+        "header": "Hit the field prepared",
+        "sub-header": "With The Ultimate Lacrosse Bag",
+        "cta-product": "backpack"
+      }
+    },
+    "features": {
+      "type": "home-features",
+      "settings": {
+      }
+    },
+    "carousel": {
+      "type": "home-product-carousel",
+      "settings": {
+        "featured_product_list": [
+          "backpack",
+          "small-lacrosse-backpack",
+          "lacrosse-backpack-with-cooler",
+          "lacrosse-duffel-bag",
+          "laxgear-equipment-bag"
+        ]
+      }
+    },
+    "quote": {
+      "type": "home-quote",
+      "settings":{}
+    }
+  },
+  "order": [
+    "hero",
+    "features",
+    "carousel",
+    "quote"
+  ]
+}

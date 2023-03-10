@@ -1,0 +1,23 @@
+.home-product-carousel {
+  .product-img {
+    img {
+      object-fit: contain;
+      height: 300px;
+    }
+  }
+  .bold_options {
+    display: none;
+  }
+  form {
+    label {
+      cursor: pointer;
+    }
+  }
+}
+.uk-slidnav.uk-icon {
+  stroke: red;
+  color: red;
+  svg {
+      stroke: red;
+  }
+}

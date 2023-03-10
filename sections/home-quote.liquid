@@ -1,0 +1,27 @@
+<section class="home-quote uk-text-center uk-flex uk-flex-center uk-flex-column uk-flex-middle uk-width-auto uk-margin-large-top uk-margin-medium-bottom">
+  <span class="fa-solid fa-quote-left uk-margin uk-text-default"></span>
+  <div class=" uk-container-xsmall uk-container">{{ section.settings.home-quote }}
+    {% if section.settings.quote-author != empty %}
+      <strong class="uk-text-lead uk-text-default uk-text-bold">-{{ section.settings.quote-author }}</strong>
+    {% endif %}
+  </div>
+  <span class="fa-solid fa-quote-right uk-margin uk-text-default"></span>
+</section>
+
+{% schema %}
+  {
+    "name": "Home Quote",
+    "limit": 1,
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "home-quote",
+        "label": "Quote"
+      }, {
+        "type": "text",
+        "id": "quote-author",
+        "label": "Author"
+      }
+    ]
+  }
+{% endschema %}

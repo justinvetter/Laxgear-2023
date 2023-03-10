@@ -32,7 +32,7 @@
         {% capture img_id %}productFeaturedImage-{{ section.id }}--{{ product.featured_image.id }}{% endcapture %}
         {% capture img_id_class %}productImage--{{ product.featured_image.id }}{% endcapture %}
         {% capture wrapper_id %}productImageWrapper-{{ product.featured_image.id }}{% endcapture %}
-          {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          {%- assign img_url = product.featured_image | img_url: '580x' -%}
           <div id="{{ wrapper_id }}" class="lazyload__image-wrapper no-js" style="padding-top:{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%;">
             <img id="{{ img_id }}"
               class="lazyload no-js {{ img_id_class }}"

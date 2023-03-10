@@ -57,10 +57,6 @@
     <!-- CSS ================================================== -->
 
 
-    {{ 'https://cdn.jsdelivr.net/npm/uikit@3.16.3/dist/js/uikit.min.js' | script_tag }}
-    {{ 'https://cdn.jsdelivr.net/npm/uikit@3.16.3/dist/js/uikit-icons.min.js' | script_tag }}
-
-
 
     {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
     {{ 'main.css' | asset_url | stylesheet_tag }}
@@ -86,6 +82,9 @@
     {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
     {{ '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' | script_tag }}
 
+
+    {{ 'https://cdn.jsdelivr.net/npm/uikit@3.16.3/dist/js/uikit.min.js' | script_tag }}
+    {{ 'https://cdn.jsdelivr.net/npm/uikit@3.16.3/dist/js/uikit-icons.min.js' | script_tag }}
 
 
     {{ 'colorbox.css' | asset_url | stylesheet_tag }}
@@ -202,24 +201,24 @@
     <script type="text/javascript">
       $('.owl-carousel').owlCarousel({
       loop:true,
-                                                          margin:10,
-                                                          nav:false,
-                                                          autoplay:true,
-                                                      	autoplayTimeout:10000,
-                                                      	autoplayHoverPause:false,
-                                                          autoHeight:true,
-                                                          responsive:{
-                                                              0:{
-                                                                  items:1
-                                                              },
-                                                              600:{
-                                                                  items:1
-                                                              },
-                                                              1000:{
-                                                                  items:1
-                                                              }
-                                                          }
-                                                      });
+                                                                      margin:10,
+                                                                      nav:false,
+                                                                      autoplay:true,
+                                                                  	autoplayTimeout:10000,
+                                                                  	autoplayHoverPause:false,
+                                                                      autoHeight:true,
+                                                                      responsive:{
+                                                                          0:{
+                                                                              items:1
+                                                                          },
+                                                                          600:{
+                                                                              items:1
+                                                                          },
+                                                                          1000:{
+                                                                              items:1
+                                                                          }
+                                                                      }
+                                                                  });
     </script>
 
     <script>
