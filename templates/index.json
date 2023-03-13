@@ -5,7 +5,9 @@
       "settings": {
         "header": "Hit the field prepared",
         "sub-header": "With The Ultimate Lacrosse Bag",
-        "cta-product": "backpack"
+        "cta-product": "",
+        "page-toggle": true,
+        "page-link": "team-orders"
       }
     },
     "features": {
@@ -27,13 +29,130 @@
     },
     "quote": {
       "type": "home-quote",
-      "settings":{}
+      "blocks": {
+        "5eaaff35-1ce8-4ef0-a5bb-ff654ce43268": {
+          "type": "quote",
+          "settings": {
+            "home-quote": "<p>Thank you so much for all your help..... I have been bragging and will continue to tell anyone who listens about your awesome company, customer service and products.<\/p>",
+            "quote-author": "James Ciaramitaro"
+          }
+        },
+        "6e56d455-ea66-4a89-b479-d4432297cc38": {
+          "type": "quote",
+          "settings": {
+            "home-quote": "<p>Laxgear goes above and beyond in customer service. We needed a rush on our lax bag and Laxgear was more than willing to put a rush on it and if it wasn't ready (due to embroidering), they were going to get us a bag to use in the interim (son was traveling to Baltimore). Who does that anymore? Bag made it in time, price and quality are great. Would definitely recommend Laxgear to everyone. Thank you Laxgear<\/p>",
+            "quote-author": "Christine"
+          }
+        },
+        "a24a91b2-4c12-4d8d-9573-a294d44e9e57": {
+          "type": "quote",
+          "settings": {
+            "home-quote": "<p>Your bags are the best in the country!<\/p>",
+            "quote-author": "Bobby Healy - Head Coach of Salesianum"
+          }
+        },
+        "3b1c916f-8058-4076-a99a-30eb47025379": {
+          "type": "quote",
+          "settings": {
+            "home-quote": "<p>Dakota Ridge High School lacrosse uses the LaxGear \"Laxpack\" and believes that it is the best bag on the market. Well designed with team logo and players name embroidered on the bag. The Lax Pack is easily stowed away on the bus ride to the games and carry to the field. LaxGear bags are the Cadillac of equipment bags.<\/p>",
+            "quote-author": "Dakota Ridge - Colorado"
+          }
+        }
+      },
+      "block_order": [
+        "5eaaff35-1ce8-4ef0-a5bb-ff654ce43268",
+        "6e56d455-ea66-4a89-b479-d4432297cc38",
+        "a24a91b2-4c12-4d8d-9573-a294d44e9e57",
+        "3b1c916f-8058-4076-a99a-30eb47025379"
+      ],
+      "settings": {
+      }
+    },
+    "teamPhotos": {
+      "type": "home-team-photos",
+      "blocks": {
+        "04bce3f4-8f31-492d-8c5c-9607bc000b01": {
+          "type": "photos",
+          "settings": {
+            "teamImages": "shopify:\/\/shop_images\/tomahawks.jpg"
+          }
+        },
+        "c2203210-04e3-4840-b2e2-02656ab35831": {
+          "type": "photos",
+          "settings": {
+            "teamImages": "shopify:\/\/shop_images\/Hillgrove_team_bags_2.jpg"
+          }
+        },
+        "aa5387bb-0ff3-43fe-9547-b79bab42ca14": {
+          "type": "photos",
+          "settings": {
+            "teamImages": "shopify:\/\/shop_images\/123A7007.jpg"
+          }
+        },
+        "9c8e761e-f177-4c10-99ca-b96f36b175f4": {
+          "type": "photos",
+          "settings": {
+            "teamImages": "shopify:\/\/shop_images\/Screen_Shot_2023-02-15_at_12.16.38_PM.png"
+          }
+        },
+        "01fd74d2-3758-4561-b0c8-8f7216d32ce3": {
+          "type": "photos",
+          "settings": {
+            "teamImages": "shopify:\/\/shop_images\/123A6953.jpg"
+          }
+        },
+        "b00362bb-7c82-4ed4-8618-2a675d39202e": {
+          "type": "photos",
+          "settings": {
+            "teamImages": "shopify:\/\/shop_images\/Kettle-Morain.jpg"
+          }
+        },
+        "5400a6dc-4223-4268-af63-b1431757031b": {
+          "type": "photos",
+          "settings": {
+            "teamImages": "shopify:\/\/shop_images\/Hillgrove-team-bags.jpg"
+          }
+        },
+        "42247e76-9e84-47f2-a52b-7f0eb379e8de": {
+          "type": "photos",
+          "settings": {
+            "teamImages": "shopify:\/\/shop_images\/Vipers-TX-2.jpg"
+          }
+        },
+        "69fac76a-2b9b-4bec-99f2-65ac422e9938": {
+          "type": "photos",
+          "settings": {
+            "teamImages": "shopify:\/\/shop_images\/Tommyknockers.jpg"
+          }
+        },
+        "2c1d3d11-43d9-428c-ab96-48e28b86189c": {
+          "type": "photos",
+          "settings": {
+            "teamImages": "shopify:\/\/shop_images\/123A6870.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "04bce3f4-8f31-492d-8c5c-9607bc000b01",
+        "c2203210-04e3-4840-b2e2-02656ab35831",
+        "aa5387bb-0ff3-43fe-9547-b79bab42ca14",
+        "9c8e761e-f177-4c10-99ca-b96f36b175f4",
+        "01fd74d2-3758-4561-b0c8-8f7216d32ce3",
+        "b00362bb-7c82-4ed4-8618-2a675d39202e",
+        "5400a6dc-4223-4268-af63-b1431757031b",
+        "42247e76-9e84-47f2-a52b-7f0eb379e8de",
+        "69fac76a-2b9b-4bec-99f2-65ac422e9938",
+        "2c1d3d11-43d9-428c-ab96-48e28b86189c"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
     "hero",
     "features",
     "carousel",
-    "quote"
+    "quote",
+    "teamPhotos"
   ]
 }
