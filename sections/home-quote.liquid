@@ -1,26 +1,40 @@
-<section class="home-quote uk-text-center uk-flex uk-flex-center uk-flex-column uk-flex-middle uk-width-auto uk-margin-large-top uk-margin-medium-bottom">
-  <span class="fa-solid fa-quote-left uk-margin uk-text-default"></span>
-  <div class=" uk-container-xsmall uk-container">{{ section.settings.home-quote }}
-    {% if section.settings.quote-author != empty %}
-      <strong class="uk-text-lead uk-text-default uk-text-bold">-{{ section.settings.quote-author }}</strong>
-    {% endif %}
+<section class="home-quote uk-text-center uk-flex uk-flex-center uk-flex-column uk-flex-middle uk-width-autouk-section uk-padding-small uk-margin-medium-top uk-section-muted">
+
+  <div class="" uk-slider="center: true; autoplay: true; autoplay-interval: 10000;">
+    <ul class="uk-slider-items uk-child-width-1-1 uk-container-xsmall uk-container">
+      {% for quote in section.blocks %}
+        <li class="uk-flex uk-flex-center uk-flex-column uk-flex-middle">
+          <span class="fa-solid fa-quote-left uk-text-default"></span>
+          {{ quote.settings.home-quote }}
+          {% if quote.settings.quote-author != empty %}
+            <strong class="uk-text-lead uk-text-default uk-text-bold">-{{ quote.settings.quote-author }}</strong>
+          {% endif %}
+          <span class="fa-solid fa-quote-right uk-margin-small-top uk-text-default"></span>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
-  <span class="fa-solid fa-quote-right uk-margin uk-text-default"></span>
 </section>
+
 
 {% schema %}
   {
-    "name": "Home Quote",
-    "limit": 1,
-    "settings": [
+    "name": "Home Quotes",
+    "blocks": [
       {
-        "type": "richtext",
-        "id": "home-quote",
-        "label": "Quote"
-      }, {
-        "type": "text",
-        "id": "quote-author",
-        "label": "Author"
+        "name": "Quote",
+        "type": "quote",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "home-quote",
+            "label": "Quote"
+          }, {
+            "type": "text",
+            "id": "quote-author",
+            "label": "Author"
+          }
+        ]
       }
     ]
   }

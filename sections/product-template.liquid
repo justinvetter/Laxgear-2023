@@ -87,7 +87,6 @@
 
         </div>
       </div>
-      <div id="rotate-viewer-container"></div>
       <div class="product-image-left"></div>
     </div>
 
@@ -320,9 +319,7 @@
             .src
             .split('?')[0]
             .replace(/http(s)?:/, '');
-          variantImages[variantImage] = variantImages[variantImage] || {};{% for option in product.options %}
-
-            {% assign option_value = variant.options[forloop.index0] %}
+          variantImages[variantImage] = variantImages[variantImage] || {};{% for option in product.options %}{% assign option_value = variant.options[forloop.index0] %}
             {% assign option_key = 'option-' | append: forloop.index0 %}
 
             if (typeof variantImages[variantImage][{{ option_key | json }}] === 'undefined') {
@@ -347,106 +344,106 @@
   <script type="text/javascript">
     var textUpperCase = setInterval(function() {
     var setCheckbox =  $("#addToCartForm-product-template input:checkbox");
-        if (setCheckbox.length) {
-          setCheckbox.on("change", function() {
-            $('input').keyup(function(){
-              $(this).val($(this).val().toUpperCase());
-              console.log(this.val);
-            });
-          });
-        }
-      }, 100);</script>
+            if (setCheckbox.length) {
+              setCheckbox.on("change", function() {
+                $('input').keyup(function(){
+                  $(this).val($(this).val().toUpperCase());
+                  console.log(this.val);
+                });
+              });
+            }
+          }, 100);</script>
 
   <script type="text/javascript">
     $(document).ready(function($) {
     $(window).bind("load", function() {
-    	// Ensures that the callback function can only be invoked once per page load    
-        var runOnce = function(fn, context) { 
-        	var result;
-            return function() { 
-                if (fn) {
-                    result = fn.apply(context || this, arguments);
-                    fn = null;
+        	// Ensures that the callback function can only be invoked once per page load    
+            var runOnce = function(fn, context) { 
+            	var result;
+                return function() { 
+                    if (fn) {
+                        result = fn.apply(context || this, arguments);
+                        fn = null;
+                    }
+                    return result;
+                };
+        	}
+        
+            $("#dialog-box").dialog({
+              autoOpen: false,
+              // Fixes bug where X button doesn't show in box
+              buttons: [{text: "Close", click: function() {$(this).dialog("close")}}],
+            });
+            
+        //     var dialogMessage = setInterval(function() {
+        //         var dialogCheckbox =  $("#dialog-checkbox");
+        //       	if (dialogCheckbox.length) {
+        
+        //             dialogCheckbox.dialog({
+        //               autoOpen: false,
+        //               // Fixes bug where X button doesn't show in box
+        //               buttons: [{text: "Close", click: function() {$(this).dialog("close")}}],
+        //             });
+        
+        //           	clearInterval(dialogMessage);
+        //         }
+        //     }, 100);
+        //     var waitForEl = function(selector, callback) {
+        //       if (jQuery(selector).length) {
+        //         callback(selector);
+        //       } else {
+        //         setTimeout(function() {
+        //           waitForEl(selector, callback);
+        //         }, 100);
+        //       }
+        //     };
+        
+        //     waitForEl("#dialog-box", function(selector) {
+        //       $(selector).dialog({
+        //         autoOpen: false,
+        //         // Fixes bug where X button doesn't show in box
+        //         buttons: [{text: "Close", click: function() {$(this).dialog("close")}}],
+        //       });
+        //     });
+            
+        //     $.fn.onAvailable = function(fn){
+        //     var sel = this.selector;
+        //     var timer;
+        //     var self = this;
+        //     if (this.length > 0) {
+        //         fn.call(this);   
+        //     }
+        //     else {
+        //         timer = setInterval(function(){
+        //             if ($(sel).length > 0) {
+        //                 fn.call($(sel));
+        //                 clearInterval(timer);  
+        //             }
+        //         },500);  
+        //     }
+        // };
+        // $("#dialog-box").onAvailable(function(){
+        //     $(this).dialog({
+        //       autoOpen: false,
+        //       // Fixes bug where X button doesn't show in box
+        //       buttons: [{text: "Close", click: function() {$(this).dialog("close")}}],
+        //     });       
+        // });
+            
+            // Checks to make sure the checkboxes from the Product Option are in the DOM, and then attaches change event listeners to checkboxes
+            // so that an alert message is shown when one is clicked.
+            var embroideryMessage = setInterval(function() {
+                var embroideryCheckbox =  $("#addToCartForm-product-template input:checkbox");
+              	if (embroideryCheckbox.length) {
+                    embroideryCheckbox.on("change", runOnce(function() {
+                    	$("#dialog-box").dialog("open");
+                  	}));
+                  	clearInterval(embroideryMessage);
                 }
-                return result;
-            };
-    	}
-    
-        $("#dialog-box").dialog({
-          autoOpen: false,
-          // Fixes bug where X button doesn't show in box
-          buttons: [{text: "Close", click: function() {$(this).dialog("close")}}],
-        });
+            }, 100);
+            
         
-    //     var dialogMessage = setInterval(function() {
-    //         var dialogCheckbox =  $("#dialog-checkbox");
-    //       	if (dialogCheckbox.length) {
-    
-    //             dialogCheckbox.dialog({
-    //               autoOpen: false,
-    //               // Fixes bug where X button doesn't show in box
-    //               buttons: [{text: "Close", click: function() {$(this).dialog("close")}}],
-    //             });
-    
-    //           	clearInterval(dialogMessage);
-    //         }
-    //     }, 100);
-    //     var waitForEl = function(selector, callback) {
-    //       if (jQuery(selector).length) {
-    //         callback(selector);
-    //       } else {
-    //         setTimeout(function() {
-    //           waitForEl(selector, callback);
-    //         }, 100);
-    //       }
-    //     };
-    
-    //     waitForEl("#dialog-box", function(selector) {
-    //       $(selector).dialog({
-    //         autoOpen: false,
-    //         // Fixes bug where X button doesn't show in box
-    //         buttons: [{text: "Close", click: function() {$(this).dialog("close")}}],
-    //       });
-    //     });
-        
-    //     $.fn.onAvailable = function(fn){
-    //     var sel = this.selector;
-    //     var timer;
-    //     var self = this;
-    //     if (this.length > 0) {
-    //         fn.call(this);   
-    //     }
-    //     else {
-    //         timer = setInterval(function(){
-    //             if ($(sel).length > 0) {
-    //                 fn.call($(sel));
-    //                 clearInterval(timer);  
-    //             }
-    //         },500);  
-    //     }
-    // };
-    // $("#dialog-box").onAvailable(function(){
-    //     $(this).dialog({
-    //       autoOpen: false,
-    //       // Fixes bug where X button doesn't show in box
-    //       buttons: [{text: "Close", click: function() {$(this).dialog("close")}}],
-    //     });       
-    // });
-        
-        // Checks to make sure the checkboxes from the Product Option are in the DOM, and then attaches change event listeners to checkboxes
-        // so that an alert message is shown when one is clicked.
-        var embroideryMessage = setInterval(function() {
-            var embroideryCheckbox =  $("#addToCartForm-product-template input:checkbox");
-          	if (embroideryCheckbox.length) {
-                embroideryCheckbox.on("change", runOnce(function() {
-                	$("#dialog-box").dialog("open");
-              	}));
-              	clearInterval(embroideryMessage);
-            }
-        }, 100);
-        
-    
-        $(".fancybox").fancybox();
+            $(".fancybox").fancybox();
     {% if product.tags contains "Custom" %}
       $(".product-photo-thumb").fancybox();
     {% endif %}

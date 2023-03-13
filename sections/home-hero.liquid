@@ -4,8 +4,12 @@
   uk-img="loading: eager;">
   <h1 class="uk-heading-medium uk-text-uppercase uk-text-bold uk-margin-remove-bottom ">{{ section.settings.header }}</h1>
   <p class="uk-text-large uk-margin-remove uk-text-normal">{{ section.settings.sub-header }}</p>
-  {% if section.settings.cta-product != blank %}
-    <a class="uk-button uk-button-primary uk-text-bold uk-margin-medium-top" href="{{ section.settings.cta-product.url }}">{{ section.settings.cta-product.title }}</a>
+  {% if section.settings.cta-product != nil or section.settings.page-link != nil %}
+    {% if section.settings.page-toggle %}
+      <a class="uk-button uk-button-primary uk-text-bold uk-margin-medium-top" href="{{ section.settings.page-link.url }}">{{ section.settings.page-link.title }}</a>
+    {% else %}
+      <a class="uk-button uk-button-primary uk-text-bold uk-margin-medium-top" href="{{ section.settings.cta-product.url }}">{{ section.settings.cta-product.title }}</a>
+    {% endif %}
   {% endif %}
 </section>
 
@@ -28,15 +32,26 @@
         "id": "header",
         "label": "Header",
         "default": "Hit the field prepared"
-      }, {
+      },
+      {
         "type": "text",
         "id": "sub-header",
         "label": "Sub Head",
         "default": "With The Ultimate Lacrosse Bag"
-      }, {
+      },
+      {
         "type": "product",
         "id": "cta-product",
         "label": "Select Product"
+      },
+      {
+        "type": "checkbox",
+        "id": "page-toggle",
+        "label": "Show page vs product"
+      }, {
+        "type": "page",
+        "id": "page-link",
+        "label": "Page Link"
       }
     ]
   }

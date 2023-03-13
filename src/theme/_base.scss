@@ -3,7 +3,11 @@
 /////////////////////////////
 
 // TODO remove all old styles
-
+.template-index{
+.shopify-section{
+  overflow-x: hidden;
+}
+}
 #trustpilot-widget-trustbox-1-wrapper{
   // display:none;
 }
@@ -286,7 +290,7 @@ footer.site-footer {
     }
     
     &.forest-green {
-      background-color: #228B22;
+      background-color: #073607;
     }
     
     &.maroon {
@@ -294,11 +298,11 @@ footer.site-footer {
     }
     
     &.navy-blue {
-      background-color: #000080;
+      background-color: #00005f;
     }
     
     &.orange {
-      background-color: #FFA500;
+      background-color: #f4813a;
     }
     
     &.red {
@@ -327,6 +331,12 @@ footer.site-footer {
     
     &.silver {
       background-color: #C0C0C0;
+    }
+    &.blue {
+      background-color: #2f74b8;
+    }
+    &.gray{
+      background-color: rgb(171, 170, 181);
     }
     
     &.yellow {
