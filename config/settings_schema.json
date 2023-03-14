@@ -751,15 +751,27 @@
       },
       {
         "type": "text",
-        "id": "social_twitter_link",
-        "label": "Twitter",
-        "info": "https:\/\/twitter.com\/shopify"
+        "id": "social_instagram_link",
+        "label": "Instagram",
+        "info": "https:\/\/instagram.com\/shopify"
       },
       {
         "type": "text",
         "id": "social_facebook_link",
         "label": "Facebook",
         "info": "https:\/\/facebook.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter",
+        "info": "https:\/\/twitter.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_email_link",
+        "label": "Constant Contact email link",
+        "info": "Constant Contact email link"
       },
       {
         "type": "text",
@@ -772,12 +784,6 @@
         "id": "social_google_plus_link",
         "label": "Google+",
         "info": "https:\/\/plus.google.com\/+shopify"
-      },
-      {
-        "type": "text",
-        "id": "social_instagram_link",
-        "label": "Instagram",
-        "info": "https:\/\/instagram.com\/shopify"
       },
       {
         "type": "text",

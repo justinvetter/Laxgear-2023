@@ -1,0 +1,16 @@
+// Vars custom vars per componet in UI kit
+@import 'variables.scss';
+
+@import 'uikit/scss/variables.scss';
+@import 'uikit/scss/mixins.scss';
+
+// Custom mixin overwrites
+
+// Import UIkit
+@import 'uikit/scss/uikit.scss';
+
+@import 'base.scss';
+
+@import 'sections/*.scss';
+
+

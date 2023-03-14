@@ -879,9 +879,6 @@ $colorNavText: {{ settings.color_nav_text }};
 // Mobile Nav Bar
 $mobileNavBarHeight: 50px;
 
-// Site Footer
-$colorFooterBg: {{ settings.color_footer_bg }};
-$colorFooterText: {{ settings.color_footer_text }};
 
 // Helper colors
 $disabledGrey: #f6f6f6;
@@ -1880,9 +1877,6 @@ hr {
     border-top-color: transparent;
   }
 
-  footer & {
-    border-top-color: darken($colorFooterBg, 5%);
-  }
 
   @include at-query ($min, $large) {
     &.hr--offset-left {
@@ -2340,12 +2334,11 @@ input[type="submit"] {
 }
 
 input[type="submit"] {
-  @extend .btn;
+  /* @extend .btn; */
 }
 
 /*================ Input width and border ================*/
 input[type="text"],
-input[type="search"],
 input[type="password"],
 input[type="email"],
 input[type="file"],
@@ -3081,8 +3074,7 @@ $shareBorderColor: #ececec;
     margin-bottom: $gutter/2;
   }
 
-  input[type="text"],
-  input[type="search"] {
+  input[type="text"] {
     width: 100%;
     margin-bottom: 0;
     padding: 10px 45px 10px 10px; // 45 is same as submit button width
@@ -3099,7 +3091,6 @@ $shareBorderColor: #ececec;
     display: inline-block;
   }
 
-  input[type="submit"],
   .search-bar--submit {
     position: absolute;
     top: 2px;
@@ -3468,43 +3459,8 @@ $shareBorderColor: #ececec;
 /*============================================================================
   #Site Footer
 ==============================================================================*/
-.site-footer {
-  background-color: $colorFooterBg;
-  padding: $gutter 0 10px;
-  color: $colorFooterText;
+footer.site-footer{
 
-  @include at-query ($min, $large) {
-    padding: $gutter*2 0 $gutter/5;
-  }
-
-  h3 {
-    margin: 0 0 $gutter/2 0;
-  }
-
-  a {
-    color: $colorFooterText;
-
-    &:hover {
-      color: darken($colorFooterText, 20%);
-    }
-  }
-}
-
-.legal-links {
-  margin-bottom: 0;
-
-  @include at-query($max, $medium) {
-    margin-bottom: $gutter/2;
-  }
-
-  & + & {
-    margin-bottom: $gutter/2;
-  }
-
-  li {
-    padding: 0 $gutter/2 0 0;
-    font-size: 13px;
-  }
 }
 
 /*============================================================================
@@ -5646,21 +5602,6 @@ $color-blankstate-background: rgba($colorTextBody, 0.1);
   font-size: em(floor($baseFontSize * 0.93));
 }
 
-
-// Additions 10/17/2017
-// Adds body background image
-body {
-    background-image: url({{ 'lax-background.png' | asset_url }});
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover
-}
-
-
 // Makes the content white
 .main-content {
   background-color: #fff;
@@ -5911,10 +5852,10 @@ p {
 }
 
 .btn {
-  background-color: #e92829 !important;
+  background-color: #e92829;
   
   &:hover {
-    background-color: #e92829 !important;
+    background-color: #e92829;
   }
 }
 
@@ -5926,11 +5867,6 @@ p {
   }
 }
 
-#shopify-section-footer {
-  .btn--small {
-    background-color: #fff !important;
-  }
-}
 
 #contact-us {
   .push--large--one-sixth {
@@ -6426,18 +6362,6 @@ p {
   }
 }
 
-
-/* Footer Link Colors */
-.site-footer {
-  .icon-facebook {
-    color: #3b5998;
-  }
-  
-  .icon-twitter {
-    color: #55acee;
-  }
-}
-
 /* Cart Product Titles */
 .cart-product-title {
  font-weight: bold !important;
@@ -6707,31 +6631,6 @@ fieldset .radio-field label {
 }
 
 
-/* Annoucement Bar Styles */
-
-.annoucement-bar {
-  width: 100%;
-  background: #e92829;
-  padding: 10px 0px;
-  transform: translateY(-$gutter/2);
-  
-  @include at-query ($min, $large) {
-    transform: translateY(-$gutter)
-  }
-  
-  	a {
-      color: white;
-    }
-
-	p {
-      	color: white;
-  		font-size: 14px;
-  		font-weight: 600;
-  		text-align: center;
-  		margin: 0;
-	}
-}
-
 
 /* Makes Mobile Submenu items gray */
 
@@ -6759,3 +6658,6 @@ fieldset .radio-field label {
     display: none;
   }
 }
+
+
+

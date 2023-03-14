@@ -1,0 +1,8 @@
+.home-features{
+ h4{
+  border-bottom: solid 2px white;
+  @media (max-width: 850px){
+    border-bottom: none;
+  }
+ }
+}

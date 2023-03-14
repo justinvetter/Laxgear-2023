@@ -1,0 +1,68 @@
+
+<section class="home-team-photos">
+  <div class="team-photos">
+  {% for block in section.blocks %}
+    {{ block.settings.teamImages | img_url: 'x300' | img_tag }}
+  {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Home team Photos",
+    "blocks": [
+      {
+        "name": "Home Team Photos",
+        "type": "photos",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "teamImages",
+            "label": "Team Image Picker"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% javascript %}
+// Get the DOM object of the parent div
+const container = document.querySelector('.team-photos');
+
+// Turn container.children, which is an HTMLCollection, into an array
+// See https://stackoverflow.com/a/222847 for more on this
+const children = [...container.children];
+
+// The shuffle function above mutates the argument, so here we shuffle
+// the array of children; note that this is not yet reflected in the DOM
+shuffle(children);
+
+// Reinsert the children to the parent according to the new order
+for (const child of children) {
+    container.appendChild(child);
+}
+var copy = document.querySelector(".team-photos").cloneNode(true);
+      document.querySelector(".home-team-photos").appendChild(copy);
+
+
+  function shuffle(array) {
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+{% endjavascript %}

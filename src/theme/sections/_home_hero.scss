@@ -1,0 +1,10 @@
+.home-hero{
+  padding: 20em 15vw 10em 15vw;
+  h1,p{
+    color: white;
+    text-shadow: 1px 1px 5px $lax-text-color;
+  }
+  @media (max-width: 850px) {
+    padding: 15em 5vw;
+  }
+}
