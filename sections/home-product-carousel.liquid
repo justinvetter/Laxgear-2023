@@ -1,5 +1,5 @@
 <section class="home-product-carousel uk-container">
-  <h4 class="uk-text-bold uk-margin-medium-top">You might like</h4>
+  <h4 class="uk-text-bold uk-margin-medium-top">Quick order</h4>
   <div uk-slider="sets: true">
     <div class="uk-position-relative">
       <div class="uk-slider-container">
@@ -12,7 +12,7 @@
                 </div>
                 <span class="uk-text-bold">{{ product.title }}</span><br>
                 {{ product.price | money }}
-                <form method="post" action="/cart/add">
+                <form method="post" action="/cart/add" class="uk-margin-small-bottom">
                   <div class="variants uk-flex- uk-flex-center uk-padding-small">
                     {% for variant in product.variants %}
                       {% if variant.available %}
@@ -50,6 +50,7 @@
                     value="Add to cart"
                     class="uk-button uk-button-default uk-text-bold" />
                 </form>
+                <a href="{{ product.url }}">Want embroidery?</a>
               </div>
             </li>
           {% endfor %}
