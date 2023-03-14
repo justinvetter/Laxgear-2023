@@ -1,162 +1,101 @@
 {% include 'breadcrumb' %}
-<div class="grid">
-  <div class="grid-item large--two-thirds push--large--one-sixth">
-    <h2>{{ page.title }}</h2>
-    <h2 class="page-header">
-      <span>COACHES ELITE</span>
-    </h2>
-    <div class="container-row">
-      <div class="coaches-elite-left">
-        <a
-          class="fancybox"
-          rel="gallery1"
-          href="//cdn.shopify.com/s/files/1/2459/7365/files/slider2.png?v=1508268156">
-          <img
-            src="//cdn.shopify.com/s/files/1/2459/7365/files/slider2.png?v=1508268156"
-            width="100%"
-            alt="" />
-        </a>
-        <div class="gallery-container-adj">
-          <a
-            class="fancybox"
-            rel="gallery1"
-            href="//cdn.shopify.com/s/files/1/2459/7365/files/4_leaf_bag_pic_for_website_large.jpg?v=1513090509">
-            <div class="thumbnail-box-container pl-0">
-              <div class="thumbnail-box" style="background-image: url(//cdn.shopify.com/s/files/1/2459/7365/files/4_leaf_bag_pic_for_website_large.jpg?v=1513090509);"></div>
-            </div>
-          </a>
-          <a
-            class="fancybox"
-            rel="gallery1"
-            href="//cdn.shopify.com/s/files/1/2459/7365/files/bag_picture_large.JPG?v=1513090535">
-            <div class="thumbnail-box-container">
-              <div class="thumbnail-box" style="background-image: url(//cdn.shopify.com/s/files/1/2459/7365/files/bag_picture_large.JPG?v=1513090535);"></div>
-            </div>
-          </a>
-          <a
-            class="fancybox"
-            rel="gallery1"
-            href="//cdn.shopify.com/s/files/1/2459/7365/files/FCA_bag_pic_large.jpg?v=1513090746">
-            <div class="thumbnail-box-container">
-              <div class="thumbnail-box" style="background-image: url(//cdn.shopify.com/s/files/1/2459/7365/files/FCA_bag_pic_large.jpg?v=1513090746);"></div>
-            </div>
-          </a>
-          <a
-            class="fancybox"
-            rel="gallery1"
-            href="//cdn.shopify.com/s/files/1/2459/7365/files/BayShore_2_large.jpeg?v=1513090411">
-            <div class="thumbnail-box-container pr-0">
-              <div class="thumbnail-box" style="background-image: url(//cdn.shopify.com/s/files/1/2459/7365/files/BayShore_2_large.jpeg?v=1513090411);"></div>
-            </div>
-          </a>
-          <a
-            class="fancybox"
-            rel="gallery1"
-            href="//cdn.shopify.com/s/files/1/2459/7365/files/holy_ghost_prep_large.jpg?v=1513096973">
-            <div class="thumbnail-box-container pl-0">
-              <div class="thumbnail-box" style="background-image: url(//cdn.shopify.com/s/files/1/2459/7365/files/holy_ghost_prep_large.jpg?v=1513096973);"></div>
-            </div>
-          </a>
-          <a
-            class="fancybox"
-            rel="gallery1"
-            href="//cdn.shopify.com/s/files/1/2459/7365/files/LBL_Lower_Bucks_Lacrosse_bag_pic_large.jpg?v=1513096992">
-            <div class="thumbnail-box-container">
-              <div class="thumbnail-box" style="background-image: url(//cdn.shopify.com/s/files/1/2459/7365/files/LBL_Lower_Bucks_Lacrosse_bag_pic_large.jpg?v=1513096992);"></div>
-            </div>
-          </a>
-          <a
-            class="fancybox"
-            rel="gallery1"
-            href="//cdn.shopify.com/s/files/1/2459/7365/files/Wolfpack_laxher_pack_large.jpg?v=1513097015">
-            <div class="thumbnail-box-container">
-              <div class="thumbnail-box" style="background-image: url(//cdn.shopify.com/s/files/1/2459/7365/files/Wolfpack_laxher_pack_large.jpg?v=1513097015);"></div>
-            </div>
-          </a>
-          <a
-            class="fancybox"
-            rel="gallery1"
-            href="//cdn.shopify.com/s/files/1/2459/7365/files/wolfpack_pic_in_Australia_large.jpg?v=1513097034">
-            <div class="thumbnail-box-container pr-0">
-              <div class="thumbnail-box" style="background-image: url(//cdn.shopify.com/s/files/1/2459/7365/files/wolfpack_pic_in_Australia_large.jpg?v=1513097034);"></div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="coaches-elite-right">
-        <div class="contact-form-container coaches-elite-form">
-          {% form 'contact', class: 'uk-form-stacked' %}
+<section class="">
+  <div
+    class="uk-height-medium uk-flex uk-flex-left uk-padding uk-flex-top uk-background-cover uk-light uk-margin-medium-bottom"
+    data-src="{{ images['Vipers_TX_2.jpg'] | image_url: 1920x500 }}"
+    uk-img>
+    <h1 class="uk-text-bold uk-box-shadow-small">{{ page.title }}</h1>
+  </div>
 
-            {% if form.posted_successfully? %}
-              <p class="note form-success">{{ 'contact.form.post_success' | t }}</p>
-            {% endif %}
-            {% include 'form-errors-custom' %}
+  <div class="uk-flex uk-flex-center uk-margin-large-bottom">
+    {% form 'contact', class: 'uk-form-stacked uk-container-small ' %}
 
-            <div id="contactFormWrapper">
-              <h3>
-                <strong>* Your Personal Details</strong>
-              </h3>
+      {% if form.posted_successfully? %}
+        <p class="note form-success">{{ 'contact.form.post_success' | t }}</p>
+      {% endif %}
+      {% include 'form-errors-custom' %}
 
-              <label for="contactFormEmail" class="uk-form-label">Email</label>
-              <div class="uk-form-controls">
-                <input
-                  class="uk-input"
-                  type="email"
-                  id="contactFormEmail"
-                  name="contact[email]"
-                  placeholder="Email"
-                  autocorrect="off"
-                  autocapitalize="off"
-                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-                  required />
-              </div>
-
-              <label for="contactFormName" class="uk-form-label">Name</label>
-              <div class="uk-form-controls">
-                <input
-                  type="text"
-                  class="uk-input"
-                  id="contactFormName"
-                  name="contact[name]"
-                  placeholder="Name"
-                  value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-                  required />
-              </div>
-
-              <label for="contactFormPhone" class="uk-form-label">Phone Number</label>
-              <div class="uk-form-controls">
-                <input
-                  type="tel"
-                  class="uk-input"
-                  id="contactFormPhone"
-                  name="contact[phone]"
-                  placeholder="Phone Number"
-                  value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-                  required />
-              </div>
-
-              <label for="contactFormTeam" class="uk-form-label">Team/Organization</label>
-              <div class="uk-form-controls">
-                <input
-                  type="text"
-                  class="uk-input"
-                  id="contactFormTeam"
-                  name="contact[team]"
-                  placeholder="Team/Organization"
-                  required />
-              </div>
-
-              <label for="contactFormTeamColor" class="hidden-label">{{ 'contact.form.color' | t }}</label>
+      <div id="contactFormWrapper">
+        <h3>
+          <strong>Coaches Elite</strong><br>
+          <span class="uk-text-meta">Required*</span>
+        </h3>
+        <div class="uk-grid-small" uk-grid>
+          <div class="uk-width-1-2@s">
+            <label for="contactFormEmail" class="uk-form-label uk-margin-remove-bottom">Email*</label>
+            <div class="uk-form-controls">
               <input
-                style="text-transform: uppercase;"
+                class="uk-input"
+                type="email"
+                id="contactFormEmail"
+                name="contact[email]"
+                placeholder="Email"
+                autocorrect="off"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                required />
+            </div>
+          </div>
+
+
+          <div class="uk-width-1-2@s">
+            <label for="contactFormName" class="uk-form-label uk-margin-remove-bottom">Name*</label>
+            <div class="uk-form-controls">
+              <input
                 type="text"
+                class="uk-input"
+                id="contactFormName"
+                name="contact[name]"
+                placeholder="Name"
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                required />
+            </div>
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label for="contactFormPhone" class="uk-form-label uk-margin-remove-bottom">Phone Number*</label>
+            <div class="uk-form-controls">
+              <input
+                type="tel"
+                class="uk-input"
+                id="contactFormPhone"
+                name="contact[phone]"
+                placeholder="Phone Number"
+                value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                required />
+            </div>
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label for="contactFormTeam" class="uk-form-label uk-margin-remove-bottom">Team/Organization*</label>
+            <div class="uk-form-controls">
+              <input
+                type="text"
+                class="uk-input"
+                id="contactFormTeam"
+                name="contact[team]"
+                placeholder="Team/Organization"
+                required />
+            </div>
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label for="contactFormTeamColor" class="uk-form-label uk-margin-remove-bottom">Team Colors*</label>
+            <div class="uk-form-controls">
+              <input
+                type="text"
+                class="uk-input"
                 id="contactFormTeamColor"
                 name="contact[color]"
-                placeholder="Team Colors"
+                placeholder="Team Colorss"
                 required />
+            </div>
+          </div>
 
-              <label for="contactFormBagType" class="hidden-label">{{ 'contact.form.bag' | t }}</label>
-              <select name="contact[bag]" class="team-order-select">
+          <div class="uk-width-1-2@s">
+            <label for="contactFormBagType" class="uk-form-label uk-margin-remove-bottom">Select Bag Type:</label>
+            <div class="uk-form-controls">
+              <select name="contact[bag]" class="uk-select">
                 <option
                   value=""
                   selected
@@ -167,116 +106,172 @@
                 <option value="Equipment Bag" type="text">Equipment Bag</option>
                 <option value="Laxpack Mini" type="text">Laxpack Mini</option>
               </select>
+            </div>
+          </div>
 
-              <label for="contactFormAddress" class="hidden-label">{{ 'contact.form.address' | t }}</label>
+          <div class="uk-width-1-2@s">
+            <label for="contactFormAddress" class="uk-form-label uk-margin-remove-bottom">Address</label>
+            <div class="uk-form-controls">
               <input
                 type="text"
+                class="uk-input"
                 id="contactFormAddress"
                 name="contact[address]"
                 placeholder="Address" />
+            </div>
+          </div>
 
-              <label for="contactFormApt" class="hidden-label">{{ 'contact.form.apt' | t }}</label>
+          <div class="uk-width-1-2@s">
+            <label for="contactFormApt" class="uk-form-label uk-margin-remove-bottom">Apt/Suite Number</label>
+            <div class="uk-form-controls">
               <input
                 type="text"
+                class="uk-input"
                 id="contactFormApt"
                 name="contact[apt]"
                 placeholder="Apt/Suite Number" />
+            </div>
+          </div>
 
-              <label for="contactFormState" class="hidden-label">{{ 'contact.form.state' | t }}</label>
+          <div class="uk-width-1-2@s">
+            <label for="contactFormState" class="uk-form-label uk-margin-remove-bottom">State</label>
+            <div class="uk-form-controls">
               <input
                 type="text"
+                class="uk-input"
                 id="contactFormState"
                 name="contact[state]"
                 placeholder="State" />
+            </div>
+          </div>
 
-              <label for="contactFormCountry" class="hidden-label">{{ 'contact.form.country' | t }}</label>
+          <div class="uk-width-1-2@s">
+            <label for="contactFormCountry" class="uk-form-label uk-margin-remove-bottom">Country</label>
+            <div class="uk-form-controls">
               <input
                 type="text"
+                class="uk-input"
                 id="contactFormCountry"
                 name="contact[country]"
                 placeholder="Country" />
+            </div>
+          </div>
 
-              <label for="contactFormCity" class="hidden-label">{{ 'contact.form.city' | t }}</label>
+          <div class="uk-width-1-2@s">
+            <label for="contactFormCity" class="uk-form-label uk-margin-remove-bottom">City</label>
+            <div class="uk-form-controls">
               <input
                 type="text"
+                class="uk-input"
                 id="contactFormCity"
                 name="contact[city]"
                 placeholder="City" />
+            </div>
+          </div>
 
-              <label for="contactFormZip" class="hidden-label">{{ 'contact.form.zip' | t }}</label>
+          <div class="uk-width-1-2@s">
+            <label for="contactFormZip" class="uk-form-label uk-margin-remove-bottom">Zip Code</label>
+            <div class="uk-form-controls">
               <input
                 type="text"
+                class="uk-input"
                 id="contactFormZip"
                 name="contact[zip]"
                 placeholder="Zip Code" />
-
-              <input
-                type="submit"
-                class="btn right"
-                value="Signup Today!" />
             </div>
-
-          {% endform %}
-
+          </div>
+          <div class="uk-width-1-1">
+            <input
+              type="submit"
+              class="btn right"
+              value="Submit" />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="container-row coaches-elite-text">
-      <div class="coaches-elite-left-small">
-        {{ 'coaches-elite-large.png' | asset_url | img_tag }}
+    {% endform %}
+  </div>
+</section>
+<section
+  class="uk-container uk-grid uk-child-width-1-3 uk-child-width-1-4@s uk-margin-large-bottom"
+  uk-grid="masonry: true"
+  uk-lightbox="animation:slide">
+  <a class="" href="//cdn.shopify.com/s/files/1/2459/7365/files/slider2.png?v=1508268156">
+    <img src="//cdn.shopify.com/s/files/1/2459/7365/files/slider2.png?v=1508268156" alt="" />
+  </a>
+  <a class="" href="//cdn.shopify.com/s/files/1/2459/7365/files/4_leaf_bag_pic_for_website_large.jpg?v=1513090509">
+    <img src="//cdn.shopify.com/s/files/1/2459/7365/files/4_leaf_bag_pic_for_website_large.jpg?v=1513090509" />
+  </a>
+  <a class="" href="//cdn.shopify.com/s/files/1/2459/7365/files/bag_picture_large.JPG?v=1513090535">
+    <img src="//cdn.shopify.com/s/files/1/2459/7365/files/bag_picture_large.JPG?v=1513090535" /></a>
+  <a class="" href="//cdn.shopify.com/s/files/1/2459/7365/files/FCA_bag_pic_large.jpg?v=1513090746">
+    <img src="//cdn.shopify.com/s/files/1/2459/7365/files/FCA_bag_pic_large.jpg?v=1513090746" /></a>
+  <a class="" href="//cdn.shopify.com/s/files/1/2459/7365/files/BayShore_2_large.jpeg?v=1513090411">
+    <img src="//cdn.shopify.com/s/files/1/2459/7365/files/BayShore_2_large.jpeg?v=1513090411" /></a>
+  <a class="" href="//cdn.shopify.com/s/files/1/2459/7365/files/holy_ghost_prep_large.jpg?v=1513096973">
+    <img src="//cdn.shopify.com/s/files/1/2459/7365/files/holy_ghost_prep_large.jpg?v=1513096973" />
+  </a>
+  <a class="" href="//cdn.shopify.com/s/files/1/2459/7365/files/LBL_Lower_Bucks_Lacrosse_bag_pic_large.jpg?v=1513096992">
+    <img src="//cdn.shopify.com/s/files/1/2459/7365/files/LBL_Lower_Bucks_Lacrosse_bag_pic_large.jpg?v=1513096992" />
+  </a>
+  <a class="" href="//cdn.shopify.com/s/files/1/2459/7365/files/Wolfpack_laxher_pack_large.jpg?v=1513097015">
+    <img src="//cdn.shopify.com/s/files/1/2459/7365/files/Wolfpack_laxher_pack_large.jpg?v=1513097015" /></a>
+  <a class="" href="//cdn.shopify.com/s/files/1/2459/7365/files/wolfpack_pic_in_Australia_large.jpg?v=1513097034">
+    <img src="//cdn.shopify.com/s/files/1/2459/7365/files/wolfpack_pic_in_Australia_large.jpg?v=1513097034" /></a>
+</section>
+
+<section class="uk-container uk-container-small">
+  <!--    <div class="container-row coaches-elite-text">
+  <div class="coaches-elite-left-small">
+  {{ 'coaches-elite-large.png' | asset_url | img_tag }}
+  </div>
+  <div class="coaches-elite-right-large">
+  <h1>Preferred Pricing for the Ultimate Lacrosse Bags with Coaches Elite</h1>
+  <p>You give your all to help your team get ahead. At Laxgear, we think you deserve to be rewarded for that. Designed exclusively for coaches, teams, athletic departments and other team organizers, Laxgear’s Coaches Elite program gives you access to special perks. And it’s free to join!<span>&nbsp;</span><br><br>As a member, you’ll get the best prices for the best lacrosse bags on the market—plus other great benefits—for the life of the program, such as:</p>
+  <ul>
+  <li>Preferred pricing on all orders*</li>
+  <li>No minimums on team orders for stock bags (Custom Factory Mega Duffel minimum – 12)</li>
+  <li>Priority customer service</li>
+  <li>Referral incentive: $100 discount off of your next order**</li>
+  <li>Member-only advance emails about sales, special offers, giveaways and new products</li>
+  <li>Factory Custom Mega Duffel orders must be placed and paid for in full by June 1st, 2015</li>
+  </ul>
+  </div>
+  </div> --><h3 class="uk-text-center">What Other Coaches, Team Organizers, and Schools are Saying about Laxgear Bags:</h3>
+
+  <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
+    <div>
+      <div class="uk-card uk-card-default uk-card-body">
+        <h3 class="uk-card-title">"Thanks for the awesome product and customer service!"</h3>
+        <p>Kate - Catholic Memorial</p>
       </div>
-      <div class="coaches-elite-right-large">
-        <h1>Preferred Pricing for the Ultimate Lacrosse Bags with Coaches Elite</h1>
-        <p>You give your all to help your team get ahead. At Laxgear, we think you deserve to be rewarded for that. Designed exclusively for coaches, teams, athletic departments and other team organizers, Laxgear’s Coaches Elite program gives you access to special perks. And it’s free to join!<span>&nbsp;</span><br><br>As a member, you’ll get the best prices for the best lacrosse bags on the market—plus other great benefits—for the life of the program, such as:</p>
-        <ul>
-          <li>Preferred pricing on all orders*</li>
-          <li>No minimums on team orders for stock bags (Custom Factory Mega Duffel minimum – 12)</li>
-          <li>Priority customer service</li>
-          <li>Referral incentive: $100 discount off of your next order**</li>
-          <li>Member-only advance emails about sales, special offers, giveaways and new products</li>
-          <li>Factory Custom Mega Duffel orders must be placed and paid for in full by June 1st, 2015</li>
-        </ul>
+    </div>
+    <div>
+      <div class="uk-card uk-card-default uk-card-body">
+        <h3 class="uk-card-title">"Your bags are the best in the country!"</h3>
+        <p>Bobby Healy - Head coach, Salesianum</p>
       </div>
     </div>
-    <div class="container-row">
-      <h1>What Other Coaches, Team Organizers, and Schools are Saying about Laxgear Bags:</h1>
-      <blockquote>
-        <p>"Thanks for the awesome product and customer service!"</p>
-        <small>
-          <span>&nbsp;</span>Kate - Catholic Memorial</small>
-      </blockquote>
-      <blockquote>
-        <p>"Your bags are the best in the country!"</p>
-        <small>
-          <span>&nbsp;</span>Bobby Healy - Head coach, Salesianum</small>
-      </blockquote>
-      <blockquote>
-        <p>"They look absolutely great. Definitely exceeded my expectations!"</p>
-        <small>
-          <span>&nbsp;</span>Jay - Bulldogs Elite</small>
-      </blockquote>
-      <div class="coaches-elite-text">
-        <h1>Ready for some special treatment?<span>&nbsp;</span>
-          <span style="color: #000000;">
-            <a title="Laxgear Team Sales" style="color: #000000;">Sign up</a>
-          </span>
-          <span>&nbsp;</span>for the Coaches Elite program today!</h1>
-        <blockquote>
-          <h4>* Discount Requirement</h4>
-          <ul>
-            <li>Orders must be paid in full at time of order</li>
-          </ul>
-          <h4>**Referral Requirement</h4>
-          <ul>
-            <li>Applies after referred team places an order</li>
-          </ul>
-        </blockquote>
+    <div>
+      <div class="uk-card uk-card-default uk-card-body">
+        <h3 class="uk-card-title">"They look absolutely great. Definitely exceeded my expectations!"</h3>
+        <p>Jay - Bulldogs Elite</p>
       </div>
     </div>
   </div>
-</div>
-
-<script type="text/javascript">
-  $(document).ready(function($) {
-  $(".fancybox").fancybox();
-                  });</script>
+  <!-- <div class="coaches-elite-text">
+  <h1>Ready for some special treatment?<span>&nbsp;</span>
+  <span style="color: #000000;">
+  <a title="Laxgear Team Sales" style="color: #000000;">Sign up</a>
+  </span>
+  <span>&nbsp;</span>for the Coaches Elite program today!</h1>
+  <blockquote>
+  <h4>* Discount Requirement</h4>
+  <ul>
+  <li>Orders must be paid in full at time of order</li>
+  </ul>
+  <h4>**Referral Requirement</h4>
+  <ul>
+  <li>Applies after referred team places an order</li>
+  </ul>
+  </blockquote>
+  </div> --></section>
