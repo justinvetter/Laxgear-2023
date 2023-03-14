@@ -1,9 +1,11 @@
 [
   {
-    "name": "laxgear",
+    "name": "theme_info",
     "theme_name": "LaxGear 2023",
     "theme_author": "Justin Vetter",
-    "theme_version": "0.1.0"
+    "theme_version": "0.1.0",
+    "theme_documentation:url": "https://laxgear.com",
+    "theme_support_url": "https//laxgear.com"
   },
   {
     "name": "Colors",
