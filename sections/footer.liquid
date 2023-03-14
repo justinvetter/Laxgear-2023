@@ -40,6 +40,9 @@
       <h5>Company</h5>
       <ul>
         {% for link in linklists.footer-company.links -%}
+          {%- comment %}<locksmith:5d57>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists.footer-company, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:5d57>{% endcomment -%}
           <li>{{ link.title | link_to: link.url }}</li>
         {%- endfor %}
       </ul>
@@ -49,6 +52,9 @@
       <h5>Customer support</h5>
       <ul>
         {% for link in linklists.footer-customer-support.links -%}
+          {%- comment %}<locksmith:6424>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists.footer-customer-support, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:6424>{% endcomment -%}
           <li>{{ link.title | link_to: link.url }}</li>
         {%- endfor %}
       </ul>
@@ -58,6 +64,9 @@
       <h5>Services</h5>
       <ul>
         {% for link in linklists.footer-services.links -%}
+          {%- comment %}<locksmith:aa6d>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists.footer-services, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:aa6d>{% endcomment -%}
           <li>{{ link.title | link_to: link.url }}</li>
         {%- endfor %}
       </ul>
