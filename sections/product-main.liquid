@@ -1,0 +1,64 @@
+<section class="product-main uk-section">
+  <div class="uk-container uk-container-large">
+    <div class="uk-child-width-expand uk-grid-small" uk-grid>
+      <div>
+        <h1 class="uk-heading-small">{{ product.title }}</h1>
+        <div>{{ product.description }}</div>
+      </div>
+      <div class="uk-width-1-3"><img id="{{ product.title | replace: ' ', '-' | downcase}}" src="{{ product.featured_image | image_url }}"></div>
+      <div>Color /
+        <span id="variant_name">{{ product.selected_or_first_available_variant.title }}</span>
+        <br>
+        {% for variant in product.variants %}
+
+          <label
+            uk-tooltip="{{ variant.title }}"
+            class="{{ variant.title | replace: ' ', '-' | downcase }}"
+            for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">{{ variant.title }}
+            <img src="{{ variant.image | image_url }}">
+          </label>
+          <input
+            type="radio"
+            id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
+            name="id"
+            value="{{ variant.id }}"
+            class="chngRadio"
+            data-index="{{ forloop.index }}"
+            data-image="{{ variant.image | image_url }}"
+            data-product="{{ product.title | replace: ' ', '-' | downcase}}"
+            data-variant_title="{{ variant.title }}">
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  let params = (new URL(document.location)).searchParams;
+  let variantID = params.get("variant")
+  if (variantID) {
+    let radios = document.querySelectorAll('.chngRadio');
+    let value = variantID; // value you want to compare radio with
+
+    for (let i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].value == value) {
+        radios[i].checked = true;
+
+// only one radio can be logically checked, don't check the rest
+        break;
+      }
+    }
+  } else {
+    document.querySelectorAll('.chngRadio')[0].checked = true
+  }
+
+  var matches = document.querySelectorAll('.chngRadio');
+  for (match in matches) {
+    matches[match].onchange = function() {
+      document.getElementById("variant_name").innerHTML = this.dataset.variant_title
+      const currentURL = window.location.href;
+      window.history.pushState("", "", "?variant=" + this.value)
+
+    }
+  }
+</script>
