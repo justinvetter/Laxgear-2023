@@ -11,6 +11,13 @@
 
 @import 'base.scss';
 
-@import 'sections/*.scss';
+@import 'templates/product';
+
+@import 'sections/home-features';
+@import 'sections/home-product-carousel';
+@import 'sections/home_hero';
+@import 'sections/home_hero_team_photos';
+@import 'sections/product_features';
+
 
 
