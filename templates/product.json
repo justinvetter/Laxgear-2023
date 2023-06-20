@@ -1,0 +1,23 @@
+{
+    "sections": {
+        "product":{
+            "type": "product-template",
+            "settings": {
+
+            }
+        },
+        "main": {
+            "type": "product-main",
+            "settings": {}
+        },
+        "features": {
+            "type": "product-features",
+            "settings": {}
+        }
+    },
+    "order": [
+        "product",
+        "main",
+        "features"
+    ]
+}
