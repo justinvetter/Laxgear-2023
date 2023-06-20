@@ -1,0 +1,29 @@
+{% if product.metafields.bag_features.show_features_block == true %}
+
+  <section class="product-features uk-section uk-background-muted">
+    <div class="uk-card uk-card-body uk-container uk-background-default">
+      <div class="banner-container">
+        <a href="/pages/warranty">
+          <div class="banner uk-text-default">Lifetime Warranty
+          </div>
+        </a>
+      </div>
+      <h3 class="uk-card-title uk-text-lead uk-text-bold">Product Features</h3>
+      <hr class="uk-margin-small-top uk-margin-medium-bottom">
+      <h4 class="uk-text-meta uk-text-muted uk-margin-small">Dimensions</h4>
+      <span class="uk-text-default uk-text-bold">{{ product.metafields.bag_features.bag_dimenstions }}</span>
+      <hr class="uk-margin-small">
+      <h4 class="uk-text-meta uk-text-muted uk-margin-small">Materials</h4>
+      <span class="uk-text-default uk-text-bold">{{ product.metafields.bag_features.materials }}</span>
+      <hr class="uk-margin-small">
+      <h4 class="uk-text-meta uk-text-muted uk-margin-small">Size</h4>
+      <span class="uk-text-default uk-text-bold">{{ product.metafields.bag_features.bag_size }}</span>
+      <hr class="uk-margin-small">
+      <h4 class="uk-text-meta uk-text-muted uk-margin-small">Features</h4>
+      <span class="uk-text-default uk-text-bold">
+        {{ product.metafields.bag_features.bag_features | metafield_tag }}
+      </span>
+    </div>
+  </section>
+
+{% endif %}
