@@ -9,25 +9,47 @@
       <div>Color /
         <span id="variant_name">{{ product.selected_or_first_available_variant.title }}</span>
         <br>
-        {% for variant in product.variants %}
+        <div class="product-selector">
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              <label
+                uk-tooltip="{{ variant.title }}"
+                class="{{ variant.title | replace: ' ', '-' | downcase }}"
+                for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">
+                <img src="{{ variant.image | image_url }}">
+                <input
+                  type="radio"
+                  id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
+                  name="id"
+                  value="{{ variant.id }}"
+                  class="chngRadio"
+                  data-index="{{ forloop.index }}"
+                  data-image="{{ variant.image | image_url }}"
+                  data-product="{{ product.title | replace: ' ', '-' | downcase}}"
+                  data-variant_title="{{ variant.title }}">
+              </label>
+            {% else %}
 
-          <label
-            uk-tooltip="{{ variant.title }}"
-            class="{{ variant.title | replace: ' ', '-' | downcase }}"
-            for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">{{ variant.title }}
-            <img src="{{ variant.image | image_url }}">
-          </label>
-          <input
-            type="radio"
-            id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
-            name="id"
-            value="{{ variant.id }}"
-            class="chngRadio"
-            data-index="{{ forloop.index }}"
-            data-image="{{ variant.image | image_url }}"
-            data-product="{{ product.title | replace: ' ', '-' | downcase}}"
-            data-variant_title="{{ variant.title }}">
-        {% endfor %}
+              <label
+                uk-tooltip="{{ variant.title }} - Sold Out"
+                class="disabled {{ variant.title | replace: ' ', '-' | downcase }}"
+                for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">
+                <img src="{{ variant.image | image_url }}">
+                <input
+                  type="radio"
+                  id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
+                  name="id"
+                  value="{{ variant.id }}"
+                  class="disabled"
+                  disabled
+                  data-index="{{ forloop.index }}"
+                  data-image="{{ variant.image | image_url }}"
+                  data-product="{{ product.title | replace: ' ', '-' | downcase}}"
+                  data-variant_title="{{ variant.title }}">
+              </label>
+            {% endif %}
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
