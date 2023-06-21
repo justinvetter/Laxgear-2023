@@ -1,11 +1,5 @@
 {
     "sections": {
-        "product":{
-            "type": "product-template",
-            "settings": {
-
-            }
-        },
         "main": {
             "type": "product-main",
             "settings": {}
@@ -16,7 +10,6 @@
         }
     },
     "order": [
-        "product",
         "main",
         "features"
     ]
