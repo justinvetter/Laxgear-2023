@@ -5,51 +5,64 @@
         <h1 class="uk-heading-small">{{ product.title }}</h1>
         <div>{{ product.description }}</div>
       </div>
-      <div class="uk-width-1-3"><img id="{{ product.title | replace: ' ', '-' | downcase}}" src="{{ product.featured_image | image_url }}"></div>
-      <div>Color /
-        <span id="variant_name">{{ product.selected_or_first_available_variant.title }}</span>
+      <div class="uk-width-1-3"><img id="feature_image" src="{{ product.featured_image | image_url }}"></div>
+      <div>
+        <p class="uk-margin-small-bottom">Color /
+          <span id="variant_name">{{ product.selected_or_first_available_variant.title }}</span>
+        </p>
         <br>
-        <div class="product-selector">
-          {% for variant in product.variants %}
-            {% if variant.available %}
-              <label
-                uk-tooltip="{{ variant.title }}"
-                class="{{ variant.title | replace: ' ', '-' | downcase }}"
-                for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">
-                <img src="{{ variant.image | image_url }}">
-                <input
-                  type="radio"
-                  id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
-                  name="id"
-                  value="{{ variant.id }}"
-                  class="chngRadio"
-                  data-index="{{ forloop.index }}"
-                  data-image="{{ variant.image | image_url }}"
-                  data-product="{{ product.title | replace: ' ', '-' | downcase}}"
-                  data-variant_title="{{ variant.title }}">
-              </label>
-            {% else %}
+        <form
+          method="post"
+          action="/cart/add"
+          class="uk-margin-medium-bottom">
+          <div class="product-selector">
+            {% for variant in product.variants %}
+              {% if variant.available %}
+                <label
+                  uk-tooltip="{{ variant.title }}"
+                  class="{{ variant.title | replace: ' ', '-' | downcase }}"
+                  for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">
+                  <img src="{{ variant.image | image_url }}">
+                  <input
+                    type="radio"
+                    id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
+                    name="id"
+                    value="{{ variant.id }}"
+                    class="chngRadio"
+                    data-index="{{ forloop.index }}"
+                    data-image="{{ variant.image | image_url }}"
+                    data-product="{{ product.title | replace: ' ', '-' | downcase}}"
+                    data-variant_title="{{ variant.title }}">
+                </label>
+              {% else %}
 
-              <label
-                uk-tooltip="{{ variant.title }} - Sold Out"
-                class="disabled {{ variant.title | replace: ' ', '-' | downcase }}"
-                for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">
-                <img src="{{ variant.image | image_url }}">
-                <input
-                  type="radio"
-                  id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
-                  name="id"
-                  value="{{ variant.id }}"
-                  class="disabled"
-                  disabled
-                  data-index="{{ forloop.index }}"
-                  data-image="{{ variant.image | image_url }}"
-                  data-product="{{ product.title | replace: ' ', '-' | downcase}}"
-                  data-variant_title="{{ variant.title }}">
-              </label>
-            {% endif %}
-          {% endfor %}
-        </div>
+                <label
+                  uk-tooltip="{{ variant.title }} - Sold Out"
+                  class="disabled {{ variant.title | replace: ' ', '-' | downcase }}"
+                  for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">
+                  <img src="{{ variant.image | image_url }}">
+                  <input
+                    type="radio"
+                    id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
+                    name="id"
+                    value="{{ variant.id }}"
+                    class="disabled"
+                    disabled
+                    data-index="{{ forloop.index }}"
+                    data-image="{{ variant.image | image_url }}"
+                    data-product="{{ product.title | replace: ' ', '-' | downcase}}"
+                    data-variant_title="{{ variant.title }}">
+                </label>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <hr>
+          <h3 class="uk-text-bold">{{ product.price | money }}</h3>
+          <button type="submit" class="uk-button uk-button-secondary uk-text-bold uk-width-1-1">
+            <span uk-icon="cart" class="uk-padding-small uk-padding-remove-vertical uk-padding-remove-left"></span>
+            Add to cart</button>
+        </form>
+        <hr>
       </div>
     </div>
   </div>
@@ -65,6 +78,13 @@
     for (let i = 0, length = radios.length; i < length; i++) {
       if (radios[i].value == value) {
         radios[i].checked = true;
+        document
+          .querySelectorAll("label[for='" + radios[i].id + "']")[0]
+          .classList
+          .add("selected")
+          document
+          .getElementById("feature_image")
+          .src = radios[i].dataset.image
 
 // only one radio can be logically checked, don't check the rest
         break;
@@ -72,6 +92,7 @@
     }
   } else {
     document.querySelectorAll('.chngRadio')[0].checked = true
+    document.querySelectorAll("label[for='" + document.querySelectorAll('.chngRadio')[0].id + "']")[0].classList.add("selected")
   }
 
   var matches = document.querySelectorAll('.chngRadio');
@@ -79,8 +100,23 @@
     matches[match].onchange = function() {
       document.getElementById("variant_name").innerHTML = this.dataset.variant_title
       const currentURL = window.location.href;
-      window.history.pushState("", "", "?variant=" + this.value)
+      document.getElementById("feature_image").src = this
+        .dataset
+        .image
+        window
+        .history
+        .pushState("", "", "?variant=" + this.value)
+      var selected = document.getElementsByClassName("selected");
+      while (selected.length) 
+        selected[0].classList.remove("selected")
 
+
+
+      
+
+
+
+      document.querySelectorAll("label[for='" + this.id + "']")[0].classList.add("selected")
     }
   }
 </script>
