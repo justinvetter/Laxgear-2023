@@ -1,11 +1,35 @@
 <section class="product-main uk-section">
   <div class="uk-container uk-container-large">
-    <div class="uk-child-width-expand uk-grid-small" uk-grid>
+    {% include 'breadcrumb' %}
+    <div class="uk-child-width-expand uk-grid-medium" uk-grid>
       <div>
         <h1 class="uk-heading-small">{{ product.title }}</h1>
         <div>{{ product.description }}</div>
       </div>
-      <div class="uk-width-1-3"><img id="feature_image" src="{{ product.featured_image | image_url }}"></div>
+      <div class="uk-width-1-3">
+        <div class="uk-position-relative" id="image-slideshow" uk-slideshow="animation: fade; ratio:false">
+          <ul class="uk-slideshow-items" uk-height-viewport=min-height:1000">
+            <li uk-height-viewport>
+              <img
+                id="feature_image"
+                src="{{ 'Spinner.gif' | asset_url }}"
+                uk-cover>
+            </li uk-height-viewport>
+            {% for image in product.images %}
+              <li>
+                <img src="{{ image | image_url }}" uk-cover>
+              </li>
+            {% endfor %}
+          </ul>
+          <ul class="uk-thumbnav uk-margin-medium-top">
+            <li uk-slideshow-item="0"><a href="#"><img id="thumb_image" src={{ 'Spinner.gif' | asset_url }}"></a></li>
+            {% for thumbImage in product.images %}
+              <li uk-slideshow-item="{{ forloop.index }}"><a href="#"><img src="{{ thumbImage | image_url }}" ></a></li>
+            {% endfor %}
+          </ul>
+        </div>
+
+      </div>
       <div>
         <p class="uk-margin-small-bottom">Color /
           <span id="variant_name">{{ product.selected_or_first_available_variant.title }}</span>
@@ -85,6 +109,9 @@
           document
           .getElementById("feature_image")
           .src = radios[i].dataset.image
+          document
+          .getElementById("thumb_image")
+          .src = radios[i].dataset.image
 
 // only one radio can be logically checked, don't check the rest
         break;
@@ -92,7 +119,16 @@
     }
   } else {
     document.querySelectorAll('.chngRadio')[0].checked = true
-    document.querySelectorAll("label[for='" + document.querySelectorAll('.chngRadio')[0].id + "']")[0].classList.add("selected")
+    document
+      .querySelectorAll("label[for='" + document.querySelectorAll('.chngRadio')[0].id + "']")[0]
+      .classList
+      .add("selected")
+      document
+      .getElementById("feature_image")
+      .src = document.querySelectorAll('.chngRadio')[0].dataset.image
+      document
+      .getElementById("thumb_image")
+      .src = document.querySelectorAll('.chngRadio')[0].dataset.image
   }
 
   var matches = document.querySelectorAll('.chngRadio');
@@ -103,13 +139,16 @@
       document.getElementById("feature_image").src = this
         .dataset
         .image
+        document.getElementById("thumb_image").src = this
+        .dataset
+        .image
         window
         .history
         .pushState("", "", "?variant=" + this.value)
       var selected = document.getElementsByClassName("selected");
       while (selected.length) 
         selected[0].classList.remove("selected")
-
+      UIkit.slideshow("#image-slideshow").show(0)
 
 
       

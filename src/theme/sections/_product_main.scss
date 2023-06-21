@@ -1,26 +1,30 @@
 .product-main {
-    hr{
+    hr {
         border-top-color: black;
     }
+
     .product-selector {
         display: flex;
         gap: .75rem;
+
         [type=radio] {
             position: absolute;
             opacity: 0;
             width: 0;
             height: 0;
-            &:disabled{
-                cursor:not-allowed;
+
+            &:disabled {
+                cursor: not-allowed;
             }
         }
 
         label {
             border: 1px solid black;
-            
-            &.disabled{
+
+            &.disabled {
                 cursor: not-allowed;
             }
+
             img {
                 width: 50px;
                 height: 65px;
@@ -28,12 +32,48 @@
                 opacity: .5;
                 transition: opacity .25s ease-in-out;
             }
-            &.selected{
-                img{
+
+            &.selected {
+                img {
                     opacity: 1
                 }
             }
-            &:hover{
+
+            &:hover {
+                img {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .uk-slideshow {
+        .uk-thumbnav {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1rem;
+
+            li {
+                width: 50px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                padding: 0;
+
+                a {
+                    width: 50px;
+                    height: 50px;
+                    display: flex;
+                    justify-content: center;
+                border: solid 1px black;
+
+                    img {
+                        object-fit: cover;
+                        opacity: .5;
+                    }
+                }
+            }
+            .uk-active{
                 img{
                     opacity: 1;
                 }
