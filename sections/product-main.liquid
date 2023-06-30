@@ -7,24 +7,41 @@
         <div>{{ product.description }}</div>
       </div>
       <div class="uk-width-1-3">
-        <div class="uk-position-relative" id="image-slideshow" uk-slideshow="animation: fade; ratio:false">
-          <ul class="uk-slideshow-items" uk-height-viewport=min-height:1000">
-            <li uk-height-viewport>
-              <img
-                id="feature_image"
-                src="{{ 'Spinner.gif' | asset_url }}"
-                uk-cover>
-            </li uk-height-viewport>
+        <div
+          class="uk-position-relative"
+          id="image-slideshow"
+          uk-slideshow="animation: fade; ratio:false">
+          <ul
+            class="uk-slideshow-items"
+            uk-lightbox="animation: slide"
+            uk-height-viewport=max-height:100">
+            <li>
+              <a id="feature_image_link" href="{{ 'Spinner.gif' | asset_url }}">
+                <img
+                  id="feature_image"
+                  src="{{ 'Spinner.gif' | asset_url }}"
+                  uk-cover>
+              </a>
+            </li>
             {% for image in product.images %}
               <li>
-                <img src="{{ image | image_url }}" uk-cover>
+                <a class="" href="{{ image | image_url }}">
+                  <img src="{{ image | image_url }}" uk-cover>
+                </a>
               </li>
             {% endfor %}
           </ul>
           <ul class="uk-thumbnav uk-margin-medium-top">
-            <li uk-slideshow-item="0"><a href="#"><img id="thumb_image" src={{ 'Spinner.gif' | asset_url }}"></a></li>
+            <li uk-slideshow-item="0">
+              <a href="#"><img
+                  id="thumb_image"
+                  src={{ 'Spinner.gif' | asset_url }}
+                  "></a>
+            </li>
             {% for thumbImage in product.images %}
-              <li uk-slideshow-item="{{ forloop.index }}"><a href="#"><img src="{{ thumbImage | image_url }}" ></a></li>
+              <li uk-slideshow-item="{{ forloop.index }}">
+                <a href="#"><img src="{{ thumbImage | image_url }}"></a>
+              </li>
             {% endfor %}
           </ul>
         </div>
@@ -93,22 +110,41 @@
 </section>
 
 <script>
+  // This function looks at the variant query string in URL and displays the correct variant and selects the correct variant option
   let params = (new URL(document.location)).searchParams;
   let variantID = params.get("variant")
   if (variantID) {
     let radios = document.querySelectorAll('.chngRadio');
-    let value = variantID; // value you want to compare radio with
+    let value = variantID;
 
+// value you want to compare radio with
+
+// Loop through radios to find the correct variant
     for (let i = 0, length = radios.length; i < length; i++) {
       if (radios[i].value == value) {
         radios[i].checked = true;
+
+// Select the correct variant selector
         document
           .querySelectorAll("label[for='" + radios[i].id + "']")[0]
           .classList
           .add("selected")
+
+  // Swap feature image
           document
           .getElementById("feature_image")
-          .src = radios[i].dataset.image
+          .src = radios[i]
+          .dataset
+          .image
+
+  // Update image url for modal
+          document
+          .getElementById("feature_image_link")
+          .href = radios[i]
+          .dataset
+          .image
+
+  // Update active iamge for thumbnail
           document
           .getElementById("thumb_image")
           .src = radios[i].dataset.image
@@ -118,14 +154,22 @@
       }
     }
   } else {
+
     document.querySelectorAll('.chngRadio')[0].checked = true
+
     document
       .querySelectorAll("label[for='" + document.querySelectorAll('.chngRadio')[0].id + "']")[0]
       .classList
       .add("selected")
+
       document
       .getElementById("feature_image")
-      .src = document.querySelectorAll('.chngRadio')[0].dataset.image
+      .src = document
+      .querySelectorAll('.chngRadio')[0]
+      .dataset
+      .image
+
+
       document
       .getElementById("thumb_image")
       .src = document.querySelectorAll('.chngRadio')[0].dataset.image
@@ -139,7 +183,14 @@
       document.getElementById("feature_image").src = this
         .dataset
         .image
-        document.getElementById("thumb_image").src = this
+        document
+        .getElementById("feature_image_link")
+        .href = this
+        .dataset
+        .image
+        document
+        .getElementById("thumb_image")
+        .src = this
         .dataset
         .image
         window
@@ -148,14 +199,23 @@
       var selected = document.getElementsByClassName("selected");
       while (selected.length) 
         selected[0].classList.remove("selected")
-      UIkit.slideshow("#image-slideshow").show(0)
+
 
 
       
 
 
 
-      document.querySelectorAll("label[for='" + this.id + "']")[0].classList.add("selected")
+      UIkit
+        .slideshow("#image-slideshow")
+        .show(0)
+
+
+
+        document
+        .querySelectorAll("label[for='" + this.id + "']")[0]
+        .classList
+        .add("selected")
     }
   }
 </script>
