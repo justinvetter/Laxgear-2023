@@ -63,7 +63,7 @@
                   uk-tooltip="{{ variant.title }}"
                   class="{{ variant.title | replace: ' ', '-' | downcase }}"
                   for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">
-                  <img src="{{ variant.image | image_url }}">
+                  <img src="{{ variant.image | image_url: width: 48 }}">
                   <input
                     type="radio"
                     id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
@@ -71,7 +71,7 @@
                     value="{{ variant.id }}"
                     class="chngRadio"
                     data-index="{{ forloop.index }}"
-                    data-image="{{ variant.image | image_url }}"
+                    data-img="{{ variant.image | image_url }}"
                     data-product="{{ product.title | replace: ' ', '-' | downcase}}"
                     data-variant_title="{{ variant.title }}">
                 </label>
@@ -81,7 +81,7 @@
                   uk-tooltip="{{ variant.title }} - Sold Out"
                   class="disabled {{ variant.title | replace: ' ', '-' | downcase }}"
                   for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">
-                  <img src="{{ variant.image | image_url }}">
+                  <img src="{{ variant.image | image_url: width: 48 }}">
                   <input
                     type="radio"
                     id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
@@ -90,7 +90,7 @@
                     class="disabled"
                     disabled
                     data-index="{{ forloop.index }}"
-                    data-image="{{ variant.image | image_url }}"
+                    data-img="{{ variant.image | image_url }}"
                     data-product="{{ product.title | replace: ' ', '-' | downcase}}"
                     data-variant_title="{{ variant.title }}">
                 </label>
@@ -98,6 +98,7 @@
             {% endfor %}
           </div>
           <hr>
+
           <h3 class="uk-text-bold">{{ product.price | money }}</h3>
           <button type="submit" class="uk-button uk-button-secondary uk-text-bold uk-width-1-1">
             <span uk-icon="cart" class="uk-padding-small uk-padding-remove-vertical uk-padding-remove-left"></span>
@@ -135,19 +136,19 @@
           .getElementById("feature_image")
           .src = radios[i]
           .dataset
-          .image
+          .img
 
   // Update image url for modal
           document
           .getElementById("feature_image_link")
           .href = radios[i]
           .dataset
-          .image
+          .img
 
   // Update active iamge for thumbnail
           document
           .getElementById("thumb_image")
-          .src = radios[i].dataset.image
+          .src = radios[i].dataset.img
 
 // only one radio can be logically checked, don't check the rest
         break;
@@ -167,12 +168,12 @@
       .src = document
       .querySelectorAll('.chngRadio')[0]
       .dataset
-      .image
+      .img
 
 
       document
       .getElementById("thumb_image")
-      .src = document.querySelectorAll('.chngRadio')[0].dataset.image
+      .src = document.querySelectorAll('.chngRadio')[0].dataset.img
   }
 
   var matches = document.querySelectorAll('.chngRadio');
@@ -182,17 +183,17 @@
       const currentURL = window.location.href;
       document.getElementById("feature_image").src = this
         .dataset
-        .image
+        .img
         document
         .getElementById("feature_image_link")
         .href = this
         .dataset
-        .image
+        .img
         document
         .getElementById("thumb_image")
         .src = this
         .dataset
-        .image
+        .img
         window
         .history
         .pushState("", "", "?variant=" + this.value)
