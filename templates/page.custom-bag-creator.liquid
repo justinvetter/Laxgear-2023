@@ -1,12 +1,35 @@
 {% include 'breadcrumb' %}
 
-<div class="grid">
+  <div class="grid">
   {%- comment %}<locksmith:718c>{% endcomment -%}
-    {%- assign locksmith_b025_forloop__size = 0 %}{% for product in collections.custom-bag-editor-items.products  %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections.custom-bag-editor-items, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_b025_forloop__size = locksmith_b025_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_b025_forloop__index = nil -%}
+  {%- assign locksmith_b025_forloop__size = 0 %}{% for product in collections.custom-bag-editor-items.products %}
+    {% capture var %}
+      {% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections.custom-bag-editor-items, variable: 'transparent' %}{% endcapture %}
+    {% if var == 'true' %}
+      {% assign locksmith_b025_forloop__size = locksmith_b025_forloop__size | plus: 1 %}{% endif %}
+  {% endfor %}
+  {% assign locksmith_b025_forloop__index = nil -%}
   {%- comment %}</locksmith:718c>{% endcomment -%}
-  {% for product in collections.custom-bag-editor-items.products  %}
+  {% for product in collections.custom-bag-editor-items.products %}
     {%- comment %}<locksmith:a4fa>{% endcomment -%}
-      {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections.custom-bag-editor-items, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_b025_forloop__index == nil %}{% assign locksmith_b025_forloop__index = 1 %}{% assign locksmith_b025_forloop__index0 = 0 %}{% else %}{% assign locksmith_b025_forloop__index = locksmith_b025_forloop__index | plus: 1 %}{% assign locksmith_b025_forloop__index0 = locksmith_b025_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_b025_forloop__index == 1 %}{% assign locksmith_b025_forloop__first = true %}{% else %}{% assign locksmith_b025_forloop__first = false %}{% endif %}{% if locksmith_b025_forloop__index == locksmith_b025_forloop__size %}{% assign locksmith_b025_forloop__last = true %}{% else %}{% assign locksmith_b025_forloop__last = false %}{% endif %}{% assign locksmith_b025_forloop__rindex = locksmith_b025_forloop__size | minus: locksmith_b025_forloop__index | minus: 1 %}{% assign locksmith_b025_forloop__rindex0 = locksmith_b025_forloop__size | minus: locksmith_b025_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+    {%- capture var %}
+      {% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections.custom-bag-editor-items, variable: 'transparent' %}{% endcapture %}
+    {% if var == "true" %}
+      {% if locksmith_b025_forloop__index == nil %}
+        {% assign locksmith_b025_forloop__index = 1 %}{% assign locksmith_b025_forloop__index0 = 0 %}
+      {% else %}
+        {% assign locksmith_b025_forloop__index = locksmith_b025_forloop__index | plus: 1 %}{% assign locksmith_b025_forloop__index0 = locksmith_b025_forloop__index0 | plus: 1 %}{% endif %}
+      {% if locksmith_b025_forloop__index == 1 %}
+        {% assign locksmith_b025_forloop__first = true %}
+      {% else %}
+        {% assign locksmith_b025_forloop__first = false %}{% endif %}
+      {% if locksmith_b025_forloop__index == locksmith_b025_forloop__size %}
+        {% assign locksmith_b025_forloop__last = true %}
+      {% else %}
+        {% assign locksmith_b025_forloop__last = false %}{% endif %}
+      {% assign locksmith_b025_forloop__rindex = locksmith_b025_forloop__size | minus: locksmith_b025_forloop__index | minus: 1 %}{% assign locksmith_b025_forloop__rindex0 = locksmith_b025_forloop__size | minus: locksmith_b025_forloop__index0 | minus: 1 %}
+    {% else %}
+      {% continue %}{% endif -%}
     {%- comment %}</locksmith:a4fa>{% endcomment -%}
     <!-- Product Images Container -->
     <div id="product-{{product.handle}}" class="grid-item large--two-fifths product-image-container">
@@ -18,27 +41,19 @@
               {% capture img_wrapper_id %}productPhotoWrapper-{{ section.id }}-{{ image.id }}{% endcapture %}
               {% capture img_id %}productPhotoImg-{{ section.id }}-{{ image.id }}{% endcapture %}
 
-              <div class="lazyload__image-wrapper no-js product__image-wrapper{% unless image == featured_image %} hide{% endunless %}" id="{{ img_wrapper_id }}" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;" data-image-id="{{ image.id }}">
+              <div
+                class="lazyload__image-wrapper no-js product__image-wrapper{% unless image == featured_image %} hide{% endunless %}"
+                id="{{ img_wrapper_id }}"
+                style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;"
+                data-image-id="{{ image.id }}">
                 {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                  <a href="{{ image | img_url: '1024x1024', scale: 2 }}" class="fancybox">
-                  <img id="{{ img_id }}"
-                    {% if forloop.first == true %}
-                    src="{{ featured_image | img_url: '300x300' }}"
-                    {% endif %}
-                    class="lazyload no-js lazypreload"
-                    data-src="{{ img_url }}"
-                    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-                    data-aspectratio="{{ image.aspect_ratio }}"
-                    data-sizes="auto"
-                    alt="{{ image.alt | escape }}"
-                    {% if section.settings.product_image_zoom_enable %} data-zoom="{{ image | img_url: '1024x1024', scale: 2 }}"{% endif %}>
-                  </a>
+                <a href="{{ image | img_url: '1024x1024', scale: 2 }}" class="fancybox">
+                  <img id="{{ img_id }}"{% if forloop.first == true %}src="{{ featured_image | img_url: '300x300' }}"{% endif %}class="lazyload no-js lazypreload"data-src="{{ img_url }}"data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"data-aspectratio="{{ image.aspect_ratio }}"data-sizes="auto"alt="{{ image.alt | escape }}"{% if section.settings.product_image_zoom_enable %}data-zoom="{{ image | img_url: '1024x1024', scale: 2 }}"{% endif %}>
+                </a>
               </div>
               {% if forloop.first == true %}
                 <noscript>
-                  <img src="{{ image | img_url: '580x' }}"
-                    srcset="{{ image | img_url: '580x' }} 1x, {{ image | img_url: '580x', scale: 2 }} 2x"
-                    alt="{{ image.alt }}" style="opacity:1;">
+                  <img src="{{ image | img_url: '580x' }}"srcset="{{ image | img_url: '580x' }} 1x, {{ image | img_url: '580x', scale: 2 }} 2x"alt="{{ image.alt }}"style="opacity:1;">
                 </noscript>
               {% endif %}
             {% endfor %}
@@ -49,8 +64,15 @@
 
               {% for image in product.images %}
                 <li class="grid-item medium-down--one-quarter large--one-quarter">
-                  <a href="{{ image.src | img_url: '1024x1024', scale: 2 }}" rel="gallery" class="product-photo-thumb product-photo-thumb-{{ section.id }} fancybox" data-image-id="{{ image.id }}">
-                    <img class="product-image-thumb" src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+                  <a
+                    href="{{ image.src | img_url: '1024x1024', scale: 2 }}"
+                    rel="gallery"
+                    class="product-photo-thumb product-photo-thumb-{{ section.id }} fancybox"
+                    data-image-id="{{ image.id }}">
+                    <img
+                      class="product-image-thumb"
+                      src="{{ image.src | img_url: 'compact' }}"
+                      alt="{{ image.alt | escape }}">
                   </a>
                 </li>
               {% endfor %}
@@ -61,8 +83,7 @@
         </div>
       </div>
       <div id="rotate-viewer-container"></div>
-      <div class="product-image-left">
-      </div>
+      <div class="product-image-left"></div>
     </div>
     <!-- End Product Images Container -->
     {% if product.variants.size > 1 %}
@@ -72,41 +93,37 @@
           variant,
           variantImage,
           optionValue,
-          productOptions = [];
-          {% for variant in product.variants %}
-             variant = {{ variant | json }};
-             if ( typeof variant.featured_image !== 'undefined' && variant.featured_image !== null ) {
-               variantImage =  variant.featured_image.src.split('?')[0].replace(/http(s)?:/,'');
-               variantImages[variantImage] = variantImages[variantImage] || {};
-               {% for option in product.options %}
-
-                 {% assign option_value = variant.options[forloop.index0] %}
-                 {% assign option_key = 'option-' | append: forloop.index0 %}
-
-                 if (typeof variantImages[variantImage][{{ option_key | json }}] === 'undefined') {
-                   variantImages[variantImage][{{ option_key | json }}] = {{ option_value | json }};
-                 }
-                 else {
-                   var oldValue = variantImages[variantImage][{{ option_key | json }}];
-                   if ( oldValue !== null && oldValue !== {{ option_value | json }} )  {
-                     variantImages[variantImage][{{ option_key | json }}] = null;
-                   }
-                 }
-               {% endfor %}
-             }
-             productOptions.push(variant);
-          {% endfor %}
-        </script> 
+          productOptions = [];{% for variant in product.variants %}variant = {{ variant | json }};
+          if (typeof variant.featured_image !== 'undefined' && variant.featured_image !== null) {
+            variantImage = variant
+              .featured_image
+              .src
+              .split('?')[0]
+              .replace(/http(s)?:/, '');
+            variantImages[variantImage] = variantImages[variantImage] || {};{% for option in product.options %}{% assign option_value = variant.options[forloop.index0] %}{% assign option_key = 'option-' | append: forloop.index0 %}if (typeof variantImages[variantImage][{{ option_key | json }}] === 'undefined') {
+                variantImages[variantImage][{{ option_key | json }}] = {{ option_value | json }};
+              } else {
+                var oldValue = variantImages[variantImage][{{ option_key | json }}];
+                if (oldValue !== null && oldValue !== {{ option_value | json }}) {
+                  variantImages[variantImage][{{ option_key | json }}] = null;
+                }
+              }
+            {% endfor %}
+          }
+          productOptions.push(variant);{% endfor %}
+      </script>
     {% endif %}
   {% endfor %}
 
   <div class="grid-item large--three-fifths">
     <h2>{{ page.title }}</h2>
-    <h4 class="custom-bag-header"><span>TAKING ORDERS BY OCTOBER 1st FOR SPRING 2023 – CONTACT US FOR PRICING</span></h4>
-    <div class="container-row"> 
+    <h4 class="custom-bag-header">
+      <span>ORDERS BY OCTOBER 1ST FOR FEBRUARY 2024 DELIVERY<br>CONTACT US FOR PRICING</span>
+    </h4>
+    <div class="container-row">
       <div class="right-container">
         <div class="contact-form-container">
-          
+
           {% form 'contact' %}
 
             {% if form.posted_successfully? %}
@@ -117,437 +134,920 @@
 
             {% include 'form-errors-custom' %}
 
-              <div class="form-row">
-                <div class="form-field three-quarters">
-                  <label for="customFormBagType" class="hidden-label">Bag Type:</label>
-                  <select name="contact[bagType]" id="customFormBagType" required>
-                    {% for product in collections.custom-bag-editor-items.products  %}
-                        {%- comment %}<locksmith:7d15>{% endcomment -%}
-                          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections.custom-bag-editor-items, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-                        {%- comment %}</locksmith:7d15>{% endcomment -%}
-                        <option value="{{product.handle}}" type="text" {% if product.handle == "mega-duffel" %} selected="true" {% endif %}>{{product.title}}</option>
-                    {% endfor %}
-                  </select>
-                </div>
-
-                <div class="form-field one-quarter">
-                  <label for="customFormBagQuantity" class="hidden-label">QTY:</label>
-                  <input type="number" id="customFormBagQuantity" name="contact[bagQty]" min="12" max="100" value="12" step="1" required/>
-                </div>
+            <div class="form-row">
+              <div class="form-field three-quarters">
+                <label for="customFormBagType" class="hidden-label">Bag Type:</label>
+                <select
+                  name="contact[bagType]"
+                  id="customFormBagType"
+                  required>
+                  {% for product in collections.custom-bag-editor-items.products %}
+                    {%- comment %}<locksmith:7d15>{% endcomment -%}
+                    {%- capture var %}
+                      {% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections.custom-bag-editor-items, variable: 'transparent' %}{% endcapture %}
+                    {% if var == "true" %}
+                      {% else %}
+                        {% continue %}{% endif -%}
+                    {%- comment %}</locksmith:7d15>{% endcomment -%}
+                    <option
+                      value="{{product.handle}}"
+                      type="text"
+                      {% if product.handle == "mega-duffel" %}selected="true"{% endif %}>{{ product.title }}</option>
+                  {% endfor %}
+                </select>
               </div>
 
-              <fieldset id="bag-color">
-                <h6>Bag Color Selection:</h6>
-                <div class="radio-field">
-                  <input type="radio" value="black-1" name="contact[bag-color]" id="color-1">
-                  <label for="color-1" class="black"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Black</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="white-1" name="contact[bag-color]" id="color-1a">
-                  <label for="color-1a" class="white"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">White</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="gray-1" name="contact[bag-color]" id="color-1b">
-                  <label for="color-1b" class="gray"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Gray</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="carolina-blue-1" name="contact[bag-color]" id="color-2">
-                  <label for="color-2" class="carolina-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Carolina Blue</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="forest-green-1" name="contact[bag-color]" id="color-3">
-                  <label for="color-3" class="forest-green"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Forest Green</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="maroon-1" name="contact[bag-color]" id="color-4">
-                  <label for="color-4" class="maroon"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Maroon</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="navy-blue-1" name="contact[bag-color]" id="color-5">
-                  <label for="color-5" class="navy-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Navy Blue</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="orange-1" name="contact[bag-color]" id="color-6">
-                  <label for="color-6" class="orange"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Orange</div>
-                </div>
-                <div class="radio-field red">
-                  <input type="radio" value="red-1" name="contact[bag-color]" id="color-7">
-                  <label for="color-7" class="red"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Red</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="royal-blue-1" name="contact[bag-color]" id="color-8">
-                  <label for="color-8" class="royal-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Royal Blue</div>
-                </div>
-              </fieldset>
-          
-              <fieldset id="secondary-material-color" class="secondary-bag-color">
-                <h6>Secondary Material Color:</h6>
-                <div class="radio-field">
-                  <input type="radio" value="black-5" name="contact[secondary-material-color]" id="color-33">
-                  <label for="color-33" class="black"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Black</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="white-5" name="contact[secondary-material-color]" id="color-34">
-                  <label for="color-34" class="white"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">White</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="gray-5" name="contact[secondary-material-color]" id="color-35">
-                  <label for="color-35" class="gray"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Gray</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="carolina-blue-5" name="contact[secondary-material-color]" id="color-36">
-                  <label for="color-36" class="carolina-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Carolina Blue</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="forest-green-5" name="contact[secondary-material-color]" id="color-37">
-                  <label for="color-37" class="forest-green"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Forest Green</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="maroon-5" name="contact[secondary-material-color]" id="color-38">
-                  <label for="color-38" class="maroon"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Maroon</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="navy-blue-5" name="contact[secondary-material-color]" id="color-39">
-                  <label for="color-39" class="navy-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Navy Blue</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="orange-5" name="contact[secondary-material-color]" id="color-40">
-                  <label for="color-40" class="orange"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Orange</div>
-                </div>
-                <div class="radio-field red">
-                  <input type="radio" value="red-5" name="contact[secondary-material-color]" id="color-41">
-                  <label for="color-41" class="red"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Red</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="royal-blue-5" name="contact[secondary-material-color]" id="color-42">
-                  <label for="color-42" class="royal-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Royal Blue</div>
-                </div>
-              </fieldset>
-
-              <fieldset id="stitching-color">
-                <h6>Stitching Color:</h6>
-                <div class="radio-field">
-                  <input type="radio" value="black-2" name="contact[stitching-color]" id="color-9">
-                  <label for="color-9" class="black"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Black</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="white-2" name="contact[stitching-color]" id="color-9a">
-                  <label for="color-9a" class="white"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">White</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="white-2" name="contact[stitching-color]" id="color-9b">
-                  <label for="color-9b" class="gray"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Gray</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="carolina-blue-2" name="contact[stitching-color]" id="color-10">
-                  <label for="color-10" class="carolina-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Carolina Blue</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="forest-green-2" name="contact[stitching-color]" id="color-11">
-                  <label for="color-11" class="forest-green"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Forest Green</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="maroon-2" name="contact[stitching-color]" id="color-12">
-                  <label for="color-12" class="maroon"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Maroon</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="navy-blue-2" name="contact[stitching-color]" id="color-13">
-                  <label for="color-13" class="navy-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Navy Blue</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="orange-2" name="contact[stitching-color]" id="color-14">
-                  <label for="color-14" class="orange"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Orange</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="red-2" name="contact[stitching-color]" id="color-15">
-                  <label for="color-15" class="red"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Red</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="royal-blue-2" name="contact[stitching-color]" id="color-16">
-                  <label for="color-16" class="royal-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Royal Blue</div>
-                </div>
-              </fieldset>
-
-              <fieldset>
-                  <h6>Embroidery Color:</h6>
-                  <div class="radio-field">
-                      <input type="radio" value="black-3" name="contact[emb-color]" id="color-18">
-                      <label for="color-18" class="black"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Black</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="white-3" name="contact[emb-color]" id="color-24g">
-                      <label for="color-24g" class="white"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">White</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="gray-3" name="contact[emb-color]" id="color-21">
-                      <label for="color-21" class="gray"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Gray</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="carolina-blue-3" name="contact[emb-color]" id="color-19">
-                      <label for="color-19" class="carolina-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Carolina Blue</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="forest-green-3" name="contact[emb-color]" id="color-20">
-                      <label for="color-20" class="forest-green"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Forest Green</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="maroon-3" name="contact[emb-color]" id="color-23">
-                      <label for="color-23" class="maroon"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Maroon</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="navy-blue-3" name="contact[emb-color]" id="color-24">
-                      <label for="color-24" class="navy-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Navy Blue</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="orange-3" name="contact[emb-color]" id="color-24a">
-                      <label for="color-24a" class="orange"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Orange</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="red-3" name="contact[emb-color]" id="color-24c">
-                      <label for="color-24c" class="red"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Red</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="royal-blue-3" name="contact[emb-color]" id="color-24d">
-                      <label for="color-24d" class="royal-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Royal Blue</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="athletic-gold-3" name="contact[emb-color]" id="color-17">
-                      <label for="color-17" class="athletic-gold"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Ahtletic Gold</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="kelly-green-3" name="contact[emb-color]" id="color-22">
-                      <label for="color-22" class="kelly-green"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Kelly Green</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="purple-3" name="contact[emb-color]" id="color-24b">
-                      <label for="color-24b" class="purple"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Purple</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="silver-3" name="contact[emb-color]" id="color-24e">
-                      <label for="color-24e" class="silver"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Silver</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="vegas-gold-3" name="contact[emb-color]" id="color-24f">
-                      <label for="color-24f" class="vegas-gold"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Vegas Gold</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="yellow-3" name="contact[emb-color]" id="color-24h">
-                      <label for="color-24h" class="yellow"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Yellow</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="flor-green-3" name="contact[emb-color]" id="color-24i">
-                      <label for="color-24i" class="flor-green"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Florescent Green</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="flor-yellow-3" name="contact[emb-color]" id="color-24j">
-                      <label for="color-24j" class="flor-yellow"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Florescent Yellow</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="pink-3" name="contact[emb-color]" id="color-24k">
-                      <label for="color-24k" class="pink"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Pink</div>
-                  </div>
-              </fieldset>
-
-              <fieldset id="strap-color" class="strap-color">
-                <h6>Strap Color:</h6>
-                <div class="radio-field">
-                  <input type="radio" value="black-4" name="contact[strap-color]" id="color-25">
-                  <label for="color-25" class="black"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Black</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="carolina-blue-4" name="contact[strap-color]" id="color-26">
-                  <label for="color-26" class="carolina-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Carolina Blue</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="forest-green-4" name="contact[strap-color]" id="color-27">
-                  <label for="color-27" class="forest-green"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Forest Green</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="maroon-4" name="contact[strap-color]" id="color-28">
-                  <label for="color-28" class="maroon"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Maroon</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="navy-blue-4" name="contact[strap-color]" id="color-29">
-                  <label for="color-29" class="navy-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Navy Blue</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="orange-4" name="contact[strap-color]" id="color-30">
-                  <label for="color-30" class="orange"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Orange</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="red-4" name="contact[strap-color]" id="color-31">
-                  <label for="color-31" class="red"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Red</div>
-                </div>
-                <div class="radio-field">
-                  <input type="radio" value="royal-blue-4" name="contact[strap-color]" id="color-32">
-                  <label for="color-32" class="royal-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                  <div class="radio-tooltip">Royal Blue</div>
-                </div>
-              </fieldset>
-
-              <fieldset id="handle-color" class="handle-color">
-                  <h6>Handle Color:</h6>
-                  <div class="radio-field">
-                      <input type="radio" value="black-6" name="contact[handle-color]" id="color-51">
-                      <label for="color-51" class="black"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Black</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="white-6" name="contact[handle-color]" id="color-47">
-                      <label for="color-47" class="white"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">White</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="gray-6" name="contact[handle-color]" id="color-55">
-                      <label for="color-55" class="gray"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Gray</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="carolina-blue-6" name="contact[handle-color]" id="color-48">
-                      <label for="color-48" class="carolina-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Carolina Blue</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="forest-green-6" name="contact[handle-color]" id="color-52">
-                      <label for="color-52" class="forest-green"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Forest Green</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="maroon-6" name="contact[handle-color]" id="color-56">
-                      <label for="color-56" class="maroon"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Maroon</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="navy-blue-6" name="contact[handle-color]" id="color-49">
-                      <label for="color-49" class="navy-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Navy Blue</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="orange-6" name="contact[handle-color]" id="color-58">
-                      <label for="color-58" class="orange"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Orange</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="red-6" name="contact[handle-color]" id="color-57">
-                      <label for="color-57" class="red"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Red</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="royal-blue-6" name="contact[handle-color]" id="color-50">
-                      <label for="color-50" class="royal-blue"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Royal Blue</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="athletic-gold-6" name="contact[handle-color]" id="color-43">
-                      <label for="color-43" class="athletic-gold"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Gold</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="kelly-green-6" name="contact[handle-color]" id="color-53">
-                      <label for="color-53" class="kelly-green"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Green</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="purple-6" name="contact[handle-color]" id="color-46">
-                      <label for="color-46" class="purple"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Purple</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="silver-6" name="contact[handle-color]" id="color-54">
-                      <label for="color-54" class="silver"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Silver</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="vegas-gold-6" name="contact[handle-color]" id="color-45">
-                      <label for="color-45" class="vegas-gold"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Vegas Gold</div>
-                  </div>
-                  <div class="radio-field">
-                      <input type="radio" value="yellow-6" name="contact[handle-color]" id="color-44">
-                      <label for="color-44" class="yellow"><i class="fa fa-check" aria-hidden="true"></i></label>
-                      <div class="radio-tooltip">Yellow</div>
-                  </div>
-              </fieldset>
-
-              <div class="form-row">
-                <div class="form-field one-half">
-                  <label for="customFormCustomerName" class="hidden-label">{{ 'contact.form.name' | t }}</label>
-                  <input type="text" id="customFormCustomerName" name="contact[customerName]" placeholder="{{ 'contact.form.name' | t }}" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" required />
-                </div>
-                <div class="form-field one-half">
-                  <label for="customFormCustomerEmail" class="hidden-label">{{ 'contact.form.email' | t }}</label>
-                  <input type="email" id="customFormCustomerEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required />
-                </div>
+              <div class="form-field one-quarter">
+                <label for="customFormBagQuantity" class="hidden-label">QTY:</label>
+                <input
+                  type="number"
+                  id="customFormBagQuantity"
+                  name="contact[bagQty]"
+                  min="12"
+                  max="100"
+                  value="12"
+                  step="1"
+                  required />
               </div>
+            </div>
 
-              <div class="form-row">
-                <div class="form-field one-half">
-                  <label for="customFormCustomerPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
-                  <input type="tel" id="customFormCustomerPhone" name="contact[customerPhone]" placeholder="{{ 'contact.form.phone' | t }}" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" required />
-                </div>
-                <div class="form-field one-half">
-                  <label for="customFormCustomerTeam" class="hidden-label">Team Name:</label>
-                  <input type="text" id="customFormCustomerTeam" name="contact[customerTeamName]" placeholder="Team Name"/>
-                </div>
+            <fieldset id="bag-color">
+              <h6>Bag Color Selection:</h6>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="black-1"
+                  name="contact[bag-color]"
+                  id="color-1">
+                <label for="color-1" class="black">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Black</div>
               </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="white-1"
+                  name="contact[bag-color]"
+                  id="color-1a">
+                <label for="color-1a" class="white">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">White</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="gray-1"
+                  name="contact[bag-color]"
+                  id="color-1b">
+                <label for="color-1b" class="gray">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Gray</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="carolina-blue-1"
+                  name="contact[bag-color]"
+                  id="color-2">
+                <label for="color-2" class="carolina-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Carolina Blue</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="forest-green-1"
+                  name="contact[bag-color]"
+                  id="color-3">
+                <label for="color-3" class="forest-green">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Forest Green</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="maroon-1"
+                  name="contact[bag-color]"
+                  id="color-4">
+                <label for="color-4" class="maroon">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Maroon</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="navy-blue-1"
+                  name="contact[bag-color]"
+                  id="color-5">
+                <label for="color-5" class="navy-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Navy Blue</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="orange-1"
+                  name="contact[bag-color]"
+                  id="color-6">
+                <label for="color-6" class="orange">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Orange</div>
+              </div>
+              <div class="radio-field red">
+                <input
+                  type="radio"
+                  value="red-1"
+                  name="contact[bag-color]"
+                  id="color-7">
+                <label for="color-7" class="red">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Red</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="royal-blue-1"
+                  name="contact[bag-color]"
+                  id="color-8">
+                <label for="color-8" class="royal-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Royal Blue</div>
+              </div>
+            </fieldset>
 
-              <input type="submit" class="btn right" value="{{ 'contact.form.send' | t }}">
+            <fieldset id="secondary-material-color" class="secondary-bag-color">
+              <h6>Secondary Material Color:</h6>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="black-5"
+                  name="contact[secondary-material-color]"
+                  id="color-33">
+                <label for="color-33" class="black">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Black</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="white-5"
+                  name="contact[secondary-material-color]"
+                  id="color-34">
+                <label for="color-34" class="white">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">White</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="gray-5"
+                  name="contact[secondary-material-color]"
+                  id="color-35">
+                <label for="color-35" class="gray">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Gray</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="carolina-blue-5"
+                  name="contact[secondary-material-color]"
+                  id="color-36">
+                <label for="color-36" class="carolina-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Carolina Blue</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="forest-green-5"
+                  name="contact[secondary-material-color]"
+                  id="color-37">
+                <label for="color-37" class="forest-green">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Forest Green</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="maroon-5"
+                  name="contact[secondary-material-color]"
+                  id="color-38">
+                <label for="color-38" class="maroon">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Maroon</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="navy-blue-5"
+                  name="contact[secondary-material-color]"
+                  id="color-39">
+                <label for="color-39" class="navy-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Navy Blue</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="orange-5"
+                  name="contact[secondary-material-color]"
+                  id="color-40">
+                <label for="color-40" class="orange">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Orange</div>
+              </div>
+              <div class="radio-field red">
+                <input
+                  type="radio"
+                  value="red-5"
+                  name="contact[secondary-material-color]"
+                  id="color-41">
+                <label for="color-41" class="red">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Red</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="royal-blue-5"
+                  name="contact[secondary-material-color]"
+                  id="color-42">
+                <label for="color-42" class="royal-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Royal Blue</div>
+              </div>
+            </fieldset>
+
+            <fieldset id="stitching-color">
+              <h6>Stitching Color:</h6>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="black-2"
+                  name="contact[stitching-color]"
+                  id="color-9">
+                <label for="color-9" class="black">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Black</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="white-2"
+                  name="contact[stitching-color]"
+                  id="color-9a">
+                <label for="color-9a" class="white">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">White</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="white-2"
+                  name="contact[stitching-color]"
+                  id="color-9b">
+                <label for="color-9b" class="gray">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Gray</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="carolina-blue-2"
+                  name="contact[stitching-color]"
+                  id="color-10">
+                <label for="color-10" class="carolina-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Carolina Blue</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="forest-green-2"
+                  name="contact[stitching-color]"
+                  id="color-11">
+                <label for="color-11" class="forest-green">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Forest Green</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="maroon-2"
+                  name="contact[stitching-color]"
+                  id="color-12">
+                <label for="color-12" class="maroon">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Maroon</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="navy-blue-2"
+                  name="contact[stitching-color]"
+                  id="color-13">
+                <label for="color-13" class="navy-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Navy Blue</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="orange-2"
+                  name="contact[stitching-color]"
+                  id="color-14">
+                <label for="color-14" class="orange">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Orange</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="red-2"
+                  name="contact[stitching-color]"
+                  id="color-15">
+                <label for="color-15" class="red">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Red</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="royal-blue-2"
+                  name="contact[stitching-color]"
+                  id="color-16">
+                <label for="color-16" class="royal-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Royal Blue</div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <h6>Embroidery Color:</h6>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="black-3"
+                  name="contact[emb-color]"
+                  id="color-18">
+                <label for="color-18" class="black">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Black</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="white-3"
+                  name="contact[emb-color]"
+                  id="color-24g">
+                <label for="color-24g" class="white">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">White</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="gray-3"
+                  name="contact[emb-color]"
+                  id="color-21">
+                <label for="color-21" class="gray">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Gray</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="carolina-blue-3"
+                  name="contact[emb-color]"
+                  id="color-19">
+                <label for="color-19" class="carolina-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Carolina Blue</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="forest-green-3"
+                  name="contact[emb-color]"
+                  id="color-20">
+                <label for="color-20" class="forest-green">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Forest Green</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="maroon-3"
+                  name="contact[emb-color]"
+                  id="color-23">
+                <label for="color-23" class="maroon">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Maroon</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="navy-blue-3"
+                  name="contact[emb-color]"
+                  id="color-24">
+                <label for="color-24" class="navy-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Navy Blue</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="orange-3"
+                  name="contact[emb-color]"
+                  id="color-24a">
+                <label for="color-24a" class="orange">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Orange</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="red-3"
+                  name="contact[emb-color]"
+                  id="color-24c">
+                <label for="color-24c" class="red">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Red</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="royal-blue-3"
+                  name="contact[emb-color]"
+                  id="color-24d">
+                <label for="color-24d" class="royal-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Royal Blue</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="athletic-gold-3"
+                  name="contact[emb-color]"
+                  id="color-17">
+                <label for="color-17" class="athletic-gold">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Ahtletic Gold</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="kelly-green-3"
+                  name="contact[emb-color]"
+                  id="color-22">
+                <label for="color-22" class="kelly-green">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Kelly Green</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="purple-3"
+                  name="contact[emb-color]"
+                  id="color-24b">
+                <label for="color-24b" class="purple">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Purple</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="silver-3"
+                  name="contact[emb-color]"
+                  id="color-24e">
+                <label for="color-24e" class="silver">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Silver</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="vegas-gold-3"
+                  name="contact[emb-color]"
+                  id="color-24f">
+                <label for="color-24f" class="vegas-gold">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Vegas Gold</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="yellow-3"
+                  name="contact[emb-color]"
+                  id="color-24h">
+                <label for="color-24h" class="yellow">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Yellow</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="flor-green-3"
+                  name="contact[emb-color]"
+                  id="color-24i">
+                <label for="color-24i" class="flor-green">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Florescent Green</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="flor-yellow-3"
+                  name="contact[emb-color]"
+                  id="color-24j">
+                <label for="color-24j" class="flor-yellow">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Florescent Yellow</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="pink-3"
+                  name="contact[emb-color]"
+                  id="color-24k">
+                <label for="color-24k" class="pink">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Pink</div>
+              </div>
+            </fieldset>
+
+            <fieldset id="strap-color" class="strap-color">
+              <h6>Strap Color:</h6>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="black-4"
+                  name="contact[strap-color]"
+                  id="color-25">
+                <label for="color-25" class="black">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Black</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="carolina-blue-4"
+                  name="contact[strap-color]"
+                  id="color-26">
+                <label for="color-26" class="carolina-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Carolina Blue</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="forest-green-4"
+                  name="contact[strap-color]"
+                  id="color-27">
+                <label for="color-27" class="forest-green">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Forest Green</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="maroon-4"
+                  name="contact[strap-color]"
+                  id="color-28">
+                <label for="color-28" class="maroon">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Maroon</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="navy-blue-4"
+                  name="contact[strap-color]"
+                  id="color-29">
+                <label for="color-29" class="navy-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Navy Blue</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="orange-4"
+                  name="contact[strap-color]"
+                  id="color-30">
+                <label for="color-30" class="orange">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Orange</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="red-4"
+                  name="contact[strap-color]"
+                  id="color-31">
+                <label for="color-31" class="red">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Red</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="royal-blue-4"
+                  name="contact[strap-color]"
+                  id="color-32">
+                <label for="color-32" class="royal-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Royal Blue</div>
+              </div>
+            </fieldset>
+
+            <fieldset id="handle-color" class="handle-color">
+              <h6>Handle Color:</h6>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="black-6"
+                  name="contact[handle-color]"
+                  id="color-51">
+                <label for="color-51" class="black">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Black</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="white-6"
+                  name="contact[handle-color]"
+                  id="color-47">
+                <label for="color-47" class="white">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">White</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="gray-6"
+                  name="contact[handle-color]"
+                  id="color-55">
+                <label for="color-55" class="gray">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Gray</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="carolina-blue-6"
+                  name="contact[handle-color]"
+                  id="color-48">
+                <label for="color-48" class="carolina-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Carolina Blue</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="forest-green-6"
+                  name="contact[handle-color]"
+                  id="color-52">
+                <label for="color-52" class="forest-green">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Forest Green</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="maroon-6"
+                  name="contact[handle-color]"
+                  id="color-56">
+                <label for="color-56" class="maroon">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Maroon</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="navy-blue-6"
+                  name="contact[handle-color]"
+                  id="color-49">
+                <label for="color-49" class="navy-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Navy Blue</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="orange-6"
+                  name="contact[handle-color]"
+                  id="color-58">
+                <label for="color-58" class="orange">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Orange</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="red-6"
+                  name="contact[handle-color]"
+                  id="color-57">
+                <label for="color-57" class="red">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Red</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="royal-blue-6"
+                  name="contact[handle-color]"
+                  id="color-50">
+                <label for="color-50" class="royal-blue">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Royal Blue</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="athletic-gold-6"
+                  name="contact[handle-color]"
+                  id="color-43">
+                <label for="color-43" class="athletic-gold">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Gold</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="kelly-green-6"
+                  name="contact[handle-color]"
+                  id="color-53">
+                <label for="color-53" class="kelly-green">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Green</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="purple-6"
+                  name="contact[handle-color]"
+                  id="color-46">
+                <label for="color-46" class="purple">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Purple</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="silver-6"
+                  name="contact[handle-color]"
+                  id="color-54">
+                <label for="color-54" class="silver">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Silver</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="vegas-gold-6"
+                  name="contact[handle-color]"
+                  id="color-45">
+                <label for="color-45" class="vegas-gold">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Vegas Gold</div>
+              </div>
+              <div class="radio-field">
+                <input
+                  type="radio"
+                  value="yellow-6"
+                  name="contact[handle-color]"
+                  id="color-44">
+                <label for="color-44" class="yellow">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div class="radio-tooltip">Yellow</div>
+              </div>
+            </fieldset>
+
+            <div class="form-row">
+              <div class="form-field one-half">
+                <label for="customFormCustomerName" class="hidden-label">{{ 'contact.form.name' | t }}</label>
+                <input
+                  type="text"
+                  id="customFormCustomerName"
+                  name="contact[customerName]"
+                  placeholder="{{ 'contact.form.name' | t }}"
+                  value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                  required />
+              </div>
+              <div class="form-field one-half">
+                <label for="customFormCustomerEmail" class="hidden-label">{{ 'contact.form.email' | t }}</label>
+                <input
+                  type="email"
+                  id="customFormCustomerEmail"
+                  name="contact[email]"
+                  placeholder="{{ 'contact.form.email' | t }}"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field one-half">
+                <label for="customFormCustomerPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
+                <input
+                  type="tel"
+                  id="customFormCustomerPhone"
+                  name="contact[customerPhone]"
+                  placeholder="{{ 'contact.form.phone' | t }}"
+                  value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                  required />
+              </div>
+              <div class="form-field one-half">
+                <label for="customFormCustomerTeam" class="hidden-label">Team Name:</label>
+                <input
+                  type="text"
+                  id="customFormCustomerTeam"
+                  name="contact[customerTeamName]"
+                  placeholder="Team Name" />
+              </div>
+            </div>
+
+            <input
+              type="submit"
+              class="btn right"
+              value="{{ 'contact.form.send' | t }}">
 
           {% endform %}
 
@@ -565,51 +1065,50 @@
 <script type="text/javascript" src="{{ 'jquery.fancybox-buttons.js' | asset_url }}"></script>
 <script type="text/javascript">
   $(document).ready(function($) {
-    $(".strap-color").hide();
-    $(".handle-color").hide();
-    
-    $(".product-image-container").hide();
-    var selectedProduct = "#product-" + $("#customFormBagType").val();
-    $(selectedProduct).show();
-    
-    // Set default bag to mega-duffel
-    // $('#customFormBagType option[value="mega-duffel"]').attr("selected", true);
-    
-    $("#customFormBagType").change(function(){
-      if($(this).val() === "equipment-bag" || $(this).val() === "mega-duffel") {    
-        $(".strap-color").show();
-      } else {
-        $(".strap-color").hide();
-      }
-      
-      if($(this).val() === "laxpack" || $(this).val() === "laxpack-with-cooler") {  
-        $(".secondary-bag-color").show();
-      } else {
-        $(".secondary-bag-color").hide();
-      }
-      
-      if($(this).val() === "equipment-bag" || $(this).val() === "mega-duffel") {  
-        $(".handle-color").show();
-      } else {
-        $(".handle-color").hide();
-      }
-      
-       $(".product-image-container").hide();
-       var selectedProduct = "#product-" + $(this).val();
-       $(selectedProduct).show();
-    });
-
-    
-    // $(".fancybox").fancybox();
-    var fancyBoxCheck = setInterval(function() {
-        var fancyBox =  $(".fancybox");
-        if (fancyBox.length) {
-            fancyBox.fancybox();
-            clearInterval(fancyBoxCheck);
-        }
-    }, 100);
-    {% if product.tags contains "Custom" %}
-        $(".product-photo-thumb").fancybox();
-    {% endif %}
+  $(".strap-color").hide();
+              $(".handle-color").hide();
+              
+              $(".product-image-container").hide();
+              var selectedProduct = "#product-" + $("#customFormBagType").val();
+              $(selectedProduct).show();
+              
+              // Set default bag to mega-duffel
+              // $('#customFormBagType option[value="mega-duffel"]').attr("selected", true);
+              
+              $("#customFormBagType").change(function(){
+                if($(this).val() === "equipment-bag" || $(this).val() === "mega-duffel") {    
+                  $(".strap-color").show();
+                } else {
+                  $(".strap-color").hide();
+                }
+                
+                if($(this).val() === "laxpack" || $(this).val() === "laxpack-with-cooler") {  
+                  $(".secondary-bag-color").show();
+                } else {
+                  $(".secondary-bag-color").hide();
+                }
+                
+                if($(this).val() === "equipment-bag" || $(this).val() === "mega-duffel") {  
+                  $(".handle-color").show();
+                } else {
+                  $(".handle-color").hide();
+                }
+                
+                 $(".product-image-container").hide();
+                 var selectedProduct = "#product-" + $(this).val();
+                 $(selectedProduct).show();
+              });
+          
+              
+              // $(".fancybox").fancybox();
+              var fancyBoxCheck = setInterval(function() {
+                  var fancyBox =  $(".fancybox");
+                  if (fancyBox.length) {
+                      fancyBox.fancybox();
+                      clearInterval(fancyBoxCheck);
+                  }
+              }, 100);{% if product.tags contains "Custom" %}
+    $(".product-photo-thumb").fancybox();
+  {% endif %}
   });
 </script>
