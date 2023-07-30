@@ -10,30 +10,30 @@
         <div
           class="uk-position-relative"
           id="image-slideshow"
-          uk-slideshow="animation: fade; ratio:false">
+          uk-slideshow="animation: fade; min-height: 450; max-height:500">
           <ul
             class="uk-slideshow-items"
             uk-lightbox="animation: slide"
-            uk-height-viewport=max-height:100">
+            uk-height-large>
             <li>
               <a id="feature_image_link" href="{{ 'Spinner.gif' | asset_url }}">
-                <img
+                <img class="uk-height-large uk-object-contain"
                   id="feature_image"
                   src="{{ 'Spinner.gif' | asset_url }}"
-                  uk-cover>
+                  >
               </a>
             </li>
             {% for image in product.images %}
               <li>
-                <a class="" href="{{ image | image_url }}">
-                  <img src="{{ image | image_url }}" uk-cover>
+                <a class="uk-height-large uk-display-block" href="{{ image | image_url }}">
+                  <img class="uk-object-contain" src="{{ image | image_url }}" >
                 </a>
               </li>
             {% endfor %}
           </ul>
           <ul class="uk-thumbnav uk-margin-medium-top">
             <li uk-slideshow-item="0">
-              <a href="#"><img
+              <a  href="#"><img
                   id="thumb_image"
                   src={{ 'Spinner.gif' | asset_url }}
                   "></a>
@@ -71,7 +71,7 @@
                     value="{{ variant.id }}"
                     class="chngRadio"
                     data-index="{{ forloop.index }}"
-                    data-img="{{ variant.image | image_url }}"
+                    data-img="{{ variant.featured_media | image_url }}"
                     data-product="{{ product.title | replace: ' ', '-' | downcase}}"
                     data-variant_title="{{ variant.title }}">
                 </label>
