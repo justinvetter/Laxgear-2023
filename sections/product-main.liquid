@@ -1,0 +1,222 @@
+<section class="product-main uk-section">
+  <div class="uk-container uk-container-large">
+    {% include 'breadcrumb' %}
+    <div class="uk-child-width-expand uk-grid-medium" uk-grid>
+      <div>
+        <h1 class="uk-heading-small">{{ product.title }}</h1>
+        <div>{{ product.description }}</div>
+      </div>
+      <div class="uk-width-1-3">
+        <div
+          class="uk-position-relative"
+          id="image-slideshow"
+          uk-slideshow="animation: fade; min-height: 450; max-height:500">
+          <ul
+            class="uk-slideshow-items"
+            uk-lightbox="animation: slide"
+            uk-height-large>
+            <li>
+              <a id="feature_image_link" href="{{ 'Spinner.gif' | asset_url }}">
+                <img class="uk-height-large uk-object-contain"
+                  id="feature_image"
+                  src="{{ 'Spinner.gif' | asset_url }}"
+                  >
+              </a>
+            </li>
+            {% for image in product.images %}
+              <li>
+                <a class="uk-height-large uk-display-block" href="{{ image | image_url }}">
+                  <img class="uk-object-contain" src="{{ image | image_url }}" >
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+          <ul class="uk-thumbnav uk-margin-medium-top">
+            <li uk-slideshow-item="0">
+              <a  href="#"><img
+                  id="thumb_image"
+                  src={{ 'Spinner.gif' | asset_url }}
+                  "></a>
+            </li>
+            {% for thumbImage in product.images %}
+              <li uk-slideshow-item="{{ forloop.index }}">
+                <a href="#"><img src="{{ thumbImage | image_url }}"></a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+      </div>
+      <div>
+        <p class="uk-margin-small-bottom">Color /
+          <span id="variant_name">{{ product.selected_or_first_available_variant.title }}</span>
+        </p>
+        <br>
+        <form
+          method="post"
+          action="/cart/add"
+          class="uk-margin-medium-bottom">
+          <div class="product-selector">
+            {% for variant in product.variants %}
+              {% if variant.available %}
+                <label
+                  uk-tooltip="{{ variant.title }}"
+                  class="{{ variant.title | replace: ' ', '-' | downcase }}"
+                  for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">
+                  <img src="{{ variant.image | image_url: width: 48 }}">
+                  <input
+                    type="radio"
+                    id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
+                    name="id"
+                    value="{{ variant.id }}"
+                    class="chngRadio"
+                    data-index="{{ forloop.index }}"
+                    data-img="{{ variant.featured_media | image_url }}"
+                    data-product="{{ product.title | replace: ' ', '-' | downcase}}"
+                    data-variant_title="{{ variant.title }}">
+                </label>
+              {% else %}
+
+                <label
+                  uk-tooltip="{{ variant.title }} - Sold Out"
+                  class="disabled {{ variant.title | replace: ' ', '-' | downcase }}"
+                  for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">
+                  <img src="{{ variant.image | image_url: width: 48 }}">
+                  <input
+                    type="radio"
+                    id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
+                    name="id"
+                    value="{{ variant.id }}"
+                    class="disabled"
+                    disabled
+                    data-index="{{ forloop.index }}"
+                    data-img="{{ variant.image | image_url }}"
+                    data-product="{{ product.title | replace: ' ', '-' | downcase}}"
+                    data-variant_title="{{ variant.title }}">
+                </label>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <hr>
+
+          <h3 class="uk-text-bold">{{ product.price | money }}</h3>
+          <button type="submit" class="uk-button uk-button-secondary uk-text-bold uk-width-1-1">
+            <span uk-icon="cart" class="uk-padding-small uk-padding-remove-vertical uk-padding-remove-left"></span>
+            Add to cart</button>
+        </form>
+        <hr>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // This function looks at the variant query string in URL and displays the correct variant and selects the correct variant option
+  let params = (new URL(document.location)).searchParams;
+  let variantID = params.get("variant")
+  if (variantID) {
+    let radios = document.querySelectorAll('.chngRadio');
+    let value = variantID;
+
+// value you want to compare radio with
+
+// Loop through radios to find the correct variant
+    for (let i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].value == value) {
+        radios[i].checked = true;
+
+// Select the correct variant selector
+        document
+          .querySelectorAll("label[for='" + radios[i].id + "']")[0]
+          .classList
+          .add("selected")
+
+  // Swap feature image
+          document
+          .getElementById("feature_image")
+          .src = radios[i]
+          .dataset
+          .img
+
+  // Update image url for modal
+          document
+          .getElementById("feature_image_link")
+          .href = radios[i]
+          .dataset
+          .img
+
+  // Update active iamge for thumbnail
+          document
+          .getElementById("thumb_image")
+          .src = radios[i].dataset.img
+
+// only one radio can be logically checked, don't check the rest
+        break;
+      }
+    }
+  } else {
+
+    document.querySelectorAll('.chngRadio')[0].checked = true
+
+    document
+      .querySelectorAll("label[for='" + document.querySelectorAll('.chngRadio')[0].id + "']")[0]
+      .classList
+      .add("selected")
+
+      document
+      .getElementById("feature_image")
+      .src = document
+      .querySelectorAll('.chngRadio')[0]
+      .dataset
+      .img
+
+
+      document
+      .getElementById("thumb_image")
+      .src = document.querySelectorAll('.chngRadio')[0].dataset.img
+  }
+
+  var matches = document.querySelectorAll('.chngRadio');
+  for (match in matches) {
+    matches[match].onchange = function() {
+      document.getElementById("variant_name").innerHTML = this.dataset.variant_title
+      const currentURL = window.location.href;
+      document.getElementById("feature_image").src = this
+        .dataset
+        .img
+        document
+        .getElementById("feature_image_link")
+        .href = this
+        .dataset
+        .img
+        document
+        .getElementById("thumb_image")
+        .src = this
+        .dataset
+        .img
+        window
+        .history
+        .pushState("", "", "?variant=" + this.value)
+      var selected = document.getElementsByClassName("selected");
+      while (selected.length) 
+        selected[0].classList.remove("selected")
+
+
+
+      
+
+
+
+      UIkit
+        .slideshow("#image-slideshow")
+        .show(0)
+
+
+
+        document
+        .querySelectorAll("label[for='" + this.id + "']")[0]
+        .classList
+        .add("selected")
+    }
+  }
+</script>
