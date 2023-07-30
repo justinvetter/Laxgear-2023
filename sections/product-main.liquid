@@ -17,23 +17,23 @@
             uk-height-large>
             <li>
               <a id="feature_image_link" href="{{ 'Spinner.gif' | asset_url }}">
-                <img class="uk-height-large uk-object-contain"
+                <img
+                  class="uk-height-large uk-object-contain"
                   id="feature_image"
-                  src="{{ 'Spinner.gif' | asset_url }}"
-                  >
+                  src="{{ 'Spinner.gif' | asset_url }}">
               </a>
             </li>
             {% for image in product.images %}
               <li>
                 <a class="uk-height-large uk-display-block" href="{{ image | image_url }}">
-                  <img class="uk-object-contain" src="{{ image | image_url }}" >
+                  <img class="uk-object-contain" src="{{ image | image_url }}">
                 </a>
               </li>
             {% endfor %}
           </ul>
           <ul class="uk-thumbnav uk-margin-medium-top">
             <li uk-slideshow-item="0">
-              <a  href="#"><img
+              <a href="#"><img
                   id="thumb_image"
                   src={{ 'Spinner.gif' | asset_url }}
                   "></a>
@@ -111,7 +111,13 @@
 </section>
 
 <script>
-  // This function looks at the variant query string in URL and displays the correct variant and selects the correct variant option
+  // This function removes the wrapper and main-content class to let UIKit handle width of the page
+  document.querySelectorAll('[role="main"]').forEach(function(el) {
+    el.classList.remove('wrapper', 'main-content')
+  })
+
+
+// This function looks at the variant query string in URL and displays the correct variant and selects the correct variant option
   let params = (new URL(document.location)).searchParams;
   let variantID = params.get("variant")
   if (variantID) {
