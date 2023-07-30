@@ -7,7 +7,16 @@
         <div>{{ product.description }}</div>
         <ul uk-accordion>
           <li>
-            <a class="uk-accordion-title" href="#">Product Features</a>
+            <a
+              class="uk-accordion-title"
+              uk-toggle="target: .accordion-icon"
+              href="#">Product Features
+              <span class="accordion-icon" uk-icon="plus"></span>
+              <span
+                class="accordion-icon"
+                hidden
+                uk-icon="minus"></span>
+            </a>
             <div class="uk-accordion-content">
               {{ product.metafields.bag_features.bag_features | metafield_tag }}
             </div>
