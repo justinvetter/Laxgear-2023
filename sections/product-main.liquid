@@ -114,6 +114,34 @@
               {% endif %}
             {% endfor %}
           </div>
+
+
+          <label for="Quantity" class="quantity-selector">Quantity</label>
+          <div class="qtydiv">
+            <button
+              type="button"
+              id="custom-icon-minus"
+              class="js-qty__adjust--minus">
+              <span uk-icon="icon: minus"></span>
+            </button>
+
+            <input
+              type="text"
+              id="Quantity"
+              name="quantity"
+              value="1"
+              min="1"
+              pattern="[0-9]*"
+              class="quantity-selector quantity-input">
+
+            <button
+              type="button"
+              id="custom-icon-plus"
+              class="js-qty__adjust--plus icon-fallback-text">
+              <span uk-icon="icon: plus"></span>
+            </button>
+          </div>
+
           <hr>
 
           <h3 class="uk-text-bold">{{ product.price | money }}</h3>
@@ -240,6 +268,33 @@
         .querySelectorAll("label[for='" + this.id + "']")[0]
         .classList
         .add("selected")
+    }
+  }
+
+
+
+// Quatity Selector
+  let decrement = document.getElementById('custom-icon-minus');
+  let increment = document.getElementById('custom-icon-plus');
+
+
+  increment.addEventListener('click', adjustQuantity)
+  decrement.addEventListener('click', adjustQuantity)
+
+
+
+  function adjustQuantity() {
+    console.log('test')
+    let quantitySelector = document.getElementById('Quantity');
+    let quantity = parseInt(quantitySelector.getAttribute('value'));
+    if (this.classList.contains('js-qty__adjust--minus') && quantity > 1) {
+
+      quantity = quantity - 1;
+      quantitySelector.setAttribute('value', quantity);
+    } else if (this.classList.contains('js-qty__adjust--plus') && quantity >= 1 && quantity < 10) {
+
+      quantity = quantity + 1;
+      quantitySelector.setAttribute('value', quantity);
     }
   }
 </script>
