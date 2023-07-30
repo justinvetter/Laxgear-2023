@@ -31,6 +31,7 @@
                 object-fit: cover;
                 opacity: .5;
                 transition: opacity .25s ease-in-out;
+                padding: .25em;
             }
 
             &.selected {
@@ -48,6 +49,12 @@
     }
 
     .uk-slideshow {
+        .uk-slideshow-items{
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
         .uk-thumbnav {
             display: flex;
             justify-content: flex-start;
@@ -68,7 +75,7 @@
                 border: solid 1px black;
 
                     img {
-                        object-fit: cover;
+                        object-fit: contain;
                         opacity: .5;
                     }
                 }
