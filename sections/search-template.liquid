@@ -25,10 +25,15 @@
             {% if grid_results == false %}
 
               {% for item in search.results %}
-{%- comment %}<locksmith:cf4b>{% endcomment -%}
-  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: item, subject_parent: search, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-{%- comment %}</locksmith:cf4b>{% endcomment -%}
-{%- include 'bold-product' with item, hide_action: 'skip' -%}
+                {%- comment %}<locksmith:cf4b>{% endcomment -%}
+                {%- capture var %}
+                  {% render 'locksmith-variables', scope: 'subject', subject: item, subject_parent: search, variable: 'transparent' %}{% endcapture %}
+                {% if var == "true" %}
+                  {% else %}
+                    {% continue %}{% endif -%}
+                {%- comment %}</locksmith:cf4b>{% endcomment -%}
+                {%- if item.metafields.inventory.ShappifyHidden == 'true' -%}
+                  {%- continue -%}{%- endif -%}
                 {% include 'search-result' %}
               {% endfor %}
 
@@ -36,10 +41,15 @@
 
               <div class="grid-uniform">
                 {% for item in search.results %}
-{%- comment %}<locksmith:ebf4>{% endcomment -%}
-  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: item, subject_parent: search, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-{%- comment %}</locksmith:ebf4>{% endcomment -%}
-{%- include 'bold-product' with item, hide_action: 'skip' -%}
+                  {%- comment %}<locksmith:ebf4>{% endcomment -%}
+                  {%- capture var %}
+                    {% render 'locksmith-variables', scope: 'subject', subject: item, subject_parent: search, variable: 'transparent' %}{% endcapture %}
+                  {% if var == "true" %}
+                    {% else %}
+                      {% continue %}{% endif -%}
+                  {%- comment %}</locksmith:ebf4>{% endcomment -%}
+                  {%- if item.metafields.inventory.ShappifyHidden == 'true' -%}
+                    {%- continue -%}{%- endif -%}
                   {% assign grid_item_width = 'large--one-fifth medium--one-third small--one-half' %}
                   {% include 'search-result-grid' %}
                 {% endfor %}
@@ -60,7 +70,7 @@
       {% else %}
 
         {% comment %}
-          If search.performed is false, someone either accessed the page without the q parameter, or it was blank.
+        If search.performed is false, someone either accessed the page without the q parameter, or it was blank.
         {% endcomment %}
         <h1 class="text-center h2">{{ 'general.search.title' | t }}</h1>
         {% include 'search-bar' %}
@@ -76,21 +86,20 @@
 {% endunless %}
 
 {% schema %}
-{
-  "name":"Search",
-  "settings":[
-    {
-      "type": "checkbox",
-      "id": "product_show_compare_at_price",
-      "label": "Show compare at price",
-      "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "product_show_saved_amount",
-      "label": "Show saved amount",
-      "default": true
-    }  
-  ]
-}
+  {
+    "name": "Search",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "product_show_compare_at_price",
+        "label": "Show compare at price",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "product_show_saved_amount",
+        "label": "Show saved amount",
+        "default": true
+      }
+    ]
+  }
 {% endschema %}

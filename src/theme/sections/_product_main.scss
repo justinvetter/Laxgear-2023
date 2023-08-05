@@ -50,14 +50,19 @@
 
     .qtydiv {
         display: flex;
-
+        button{
+            border: solid 1px black;
+            background-color: white;
+        }
         .uk-icon {
             width: 10px;
             height: 10px;
         }
 
         #Quantity {
-            max-width: 3rem;
+            max-width: 2.5rem;
+            padding: 0 .25rem;
+            text-align: center;
         }
     }
 
