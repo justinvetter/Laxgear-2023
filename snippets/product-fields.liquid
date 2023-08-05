@@ -19,7 +19,7 @@
   {% if product.available and product.variants.size > 1 %}
   {% include 'swatch' with 'Color' %}
   {% endif %}
-
+<div class="bold_options" data-product-id="{{ product.id }}"></div>
   {% if section.settings.product_quantity_enable %}
   <label for="quantity" class="quantity-selector quantity-selector-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
   <input type="number" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">

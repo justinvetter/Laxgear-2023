@@ -1,3 +1,4 @@
+{%- if product.metafields.inventory.ShappifyHidden == 'true' -%}{%- break -%}{%- endif -%}
 <section class="product-main uk-section">
   <div class="uk-container uk-container-large">
     {% include 'breadcrumb' %}
@@ -72,8 +73,10 @@
         <form
           method="post"
           action="/cart/add"
+          enctype="multipart/form-data"
+          id="addToCartForm-{{ section.id }}"
           class="uk-margin-medium-bottom">
-          <div class="product-selector">
+          <div class="product-selector uk-margin-bottom">
             {% for variant in product.variants %}
               {% if variant.available %}
                 <label
@@ -116,12 +119,12 @@
           </div>
 
 
-          <label for="Quantity" class="quantity-selector">Quantity</label>
-          <div class="qtydiv">
+          <label for="Quantity" class="quantity-selector uk-margin-small-bottom">Quantity</label>
+          <div class="qtydiv uk-margin-medium-bottom">
             <button
               type="button"
               id="custom-icon-minus"
-              class="js-qty__adjust--minus">
+              class="js-qty__adjust--minus uk-button uk-button-default uk-button-small">
               <span uk-icon="icon: minus"></span>
             </button>
 
@@ -137,14 +140,25 @@
             <button
               type="button"
               id="custom-icon-plus"
-              class="js-qty__adjust--plus icon-fallback-text">
+              class="js-qty__adjust--plus uk-button uk-butotn-default uk-button-small">
               <span uk-icon="icon: plus"></span>
             </button>
           </div>
+<ul uk-accordion>
+    <li>
+        <a class=" uk-margin-top uk-text-center uk-accordion-title uk-background-muted uk-padding-small" href="#"><span uk-icon="plus-circle" class="uk-padding-small uk-padding-remove-vertical uk-padding-remove-left"></span>Add Embroidery</a>
+        <div class="uk-accordion-content">
+        <p>Please Note: Personalized embroidery will add 5-7 business days to your order.</p>
+        
+        <div class="bold_options" data-product-id="{{ product.id }}"></div>
+        </div>
+    </li>
+</ul>
 
+            
           <hr>
 
-          <h3 class="uk-text-bold">{{ product.price | money }}</h3>
+          <h3 class="uk-text-bold bold_option_price_display">{{ product.price | money }}</h3>
           <button type="submit" class="uk-button uk-button-secondary uk-text-bold uk-width-1-1">
             <span uk-icon="cart" class="uk-padding-small uk-padding-remove-vertical uk-padding-remove-left"></span>
             Add to cart</button>
