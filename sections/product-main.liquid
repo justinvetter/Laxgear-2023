@@ -50,15 +50,15 @@
               </li>
             {% endfor %}
           </ul>
-          <ul class="uk-thumbnav uk-margin-medium-top">
-            <li uk-slideshow-item="0">
+          <ul class="uk-thumbnav uk-margin-medium-top uk-padding-remove">
+            <li class="uk-padding-remove uk-margin-remove" uk-slideshow-item="0">
               <a href="#"><img
                   id="thumb_image"
                   src={{ 'Spinner.gif' | asset_url }}
                   "></a>
             </li>
             {% for thumbImage in product.images %}
-              <li uk-slideshow-item="{{ forloop.index }}">
+              <li class="uk-padding-remove uk-margin-remove" uk-slideshow-item="{{ forloop.index }}">
                 <a href="#"><img src="{{ thumbImage | image_url }}"></a>
               </li>
             {% endfor %}
@@ -84,7 +84,7 @@
                   uk-tooltip="{{ variant.title }}"
                   class="{{ variant.title | replace: ' ', '-' | downcase }}"
                   for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">
-                  <img src="{{ variant.image | image_url: width: 48 }}">
+                  <img src="{{ variant.image | image_url: width: 50 }}">
                   <input
                     type="radio"
                     id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
