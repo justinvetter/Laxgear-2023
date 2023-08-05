@@ -12553,6 +12553,24 @@ footer.site-footer .copyright {
 .product-main .product-selector label:hover img {
   opacity: 1;
 }
+.product-main .qtydiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.product-main .qtydiv button {
+  border: solid 1px black;
+  background-color: white;
+}
+.product-main .qtydiv .uk-icon {
+  width: 10px;
+  height: 10px;
+}
+.product-main .qtydiv #Quantity {
+  max-width: 2.5rem;
+  padding: 0 0.25rem;
+  text-align: center;
+}
 .product-main .uk-slideshow .uk-slideshow-items img {
   width: 100%;
   height: 100%;

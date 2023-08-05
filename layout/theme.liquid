@@ -65,9 +65,11 @@
 
     <!-- Header hook for plugins ================================================== -->
     {{ content_for_header }}
-    {%- include 'bold-common' -%}
-    {%- render 'sc-includes' -%}
-    {%- include 'bold-product' with product, hide_action: 'header' -%}
+
+{%- render 'bold-common' -%}
+{% render 'sc-includes' %}
+{% if template == 'product' and product.metafields.inventory.ShappifyHidden or product.type contains '_HIDDEN_' %}<meta name='robots' content='noindex'>{% endif %}
+
 
     {% include 'oldIE-js' %}
 

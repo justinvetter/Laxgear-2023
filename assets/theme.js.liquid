@@ -749,9 +749,8 @@ var ajaxifyShopify = (function(module, $) {
   buildCart = function (cart) {
 
  //Bold-ThemeGroupEFixCartBuildCart
-      if(typeof window.BOLD !== 'undefined' && typeof window.BOLD.common !== 'undefined' && typeof window.BOLD.common.cartDoctor !== 'undefined') {
-    // NOTE: "cart" should be the variable containing the cart json data
-    cart = window.BOLD.common.cartDoctor.fix(cart);
+if(window.BOLD && BOLD.common && BOLD.common.cartDoctor && typeof BOLD.common.cartDoctor.fix === 'function'){
+    cart = BOLD.common.cartDoctor.fix(cart);
 }
 
     // Empty cart if using default layout or not using the .load method to get /cart

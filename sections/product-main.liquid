@@ -1,3 +1,4 @@
+{%- if product.metafields.inventory.ShappifyHidden == 'true' -%}{%- break -%}{%- endif -%}
 <section class="product-main uk-section">
   <div class="uk-container uk-container-large">
     {% include 'breadcrumb' %}
@@ -7,7 +8,16 @@
         <div>{{ product.description }}</div>
         <ul uk-accordion>
           <li>
-            <a class="uk-accordion-title" href="#">Product Features</a>
+            <a
+              class="uk-accordion-title"
+              uk-toggle="target: .accordion-icon"
+              href="#">Product Features
+              <span class="accordion-icon" uk-icon="plus"></span>
+              <span
+                class="accordion-icon"
+                hidden
+                uk-icon="minus"></span>
+            </a>
             <div class="uk-accordion-content">
               {{ product.metafields.bag_features.bag_features | metafield_tag }}
             </div>
@@ -63,8 +73,10 @@
         <form
           method="post"
           action="/cart/add"
+          enctype="multipart/form-data"
+          id="addToCartForm-{{ section.id }}"
           class="uk-margin-medium-bottom">
-          <div class="product-selector">
+          <div class="product-selector uk-margin-bottom">
             {% for variant in product.variants %}
               {% if variant.available %}
                 <label
@@ -105,9 +117,48 @@
               {% endif %}
             {% endfor %}
           </div>
+
+
+          <label for="Quantity" class="quantity-selector uk-margin-small-bottom">Quantity</label>
+          <div class="qtydiv uk-margin-medium-bottom">
+            <button
+              type="button"
+              id="custom-icon-minus"
+              class="js-qty__adjust--minus uk-button uk-button-default uk-button-small">
+              <span uk-icon="icon: minus"></span>
+            </button>
+
+            <input
+              type="text"
+              id="Quantity"
+              name="quantity"
+              value="1"
+              min="1"
+              pattern="[0-9]*"
+              class="quantity-selector quantity-input">
+
+            <button
+              type="button"
+              id="custom-icon-plus"
+              class="js-qty__adjust--plus uk-button uk-butotn-default uk-button-small">
+              <span uk-icon="icon: plus"></span>
+            </button>
+          </div>
+<ul uk-accordion>
+    <li>
+        <a class=" uk-margin-top uk-text-center uk-accordion-title uk-background-muted uk-padding-small" href="#"><span uk-icon="plus-circle" class="uk-padding-small uk-padding-remove-vertical uk-padding-remove-left"></span>Add Embroidery</a>
+        <div class="uk-accordion-content">
+        <p>Please Note: Personalized embroidery will add 5-7 business days to your order.</p>
+        
+        <div class="bold_options" data-product-id="{{ product.id }}"></div>
+        </div>
+    </li>
+</ul>
+
+            
           <hr>
 
-          <h3 class="uk-text-bold">{{ product.price | money }}</h3>
+          <h3 class="uk-text-bold bold_option_price_display">{{ product.price | money }}</h3>
           <button type="submit" class="uk-button uk-button-secondary uk-text-bold uk-width-1-1">
             <span uk-icon="cart" class="uk-padding-small uk-padding-remove-vertical uk-padding-remove-left"></span>
             Add to cart</button>
@@ -231,6 +282,33 @@
         .querySelectorAll("label[for='" + this.id + "']")[0]
         .classList
         .add("selected")
+    }
+  }
+
+
+
+// Quatity Selector
+  let decrement = document.getElementById('custom-icon-minus');
+  let increment = document.getElementById('custom-icon-plus');
+
+
+  increment.addEventListener('click', adjustQuantity)
+  decrement.addEventListener('click', adjustQuantity)
+
+
+
+  function adjustQuantity() {
+    console.log('test')
+    let quantitySelector = document.getElementById('Quantity');
+    let quantity = parseInt(quantitySelector.getAttribute('value'));
+    if (this.classList.contains('js-qty__adjust--minus') && quantity > 1) {
+
+      quantity = quantity - 1;
+      quantitySelector.setAttribute('value', quantity);
+    } else if (this.classList.contains('js-qty__adjust--plus') && quantity >= 1 && quantity < 10) {
+
+      quantity = quantity + 1;
+      quantitySelector.setAttribute('value', quantity);
     }
   }
 </script>
