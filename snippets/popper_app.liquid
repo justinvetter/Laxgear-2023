@@ -1,0 +1,146 @@
+{% assign popper_popup_json = shop.metafields['5648753'].popups %}
+            <script>var Popper={variables:{shop: 'laxgear-the-ultimate-lacrosse-bag.myshopify.com',app_url:'https://popup.anglerfox.com'}};    {% assign collectionList = '' %}
+    {% for cartItem in cart.items %}
+        {% for collection in cartItem.product.collections %}
+        {% if forloop.first == true %}
+                {% assign collectionHandle = collection.handle  %}
+        {% else %}
+                {% assign collectionHandle = collection.handle  | prepend: '/' %}
+        {% endif %}
+            {% assign collectionList = collectionList | append: collectionHandle %}
+        {% endfor %}
+    {% endfor %}
+    Popper.variables.cartObj = {{cart|json}};
+    function ifPopupMatchUrl(configUrl){
+        let currentUrl = new URL(window.location.href);
+        switch (configUrl) {
+            case 'All Pages':
+                return true;
+                break;
+            case 'Home Page Only':
+                return currentUrl.pathname == '/';
+                break;
+            case 'All Product Page':
+                return currentUrl.pathname.startsWith('/products');
+                break;
+            case 'All Collection Page':
+                return currentUrl.pathname.startsWith('/collections') && !currentUrl.pathname.includes('/product');
+                break;
+            default:
+                return ifSpecificPageUrl(configUrl)
+                break;
+        }
+    }
+    function ifSpecificPageUrl(configUrl){
+        let currentUrl = new URL(window.location.href);
+        if (!/^(?:f|ht)tps?\:\/\//.test(configUrl)) {
+            configUrl = 'https://' + configUrl;
+        }
+        let url = new URL(configUrl);
+        return url.host+url.pathname == currentUrl.host+currentUrl.pathname;
+    }
+    function getCookie(cname) {
+        let name = cname + '=';
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return null;
+    }function checkCustomerTags(check,tags){
+        if(!check) return true;
+        let customerTags ={% if customer.tags %} {{customer.tags|json}}; {% else %} null; {% endif %}
+        if(!customerTags) return false;
+        return tags.some(r=> customerTags.includes(r))
+    }
+    function checkCartDiscount(check){
+        if(check==1) return true;
+        let discount_code = getCookie('discount_code');
+        let cartObj = Popper.variables.cartObj;
+        if(cartObj.cart_level_discount_applications.length>0 || cartObj.total_discount>0 || discount_code){
+            if(check==2)return true;
+        }
+        return false;
+    }
+    function checkCartAmount(condition,amount){
+        if(amount==0)return true;
+        let cartObj = Popper.variables.cartObj;
+        if(condition=='shorter' && (cartObj.total_price/100)<amount){
+            return true;
+        }
+        if(condition=='greater' && (cartObj.total_price/100)>amount){
+            return true;
+        }
+        return false;
+    }
+    function checkDateBetween(dates){
+        if(!dates || dates.length==0) return true;
+        let from = (new Date(dates[0]));//.setHours(0,0,0,0);//.getTime();
+        let to   = (new Date(dates[1]));//.getTime();
+        let check = (new Date());//.getTime();
+        if(check >= from && check <= to){
+            return true
+        }
+    }
+    function checkMobileOrDesktop(plateform){
+        const widnowWidth = window.innerWidth;
+        if(((widnowWidth<700 && plateform=='mobile') || (widnowWidth>700 && plateform=='desktop')) || plateform=='both'){
+            return true;
+        }
+        return false;
+    }
+    function checkProductCollection(isActive, type, name){
+        if(!isActive)return true;
+        if(type=='collection'){
+            let collectionObj = '{{ collectionList }}'.split('/');
+            return collectionObj.includes(name.name)
+        }
+        if(type=='product'){
+            let cartObj = Popper.variables.cartObj;
+            return cartObj.items.some(r=> name.id.includes(r.product_id))
+        }
+        return false;
+    }
+{% if popper_popup_json %}
+    Popper.variables.haveToShowPopup = false;
+    Popper.variables.popper_popup_json = {{popper_popup_json}};
+    Popper.variables.queryString = window.location.search;
+    Popper.variables.urlParams = new URLSearchParams(Popper.variables.queryString);
+    Popper.variables.popper_id = Popper.variables.urlParams.get('popper_id')
+    Popper.variables.popper_popup_json.forEach((popup)=>{
+        if(parseInt(popup.id)==parseInt(Popper.variables.popper_id)){
+            Popper.variables.haveToShowPopup=true;
+        }else if(popup.status){
+            let popup_json_value = JSON.parse(popup.popup_json)
+            let configuration = popup_json_value.configuration.input
+            if(
+                ifPopupMatchUrl(configuration.page_url) &&
+                checkMobileOrDesktop(configuration.visible_on) &&
+                checkDateBetween(configuration.available_on) &&
+                checkCartAmount(configuration.cart_value_condition, configuration.cart_value_amount) &&
+                checkCartDiscount(configuration.show_if_no_discount_on_cart) &&
+                checkCustomerTags(configuration.show_to_customer_tags, configuration.customer_tags) &&
+                checkProductCollection(configuration.show_on_cart_product_collection,configuration.cart_check_type, configuration.cart_check)
+            ){
+                Popper.variables.haveToShowPopup=true
+            }
+        }
+    })
+    if(Popper.variables.haveToShowPopup){
+        window.addEventListener('load', (event) => {
+            let script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = Popper.variables.app_url+'/frontend/dist/main.js';
+            script.async = true;
+            //script.dataset.cfasync = false;
+            document.head.appendChild(script);
+        })
+    }
+{% endif %}
+</script>

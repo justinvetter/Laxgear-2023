@@ -1,19 +1,5 @@
 {
   "current": {
-    "checkout_header_image": "",
-    "checkout_logo_image": "",
-    "checkout_logo_position": "left",
-    "checkout_logo_size": "medium",
-    "checkout_body_background_image": "",
-    "checkout_body_background_color": "#fff",
-    "checkout_input_background_color_mode": "white",
-    "checkout_sidebar_background_image": "",
-    "checkout_sidebar_background_color": "#fafafa",
-    "checkout_heading_font": "Helvetica Neue",
-    "checkout_body_font": "Helvetica Neue",
-    "checkout_accent_color": "#1990c6",
-    "checkout_button_color": "#e72221",
-    "checkout_error_color": "#ff6d6d",
     "color_primary": "#3c3b3b",
     "color_secondary": "#ffffff",
     "color_accent": "#e92829",
@@ -42,11 +28,11 @@
     "favicon": "shopify:\/\/shop_images\/favicon-final.png",
     "cart_notes_enable": false,
     "ajax_cart_method": "modal",
-    "social_twitter_link": "https:\/\/twitter.com\/laxgearbags",
+    "social_instagram_link": "https:\/\/www.instagram.com\/laxgear_laaveg\/?hl=en",
     "social_facebook_link": "https:\/\/www.facebook.com\/laxgear",
+    "social_twitter_link": "https:\/\/twitter.com\/laxgearbags",
     "social_pinterest_link": "",
     "social_google_plus_link": "",
-    "social_instagram_link": "https:\/\/www.instagram.com\/laxgear_laaveg\/?hl=en",
     "social_snapchat_link": "",
     "social_tumblr_link": "",
     "social_youtube_link": "",
@@ -57,6 +43,20 @@
     "share_twitter": true,
     "share_pinterest": true,
     "superscript_decimals": true,
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#1990c6",
+    "checkout_button_color": "#e72221",
+    "checkout_error_color": "#ff6d6d",
     "collection_sidebar_filters": "tags",
     "sections": {
       "header": {
@@ -280,6 +280,18 @@
     "blocks": {
       "4372474792694305445": {
         "type": "shopify:\/\/apps\/also-bought-related-products\/blocks\/app-embed-block\/b94b27b4-738d-4d92-9e60-43c22d1da3f2",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "6897675550240258559": {
+        "type": "shopify:\/\/apps\/promolayer\/blocks\/app-embed\/e4a9128f-b151-4feb-ad9e-ef8fbb63bf07",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "6406956604159796213": {
+        "type": "shopify:\/\/apps\/smartseo\/blocks\/smartseo\/7b0a6064-ca2e-4392-9a1d-8c43c942357b",
         "disabled": false,
         "settings": {
         }

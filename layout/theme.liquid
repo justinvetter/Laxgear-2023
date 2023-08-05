@@ -28,22 +28,22 @@
     {% endif %}
 
     <!-- Title and description ================================================== -->
-    <title>
+    {%- comment smartseo_integration_begin_meta_data -%}<title>
       {{ page_title }}{% if current_tags %}
         {% assign current_tags_joined = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: current_tags_joined }}{% endif %}
       {% if current_page != 1 %}
         &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}
       {% unless page_title contains shop.name %}
         &ndash; {{ shop.name }}{% endunless %}
-    </title>
+    </title>{%- endcomment smartseo_integration_end_meta_data -%}
 
 
     {% if page_description %}
       {%- comment %}<locksmith:4115>{% endcomment -%}
       {%- capture var %}
         {% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}
-      {% if var == 'true' %}<meta name="description" content="{{ page_description | escape }}">{% endif -%}
-      {%- comment %}original: <meta name="description" content="{{ page_description | escape }}">{%- endcomment %}
+      {% if var == 'true' %}{%- comment smartseo_integration_begin_meta_data -%}{%- comment smartseo_integration_begin_meta_data -%}<meta name="description" content="{{ page_description | escape }}">{%- endcomment smartseo_integration_end_meta_data -%}{%- endcomment smartseo_integration_end_meta_data -%}{% endif -%}
+      {%- comment %}original: {%- comment smartseo_integration_begin_meta_data -%}{%- comment smartseo_integration_begin_meta_data -%}<meta name="description" content="{{ page_description | escape }}">{%- endcomment smartseo_integration_end_meta_data -%}{%- endcomment smartseo_integration_end_meta_data -%}{%- endcomment %}
       {%- comment %}</locksmith:4115>{% endcomment -%}
     {% endif %}
 
@@ -151,7 +151,7 @@
 </script>
 
     <!-- Google crawl site verification -->
-  <meta name="google-site-verification" content="23fzZRN7OklEfp2EquPxdpDgCt9Qpv9PsSIeXQr_G48" /> </head>
+  <meta name="google-site-verification" content="23fzZRN7OklEfp2EquPxdpDgCt9Qpv9PsSIeXQr_G48" /> <div id='popper_app'>{% include 'popper_app.liquid' %}</div></head>
 
   <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}">
 
