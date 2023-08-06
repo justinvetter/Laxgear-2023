@@ -8,10 +8,6 @@
             "type": "product-features",
             "settings": {}
         },
-        "keyFeatures": {
-            "type": "product-key-features",
-            "settings": {}
-        },
         "reviews":{
             "type": "product-reviews",
             "settings": {}
@@ -20,7 +16,6 @@
     "order": [
         "main",
         "features",
-        "keyFeatures",
         "reviews"
     ]
 }
