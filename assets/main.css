@@ -12612,4 +12612,10 @@ footer.site-footer .copyright {
 .product-main .uk-slideshow .uk-thumbnav .uk-active img {
   opacity: 1;
 }
+.product-main .uk-accordion-content ul {
+  list-style: disc;
+}
+.product-main .uk-accordion-content ul li {
+  font-size: 15px;
+}
 /*# sourceMappingURL=main.css.map */
