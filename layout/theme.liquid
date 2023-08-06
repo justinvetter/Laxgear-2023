@@ -1,6 +1,6 @@
-{%- comment %}<locksmith:fe6c>{% endcomment -%}
-{%- include 'locksmith' -%}
-{%- comment %}</locksmith:fe6c>{% endcomment -%}
+{%- comment %}<locksmith:9230>{% endcomment -%}
+  {%- include 'locksmith' -%}
+{%- comment %}</locksmith:9230>{% endcomment -%}
 
 <!doctype html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -39,12 +39,7 @@
 
 
     {% if page_description %}
-      {%- comment %}<locksmith:4115>{% endcomment -%}
-      {%- capture var %}
-        {% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}
-      {% if var == 'true' %}{%- comment smartseo_integration_begin_meta_data -%}{%- comment smartseo_integration_begin_meta_data -%}<meta name="description" content="{{ page_description | escape }}">{%- endcomment smartseo_integration_end_meta_data -%}{%- endcomment smartseo_integration_end_meta_data -%}{% endif -%}
-      {%- comment %}original: {%- comment smartseo_integration_begin_meta_data -%}{%- comment smartseo_integration_begin_meta_data -%}<meta name="description" content="{{ page_description | escape }}">{%- endcomment smartseo_integration_end_meta_data -%}{%- endcomment smartseo_integration_end_meta_data -%}{%- endcomment %}
-      {%- comment %}</locksmith:4115>{% endcomment -%}
+      {%- comment smartseo_integration_begin_meta_data -%}{%- comment smartseo_integration_begin_meta_data -%}{%- comment %}<locksmith:8fd7>{% endcomment -%}{%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ page_description | escape }}">{% endif -%}{%- comment %}original: <meta name="description" content="{{ page_description | escape }}">{%- endcomment %}{%- comment %}</locksmith:8fd7>{% endcomment -%}{%- endcomment smartseo_integration_end_meta_data -%}{%- endcomment smartseo_integration_end_meta_data -%}
     {% endif %}
 
     <!-- Product meta ================================================== -->
