@@ -12618,4 +12618,12 @@ footer.site-footer .copyright {
 .product-main .uk-accordion-content ul li {
   font-size: 15px;
 }
+
+.reviews.uk-section {
+  padding-top: none;
+}
+.reviews .trustpilot-widget-trustbox-1-wrapper {
+  padding: 40px 70px;
+  background-color: white;
+}
 /*# sourceMappingURL=main.css.map */
