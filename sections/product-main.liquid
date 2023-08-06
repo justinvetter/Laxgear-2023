@@ -45,8 +45,8 @@
             {% for image in product.images %}
               {% unless image.attached_to_variant? %}
               <li>
-                <a class="uk-height-large uk-display-block" href="{{ image | image_url }}">
-                  <img class="uk-object-contain" src="{{ image | image_url }}">
+                <a class="uk-height-large uk-display-block" href="{{ image | image_url: height: 1000 }}">
+                  <img class="uk-object-contain" src="{{ image | image_url: height: 1000 }}">
                 </a>
               </li>
             {% endunless %}
@@ -59,10 +59,12 @@
                   src={{ 'Spinner.gif' | asset_url }}
                   "></a>
             </li>
+            {% assign number = 0 %}
             {% for thumbImage in product.images %}
               {% unless thumbImage.attached_to_variant? %}
-              <li class="uk-padding-remove uk-margin-remove" uk-slideshow-item="{{ forloop.index }}">
-                <a href="#"><img src="{{ thumbImage | image_url }}"></a>
+              {% assign number = number | plus: 1 %}
+              <li class="uk-padding-remove uk-margin-remove" uk-slideshow-item="{{ number }}">
+                <a href="#"><img src="{{ thumbImage | image_url: width: 50 }}"></a>
               </li>
             {% endunless %}
             {% endfor %}
