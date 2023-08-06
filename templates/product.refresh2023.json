@@ -1,21 +1,24 @@
 {
-    "sections": {
-        "main": {
-            "type": "product-main",
-            "settings": {}
-        },
-        "features": {
-            "type": "product-features",
-            "settings": {}
-        },
-        "reviews":{
-            "type": "product-reviews",
-            "settings": {}
-        }
+  "sections": {
+    "main": {
+      "type": "product-main",
+      "settings": {
+      }
     },
-    "order": [
-        "main",
-        "features",
-        "reviews"
-    ]
+    "features": {
+      "type": "product-features",
+      "settings": {
+      }
+    },
+    "reviews": {
+      "type": "product-reviews",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "features",
+    "reviews"
+  ]
 }
