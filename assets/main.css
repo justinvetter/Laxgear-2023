@@ -12620,7 +12620,7 @@ footer.site-footer .copyright {
 }
 
 .reviews.uk-section {
-  padding-top: none;
+  padding-top: 0;
 }
 .reviews #trustpilot-widget-trustbox-1-wrapper {
   padding: 40px 70px;
