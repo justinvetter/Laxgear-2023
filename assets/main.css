@@ -12622,7 +12622,7 @@ footer.site-footer .copyright {
 .reviews.uk-section {
   padding-top: none;
 }
-.reviews .trustpilot-widget-trustbox-1-wrapper {
+.reviews #trustpilot-widget-trustbox-1-wrapper {
   padding: 40px 70px;
   background-color: white;
 }
