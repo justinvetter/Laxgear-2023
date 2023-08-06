@@ -43,11 +43,13 @@
               </a>
             </li>
             {% for image in product.images %}
+              {% unless image.attached_to_variant? %}
               <li>
                 <a class="uk-height-large uk-display-block" href="{{ image | image_url }}">
                   <img class="uk-object-contain" src="{{ image | image_url }}">
                 </a>
               </li>
+            {% endunless %}
             {% endfor %}
           </ul>
           <ul class="uk-thumbnav uk-margin-medium-top uk-padding-remove">
@@ -58,9 +60,11 @@
                   "></a>
             </li>
             {% for thumbImage in product.images %}
+              {% unless thumbImage.attached_to_variant? %}
               <li class="uk-padding-remove uk-margin-remove" uk-slideshow-item="{{ forloop.index }}">
                 <a href="#"><img src="{{ thumbImage | image_url }}"></a>
               </li>
+            {% endunless %}
             {% endfor %}
           </ul>
         </div>
