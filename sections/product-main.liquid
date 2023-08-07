@@ -4,12 +4,27 @@
   <div class="uk-container uk-container-large">
     {% render 'breadcrumb' %}
     <div class="uk-child-width-expand uk-grid-medium" uk-grid>
-      <div>
+      <div class="uk-width-1-3@m">
         <h1 class="uk-heading-small">{{ product.title }}</h1>
-        <div>{{ product.description }}</div>
+        <div class="uk-visible@m">{{ product.description }}</div>
 
         {% if product.metafields.bag_features.bag_features != blank %}
         <ul uk-accordion>
+          <li class="uk-hidden@m">
+            <a
+              class="uk-accordion-title"
+              uk-toggle="target: .accordion-icon"
+              href="#">Description
+              <span class="accordion-icon" uk-icon="plus"></span>
+              <span
+                class="accordion-icon"
+                hidden
+                uk-icon="minus"></span>
+            </a>
+            <div class="uk-accordion-content">
+              {{ product.description }}
+            </div>
+          </li>
           <li>
             <a
               class="uk-accordion-title"
@@ -29,7 +44,7 @@
 {% endif %}
 
       </div>
-      <div class="uk-width-1-3">
+      <div class="uk-width-1-3@m">
         <div
           class="uk-position-relative"
           id="image-slideshow"
@@ -56,7 +71,7 @@
             {% endunless %}
             {% endfor %}
           </ul>
-          <ul class="uk-thumbnav uk-margin-medium-top uk-padding-remove">
+          <ul class="uk-thumbnav uk-margin-medium-top uk-padding-remove uk-flex-center uk-visible@m">
             <li class="uk-padding-remove uk-margin-remove" uk-slideshow-item="0">
               <a href="#"><img
                   id="thumb_image"
@@ -73,10 +88,13 @@
             {% endunless %}
             {% endfor %}
           </ul>
+          <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-hidden@m" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+    <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-hidden@m" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+    <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin uk-hidden@m"></ul>
         </div>
 
       </div>
-      <div>
+      <div class="uk-width-1-3@m">
         <p class="uk-margin-small-bottom">Color /
           <span id="variant_name">{{ product.selected_or_first_available_variant.title }}</span>
         </p>
