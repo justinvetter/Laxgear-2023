@@ -12576,12 +12576,6 @@ footer.site-footer .copyright {
   height: 100%;
 }
 .product-main .uk-slideshow .uk-thumbnav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   gap: 0.75rem;
 }
 .product-main .uk-slideshow .uk-thumbnav li {
@@ -12625,5 +12619,11 @@ footer.site-footer .copyright {
 .reviews .trustpilot-widget {
   padding: 40px 70px;
   background-color: white;
+}
+
+nav.breadcrumb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=main.css.map */
