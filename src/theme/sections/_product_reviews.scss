@@ -1,8 +1,9 @@
 .reviews {
-    &.uk-section{
+    &.uk-section {
         padding-top: 0;
     }
-    #trustpilot-widget-trustbox-1-wrapper{
+
+    .trustpilot-widget {
         padding: 40px 70px;
         background-color: white;
     }
