@@ -135,7 +135,27 @@
                   <input type="number" id="customFormBagQuantity" name="contact[bagQty]" min="12" max="100" value="12" step="1" required/>
                 </div>
               </div>
-
+<hr>
+              <ul uk-accordion>
+          <li>
+            <a
+              class="uk-accordion-title"
+              uk-toggle="target: .accordion-icon"
+              href="#">Bag Description
+              <span class="accordion-icon" uk-icon="plus"></span>
+              <span
+                class="accordion-icon"
+                hidden
+                uk-icon="minus"></span>
+            </a>
+            <div class="uk-accordion-content">
+              <p id="customDescription">
+Enjoy all the fantastic features and specifications offered in our standard Mega Duffel, but with the added advantage of customizing it to your preferences. With over 9 main material colors to choose from, as well as 15 different strap nylon webbing colors, you can create a bag that truly reflects your style. Take advantage of our all-inclusive pricing that covers embroidery and customization, and rest easy knowing your Custom Mega Duffel is backed by a full lifetime warranty. Don't wait any longer; click here to get started on designing your ideal bag today!
+            </p>
+            </div>
+          </li>
+        </ul>
+<hr>
               <fieldset id="bag-color">
                 <h6>Bag Color Selection:</h6>
                 <div class="radio-field">
@@ -582,7 +602,7 @@
         $(".strap-color").hide();
       }
       
-      if($(this).val() === "laxpack" || $(this).val() === "laxpack-with-cooler") {  
+      if($(this).val() === "laxpack" || $(this).val() === "lacrosse-backpack-with-cooler") {  
         $(".secondary-bag-color").show();
       } else {
         $(".secondary-bag-color").hide();
@@ -597,6 +617,16 @@
        $(".product-image-container").hide();
        var selectedProduct = "#product-" + $(this).val();
        $(selectedProduct).show();
+
+       if($(this).val() === "equipment-bag"){
+        $('#customDescription').text(`Enjoy all the fantastic features and specifications offered in our standard Equipment Bag, but with the added advantage of customizing it to your preferences. With over 10 main material colors to choose from, as well as 15 different strap nylon webbing colors, you can create a bag that truly reflects your style. Take advantage of our all-inclusive pricing that covers embroidery and customization, and rest easy knowing your Custom Equipment Bag is backed by a full lifetime warranty. Don't wait any longer; click here to get started on designing your ideal bag today!`)
+       } else if($(this).val() === "mega-duffel"){
+          $('#customDescription').text(`Enjoy all the fantastic features and specifications offered in our standard Mega Duffel, but with the added advantage of customizing it to your preferences. With over 9 main material colors to choose from, as well as 15 different strap nylon webbing colors, you can create a bag that truly reflects your style. Take advantage of our all-inclusive pricing that covers embroidery and customization, and rest easy knowing your Custom Mega Duffel is backed by a full lifetime warranty. Don't wait any longer; click here to get started on designing your ideal bag today!`)
+       }else if($(this).val() === "laxpack"){
+          $('#customDescription').text(`Enjoy all the fantastic features and specifications offered in our standard Laxpack, but with the added advantage of customizing it to your preferences. With over 10 main material colors to choose from, as well as 15 different strap nylon webbing colors, you can create a bag that truly reflects your style. Take advantage of our all-inclusive pricing that covers embroidery and customization, and rest easy knowing your Custom Laxpack is backed by a full lifetime warranty. Don't wait any longer; click here to get started on designing your ideal bag today!`)
+       }else if($(this).val() === "lacrosse-backpack-with-cooler"){
+          $('#customDescription').text(`Enjoy all the fantastic features and specifications offered in our standard Laxpack with Cooler, but with the added advantage of customizing it to your preferences. With over 10 main material colors to choose from, as well as 15 different strap nylon webbing colors, you can create a bag that truly reflects your style. Take advantage of our all-inclusive pricing that covers embroidery and customization, and rest easy knowing your Custom Laxpack is backed by a full lifetime warranty. Don't wait any longer; click here to get started on designing your ideal bag today!`)
+       }
     });
 
     
