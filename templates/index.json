@@ -19,11 +19,11 @@
       "type": "home-product-carousel",
       "settings": {
         "featured_product_list": [
-          "backpack",
-          "small-lacrosse-backpack",
-          "lacrosse-backpack-with-cooler",
-          "lacrosse-duffel-bag",
-          "laxgear-equipment-bag"
+          "laxpack",
+          "laxpack-mini-2",
+          "laxpack-with-cooler",
+          "mega-duffel",
+          "equipment-bag"
         ]
       }
     },
