@@ -2,7 +2,8 @@
 
 {% paginate collection.products by limit %}
 
-{% include 'breadcrumb' %}
+{% render 'breadcrumb' %}
+
 
 {% assign has_sidebar = false %}
 {% if collection.all_tags.size > 0 and section.settings.enable_sidebar %}
@@ -12,14 +13,13 @@
 <div class="grid grid-border">
 
   {% if has_sidebar %}
-      <aside class="sidebar grid-item large--one-fifth collection-filters" id="collectionFilters">
+      {% comment %} <aside class="sidebar grid-item large--one-fifth collection-filters" id="collectionFilters">
         {% render 'collection-sidebar' %}
-      </aside>
+      </aside> {% endcomment %}
 
-  </aside>
   {% endif %}
 
-  <div class="grid-item{% if has_sidebar %} large--four-fifths grid-border--left{% endif %}">
+  <div class="grid-item{% if has_sidebar %} large--four-fifths {% endif %}">
 
     {% comment %}
       Different markup if description is set
@@ -33,20 +33,20 @@
       </header>
       <hr{% if has_sidebar %} class="hr--offset-left"{% endif %}>
       <div class="section-header">
-        <div class="section-header--right">
+        {% comment %} <div class="section-header--right">
           {% include 'collection-sorting' %}
           {% include 'collection-views' %}
           {% include 'toggle-filters' %}
-        </div>
+        </div> {% endcomment %}
       </div>
     {% else %}
     <header class="section-header">
       <h1 class="section-header--title section-header--left h1">{{ collection.title }}</h1>
-      <div class="section-header--right">
+      {% comment %} <div class="section-header--right">
         {% include 'collection-sorting' %}
         {% include 'collection-views' %}
         {% include 'toggle-filters' %}
-      </div>
+      </div> {% endcomment %}
     </header>
     {% endif %}
 
