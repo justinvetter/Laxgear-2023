@@ -12,8 +12,10 @@
 <div class="grid grid-border">
 
   {% if has_sidebar %}
-  <aside class="sidebar grid-item large--one-fifth collection-filters" id="collectionFilters">
-    {% include 'collection-sidebar' %}
+      <aside class="sidebar grid-item large--one-fifth collection-filters" id="collectionFilters">
+        {% render 'collection-sidebar' %}
+      </aside>
+
   </aside>
   {% endif %}
 
