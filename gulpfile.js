@@ -8,8 +8,10 @@ const terser = require('gulp-terser');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+const sassGlob = require('gulp-sass-glob');
 const replace = require('gulp-replace');
 const browsersync = require('browser-sync').create();
+const purgecss = require('gulp-purgecss');
 
 // File paths
 const files = {
@@ -23,6 +25,14 @@ function scssTask() {
 		.pipe(sass()) // compile SCSS to CSS
 		.pipe(postcss([autoprefixer(), cssnano()])) // PostCSS plugins
 		.pipe(dest('assets', { sourcemaps: '.' })); // put final CSS in dist folder with sourcemap
+}
+
+function purgeCssTask() {
+	return src('assets/**/*.css')
+	.pipe(purgecss({
+		content: ['sections/**/*.liquid', 'snippits/**/*.liquid', 'templates/**/*.liquid'],
+	}))
+	.pipe(dest('assets'))
 }
 
 // JS task: concatenates and uglifies JS files to script.js
@@ -104,3 +114,5 @@ exports.bs = series(
 	browserSyncServe,
 	bsWatchTask
 );
+
+exports.purgecss = series(purgeCssTask);
