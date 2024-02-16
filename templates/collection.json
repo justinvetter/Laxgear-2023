@@ -1,0 +1,21 @@
+{
+    "name": "Collection",
+    "sections": {
+        "breadcrumb": {
+            "type": "breadcrumb-newz",
+            "settings": {
+            }
+        },
+        "collection-grid": {
+            "type": "collection-grid",
+            "settings": {
+                "title": "Bags",
+                "collection": "apparel"
+            }
+        }
+    },
+    "order": [
+        "breadcrumb",
+        "collection-grid"
+    ]
+}

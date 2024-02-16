@@ -2,3 +2,4 @@
 .vscode/
 
 prepros.config
+node_modules

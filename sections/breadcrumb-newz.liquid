@@ -1,0 +1,32 @@
+<nav aria-label="breadcrumb uk-section">
+  <ul class="uk-breadcrumb uk-container uk-container-large uk-padding uk-padding-remove-top">
+    <li><a href="/">Home</a></li>
+
+    {% if template contains 'product' %}
+      <li>
+        <a href="{{ product.url }}">{{ product.title }}</a>
+      </li>
+
+    {% elsif template contains 'collection' and collection %}
+      <li>
+        <a href="{{ collection.url }}">{{ collection.title }}</a>
+      </li>
+
+    {% elsif template contains 'blog' and blog %}
+      <li>
+        <a href="{{ blog.url }}">{{ blog.title }}</a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
+
+{% render 'remove-wrapper-main-content' %}
+
+{% schema %}
+{
+  "name": "Breadcrumb Nav",
+  "settings": [
+
+  ]
+}
+{% endschema %}

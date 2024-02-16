@@ -1,0 +1,30 @@
+<div>
+  <a class="uk-box-shadow-hover-small" href="{{ product.url | within: current_collection }}">
+    <div class="uk-card uk-card-small">
+      <div class="uk-card-media-top uk-flex uk-flex-center">
+        {{ product.featured_image | image_url: height: 240, width: auto | image_tag: class: 'uk-object-contain', loading: 'eager', height: 240, width: auto, alt: product.title }}
+      </div>
+      <div class="uk-card-body uk-text-center">
+        <div class="variants uk-flex uk-flex-center">
+          {% comment %}
+            TODO: Create a check to make sure these variant boxes only show up on bags and not apperal.
+            TODO: Fix hover for products
+            TODO: Remove legacy page layout
+          {% endcomment %}
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              <div
+                style="width:15px; height: 15px"
+                class="color-box {{ variant.title | replace: ' ', '-' | downcase }}"
+              ></div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <p>
+          <span class="uk-text-bold">{{ product.title }}</span><br>
+          {{ product.price | money }}
+        </p>
+      </div>
+    </div>
+  </a>
+</div>
