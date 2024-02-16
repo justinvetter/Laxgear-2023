@@ -1,8 +1,13 @@
+{% comment %}
+  This file is no nonger needed
+  Moved to collection.json
+{% endcomment %}
+
 {% assign limit = section.settings.grid | times: section.settings.rows %}
 
 {% paginate collection.products by limit %}
 
-{% render 'breadcrumb' %}
+{% render 'breadcrumb-new' %}
 
 
 {% assign has_sidebar = false %}
