@@ -29,7 +29,7 @@ a{
 
 header#header {
   position: relative;
-  margin: 0 15vw;
+  // margin: 0 15vw;
   padding: 3em 0 1em 0;
   box-sizing: border-box;
   display: flex;
@@ -59,7 +59,7 @@ header#header {
     }
   }
   @media (max-width: 1500px) {
-    margin: 0 6vw;
+    // margin: 0 6vw;
     padding: 1em 0 2em 0;
     nav {
       .left-nav,
