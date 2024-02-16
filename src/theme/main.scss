@@ -1,6 +1,7 @@
 // Vars custom vars per componet in UI kit
-@import 'variables.scss';
 
+
+@import 'variables.scss';
 @import 'uikit/scss/variables.scss';
 @import 'uikit/scss/mixins.scss';
 
@@ -12,6 +13,8 @@
 @import 'base.scss';
 
 @import 'templates/product';
+// @import 'templates/**/*.scss';
+
 
 @import 'sections/home-features';
 @import 'sections/home-product-carousel';
@@ -22,6 +25,8 @@
 @import 'sections/product_key_features';
 @import 'sections/product_reviews';
 @import 'sections/breadcrumbs';
+@import 'sections/collection-grid';
 
 
+@import 'snippits/collection_cards';
 

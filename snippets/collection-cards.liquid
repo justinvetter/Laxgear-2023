@@ -1,0 +1,34 @@
+{% assign non_featured_non_variant_image = false %}
+
+{% for image in product.images %}
+  {% unless image.attached_to_variant? %}
+    {% assign non_featured_non_variant_image = image %}
+    {% break %}
+  {% endunless %}
+{% endfor %}
+
+<div class="product-card">
+  <a alt="{{ product.title }}" href="{{ product.url }}">
+    {{
+      product.featured_image | image_url: height: 240 | image_tag: class: 'featured-image', loading: 'eager', height: 240, alt: product.title
+    }}
+    {{
+      non_featured_non_variant_image | image_url: height: 400 | image_tag: class: 'hover-image', loading: 'eager', height: 240, alt: non_featured_non_variant_image.alt, style: 'display: none;'
+    }}
+    <div class="prodct-card-content">
+        {% unless collection.handle == 'apparel' %}
+      <ul class="variants">
+        {% for color in product.variants %}
+
+          {% if color.available %}
+            <li class="color-box {{ color.title | replace: ' ', '-' | downcase }}"></li>
+
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endunless %}
+      <h3>{{ product.title }}</h3>
+      <p>{{ product.price | money }}</p>
+    </div>
+  </a>
+</div>
