@@ -11,7 +11,7 @@
     {% endif %}
   </div>
 {% endif %}
-<header id="header">
+<header id="header" class="uk-section">
   <span class="fa-solid fa-bars uk-hidden@s mobile-toggle" uk-toggle="target: #mobile-nav">{% if cart.item_count != 0 %}<span class="uk-badge">
 {{ cart.item_count }}</span>{% endif %}</span>
 
@@ -115,7 +115,7 @@
   <div class="logo">
     <a href="/"><img src="{{ 'laxgear-footer-logo.png' | asset_url }}"></a>
   </div>
-  <nav>
+  <nav class="uk-container uk-container-large">
     <div class="left-nav uk-width-1-2@l uk-width-auto uk-flex uk-flex-left">
       <ul>
         {% for link in linklists.main-menu-2023.links %}
