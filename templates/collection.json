@@ -1,21 +1,20 @@
 {
-    "name": "Collection",
-    "sections": {
-        "breadcrumb": {
-            "type": "breadcrumb-newz",
-            "settings": {
-            }
-        },
-        "collection-grid": {
-            "type": "collection-grid",
-            "settings": {
-                "title": "Bags",
-                "collection": "apparel"
-            }
-        }
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb-newz",
+      "settings": {
+      }
     },
-    "order": [
-        "breadcrumb",
-        "collection-grid"
-    ]
+    "collection-grid": {
+      "type": "collection-grid",
+      "settings": {
+        "title": "Bags",
+        "collection": "apparel"
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "collection-grid"
+  ]
 }
