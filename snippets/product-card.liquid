@@ -2,14 +2,7 @@
   <a class="uk-box-shadow-hover-small" href="{{ product.url | within: current_collection }}">
     <div class="uk-card uk-card-small">
       <div class="uk-card-media-top uk-flex uk-flex-center">
-        <img
-          loading="eager"
-          class="uk-object-contain"
-          height="240"
-          width="auto"
-          src="{{product.featured_image | image_url: height: 240, width: auto }}"
-          alt=""
-        >
+        {{ product.featured_image | image_url: height: 240, width: auto | image_tag: class: 'uk-object-contain', loading: 'eager', height: 240, width: auto, alt: product.title }}
       </div>
       <div class="uk-card-body uk-text-center">
         <div class="variants uk-flex uk-flex-center">
@@ -20,7 +13,6 @@
           {% endcomment %}
           {% for variant in product.variants %}
             {% if variant.available %}
-              {{ variant.title }}
               <div
                 style="width:15px; height: 15px"
                 class="color-box {{ variant.title | replace: ' ', '-' | downcase }}"
