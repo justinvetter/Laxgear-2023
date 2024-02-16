@@ -24,6 +24,9 @@
     {% endif %}
   <div class="product-grid">
     {% for product in collection.products limit: 12 %}  
+  {%- comment %}<locksmith:50ed>{% endcomment -%}
+    {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+  {%- comment %}</locksmith:50ed>{% endcomment -%}  
   {%- if product.metafields.inventory.ShappifyHidden == 'true' -%}{%- continue -%}{%- endif -%}
     {% render 'collection-cards', product: product %}
   
