@@ -75,7 +75,7 @@
             <li class="uk-padding-remove uk-margin-remove" uk-slideshow-item="0">
               <a href="#"><img
                   id="thumb_image"
-                  src={{ 'Spinner.gif' | asset_url }}
+                  src="{{ 'Spinner.gif' | asset_url }}
                   "></a>
             </li>
             {% assign number = 0 %}
@@ -173,6 +173,8 @@
               <span uk-icon="icon: plus"></span>
             </button>
           </div>
+          {% assign productCollections = product.collections |  map: "handle" %}
+          {% if productCollections contains section.settings.collection %}
           <ul uk-accordion>
             <li>
               <a class=" uk-margin-top uk-text-center uk-accordion-title uk-background-muted uk-padding-small" href="#">
@@ -185,6 +187,8 @@
             </li>
           </ul>
 
+            
+        {% endif %}
 
           <hr>
 
@@ -331,7 +335,6 @@
 
 
   function adjustQuantity() {
-    console.log('test')
     let quantitySelector = document.getElementById('Quantity');
     let quantity = parseInt(quantitySelector.getAttribute('value'));
     if (this.classList.contains('js-qty__adjust--minus') && quantity > 1) {
@@ -345,3 +348,18 @@
     }
   }
 </script>
+
+{% schema %}
+{
+  "name": "Product Main",
+  "class": "product-main",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Embroidery Collection"
+    }
+    ]
+}
+{% endschema %}
