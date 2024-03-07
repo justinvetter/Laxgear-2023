@@ -1,5 +1,13 @@
 {%- if product.metafields.inventory.ShappifyHidden == 'true' -%}
   {%- break -%}{%- endif -%}
+  {% assign numberVariants = product.variants.size %}
+  {% if product.variants.size > 1 %}
+    {% assign hasVariants = true %}
+  {% else %}
+    {% assign hasVariants = false %}
+  {% endif %}
+
+  {{ product.options.size }}
 <section class="product-main uk-section">
   <div class="uk-container uk-container-large">
     {% render 'breadcrumb-new' %}
@@ -75,7 +83,7 @@
             <li class="uk-padding-remove uk-margin-remove" uk-slideshow-item="0">
               <a href="#"><img
                   id="thumb_image"
-                  src={{ 'Spinner.gif' | asset_url }}
+                  src="{{ 'Spinner.gif' | asset_url }}
                   "></a>
             </li>
             {% assign number = 0 %}
@@ -95,9 +103,11 @@
 
       </div>
       <div class="uk-width-1-3@m">
+        {% if hasVariants %}
         <p class="uk-margin-small-bottom">Color /
           <span id="variant_name">{{ product.selected_or_first_available_variant.title }}</span>
         </p>
+      {% endif %}
         <br>
         <form
           method="post"
@@ -107,12 +117,27 @@
           class="uk-margin-medium-bottom">
           <div class="product-selector uk-margin-bottom">
             {% for variant in product.variants %}
+
+
+            {% if hasVariants %}
+              {% assign featuredimage = variant.featured_image %}
+            {% else %}
+              {% assign featuredimage = product.featured_image %}
+            {% endif %}
+
               {% if variant.available %}
+                {% if hasVariants %}
+                  
+                {% endif %}
                 <label
                   uk-tooltip="{{ variant.title }}"
                   class="{{ variant.title | replace: ' ', '-' | downcase }}"
-                  for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">
-                  <img src="{{ variant.image | image_url: width: 50 }}">
+                  for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
+                  {% unless hasVariants %}
+                    style="display:none"
+                   {% endunless %}
+                  >
+                  <img src="{{ featuredimage | image_url: width: 50 }}">
                   <input
                     type="radio"
                     id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
@@ -120,7 +145,7 @@
                     value="{{ variant.id }}"
                     class="chngRadio"
                     data-index="{{ forloop.index }}"
-                    data-img="{{ variant.featured_media | image_url }}"
+                    data-img="{{ featuredimage | image_url }}"
                     data-product="{{ product.title | replace: ' ', '-' | downcase}}"
                     data-variant_title="{{ variant.title }}">
                 </label>
@@ -173,6 +198,8 @@
               <span uk-icon="icon: plus"></span>
             </button>
           </div>
+          {% assign productCollections = product.collections |  map: "handle" %}
+          {% if productCollections contains section.settings.collection %}
           <ul uk-accordion>
             <li>
               <a class=" uk-margin-top uk-text-center uk-accordion-title uk-background-muted uk-padding-small" href="#">
@@ -184,9 +211,9 @@
               </div>
             </li>
           </ul>
-
-
           <hr>
+            
+        {% endif %}
 
           <h3 class="uk-text-bold bold_option_price_display">{{ product.price | money }}</h3>
           <button type="submit" class="uk-button uk-button-secondary uk-text-bold uk-width-1-1">
@@ -331,7 +358,6 @@
 
 
   function adjustQuantity() {
-    console.log('test')
     let quantitySelector = document.getElementById('Quantity');
     let quantity = parseInt(quantitySelector.getAttribute('value'));
     if (this.classList.contains('js-qty__adjust--minus') && quantity > 1) {
@@ -345,3 +371,18 @@
     }
   }
 </script>
+
+{% schema %}
+{
+  "name": "Product Main",
+  "class": "product-main",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Embroidery Collection"
+    }
+    ]
+}
+{% endschema %}

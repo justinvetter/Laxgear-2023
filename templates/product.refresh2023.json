@@ -3,6 +3,7 @@
     "main": {
       "type": "product-main",
       "settings": {
+        "collection": "all"
       }
     },
     "features": {
