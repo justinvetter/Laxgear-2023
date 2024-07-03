@@ -14,7 +14,13 @@
         <h1 class="uk-heading-small">{{ product.title }}</h1>
         <div class="uk-visible@m">{{ product.description }}</div>
 
-        {% if product.metafields.bag_features.bag_features != blank %}
+        {% if product.metafields.bag_features.bag_features != blank or product.variants.first.metafields.variantData.custom_bag_variant_type != null %}
+          {% if product.variants.first.metafields.variantData.custom_bag_variant_type != null %}
+            {% assign prod = product.variants.first.metafields.variantData.custom_bag_variant_type.value %}
+            {% else %}
+            {% assign prod = product %}
+            {% endif %}
+
         <ul uk-accordion>
           <li class="uk-hidden@m">
             <a
@@ -43,7 +49,7 @@
                 uk-icon="minus"></span>
             </a>
             <div class="uk-accordion-content">
-              {{ product.metafields.bag_features.bag_features | metafield_tag }}
+              {{ prod.metafields.bag_features.bag_features | metafield_tag }}
             </div>
           </li>
         </ul>
@@ -67,7 +73,13 @@
                   src="{{ 'Spinner.gif' | asset_url }}">
               </a>
             </li>
-            {% for image in product.images %}
+            {% assign mainImages = product.images %}
+            {% assign secondaryImages = nil %}
+            {% if product.variants.first.metafields.variantData.custom_bag_variant_type != null %}
+              {% assign secondaryImages = product.variants.first.metafields.variantData.custom_bag_variant_type.value.images %}
+            {% endif %}
+            {% assign prodImages = mainImages | concat: secondaryImages %}
+            {% for image in prodImages %}
               {% unless image.attached_to_variant? %}
               <li>
                 <a class="uk-height-large uk-display-block" href="{{ image | image_url: height: 1000 }}">
@@ -85,7 +97,7 @@
                   "></a>
             </li>
             {% assign number = 0 %}
-            {% for thumbImage in product.images %}
+            {% for thumbImage in prodImages %}
               {% unless thumbImage.attached_to_variant? %}
               {% assign number = number | plus: 1 %}
               <li class="uk-padding-remove uk-margin-remove" uk-slideshow-item="{{ number }}">

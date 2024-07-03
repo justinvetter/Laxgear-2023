@@ -1,5 +1,10 @@
-{% if product.metafields.bag_features.show_features_block == true %}
+{% if product.metafields.bag_features.show_features_block == true or product.variants.first.metafields.variantData.custom_bag_variant_type != null %}
 
+  {% if product.variants.first.metafields.variantData.custom_bag_variant_type != null %}
+  {% assign prod = product.variants.first.metafields.variantData.custom_bag_variant_type.value %}
+  {% else %}
+  {% assign prod = product %}
+  {% endif %}
   <section class="product-features uk-section uk-background-muted">
     <div class="uk-card uk-padding-large uk-card-body uk-container uk-container-large uk-background-default">
       <div class="banner-container">
@@ -11,17 +16,17 @@
       <h3 class="uk-card-title uk-text-lead uk-text-bold">Bag Specs</h3>
       <hr class="uk-margin-small-top uk-margin-medium-bottom">
       <h4 class="uk-text-meta uk-text-muted uk-margin-small">Dimensions</h4>
-      <span class="uk-text-default uk-text-bold">{{ product.metafields.bag_features.bag_dimenstions }}</span>
+      <span class="uk-text-default uk-text-bold">{{ prod.metafields.bag_features.bag_dimenstions }}</span>
       <hr class="uk-margin-small">
       <h4 class="uk-text-meta uk-text-muted uk-margin-small">Size</h4>
-      <span class="uk-text-default uk-text-bold">{{ product.metafields.bag_features.bag_size }}</span>
+      <span class="uk-text-default uk-text-bold">{{ prod.metafields.bag_features.bag_size }}</span>
       <hr class="uk-margin-small">
       <h4 class="uk-text-meta uk-text-muted uk-margin-small">Materials</h4>
-      <span class="uk-text-default uk-text-bold">{{ product.metafields.bag_features.materials }}</span>
+      <span class="uk-text-default uk-text-bold">{{ prod.metafields.bag_features.materials }}</span>
       <hr class="uk-margin-small">
       <h4 class="uk-text-meta uk-text-muted uk-margin-small">Other specs</h4>
       <span class="uk-text-default uk-text-bold">
-        {{ product.metafields.bag_specs.bag_specs | metafield_tag }}
+        {{ prod.metafields.bag_specs.bag_specs | metafield_tag }}
       </span>
     </div>
   </section>

@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-main",
+      "settings": {
+        "collection": "all"
+      }
+    },
+    "features": {
+      "type": "product-features",
+      "settings": {
+      }
+    },
+    "reviews": {
+      "type": "product-reviews",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "features",
+    "reviews"
+  ]
+}
