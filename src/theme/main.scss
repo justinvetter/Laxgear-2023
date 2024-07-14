@@ -2,6 +2,7 @@
 
 
 @import 'variables.scss';
+@import 'mixins/mixins.scss';
 @import 'uikit/scss/variables.scss';
 @import 'uikit/scss/mixins.scss';
 
@@ -26,6 +27,7 @@
 @import 'sections/product_reviews';
 @import 'sections/breadcrumbs';
 @import 'sections/collection-grid';
+@import 'sections/custom-bag-creator';
 
 
 @import 'snippits/collection_cards';
