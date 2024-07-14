@@ -74,12 +74,12 @@
               </a>
             </li>
             {% assign mainImages = product.images %}
-            {% assign secondaryImages = nil %}
             {% if product.variants.first.metafields.variantData.custom_bag_variant_type != null %}
-              {% assign secondaryImages = product.variants.first.metafields.variantData.custom_bag_variant_type.value.images %}
+              {% assign mainImages = mainImages | concat: product.variants.first.metafields.variantData.custom_bag_variant_type.value.images %}
             {% endif %}
-            {% assign prodImages = mainImages | concat: secondaryImages %}
-            {% for image in prodImages %}
+            
+            {% assign prodImages = mainImages %}
+            {% for image in mainImages %}
               {% unless image.attached_to_variant? %}
               <li>
                 <a class="uk-height-large uk-display-block" href="{{ image | image_url: height: 1000 }}">
