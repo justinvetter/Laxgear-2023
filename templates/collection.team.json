@@ -5,8 +5,8 @@
       "settings": {
       }
     },
-    "collection-grid": {
-      "type": "collection-grid",
+    "collection-grid-team": {
+      "type": "collection-grid-team",
       "settings": {
         "title": "Bags"
       }
@@ -14,6 +14,6 @@
   },
   "order": [
     "breadcrumb",
-    "collection-grid"
+    "collection-grid-team"
   ]
 }
