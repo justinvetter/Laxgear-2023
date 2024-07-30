@@ -6,12 +6,17 @@
   {% else %}
     {% assign hasVariants = false %}
   {% endif %}
+  {% if product.tags contains 'team_bag' %}
+    {% assign team_bag = true %}
+  {% endif %}
 <section class="product-main uk-section">
   <div class="uk-container uk-container-large">
     {% render 'breadcrumb-new' %}
     <div class="uk-child-width-expand uk-grid-medium" uk-grid>
       <div class="uk-width-1-3@m">
         <h1 class="uk-heading-small">{{ product.title }}</h1>
+        <h4 class="uk-heading-xsmall">
+          {{ product.selected_or_first_available_variant.title }}</h4>
         <div class="uk-visible@m">{{ product.description }}</div>
 
         {% if product.metafields.bag_features.bag_features != blank or product.variants.first.metafields.variantData.custom_bag_variant_type != null %}
@@ -49,6 +54,7 @@
                 uk-icon="minus"></span>
             </a>
             <div class="uk-accordion-content">
+              {{ product.selected_or_first_available_variant.metafields.variantData.custom_bag_variant_type.value.metafields.bag_features.bag_features | metafield_tag }}
               {{ prod.metafields.bag_features.bag_features | metafield_tag }}
             </div>
           </li>
@@ -70,12 +76,15 @@
                 <img
                   class="uk-height-large uk-object-contain"
                   id="feature_image"
-                  src="{{ 'Spinner.gif' | asset_url }}">
+                  src="{{ 'Spinner.gif' | asset_url }}"
+                  width="450"
+                  height="450"
+                  alt="{{ product.title }}">
               </a>
             </li>
             {% assign mainImages = product.images %}
-            {% if product.variants.first.metafields.variantData.custom_bag_variant_type != null %}
-              {% assign mainImages = mainImages | concat: product.variants.first.metafields.variantData.custom_bag_variant_type.value.images %}
+            {% if product.selected_or_first_available_variant.metafields.variantData.custom_bag_variant_type != null %}
+              {% assign mainImages = mainImages | concat: product.selected_or_first_available_variant.metafields.variantData.custom_bag_variant_type.value.images %}
             {% endif %}
             
             {% assign prodImages = mainImages %}
@@ -83,7 +92,7 @@
               {% unless image.attached_to_variant? %}
               <li>
                 <a class="uk-height-large uk-display-block" href="{{ image | image_url: height: 1000 }}">
-                  <img class="uk-object-contain" src="{{ image | image_url: height: 1000 }}">
+                  <img class="uk-object-contain" src="{{ image | image_url: height: 1000 }}" width="1000" height="1000" alt="{{ image.alt | escape }}">
                 </a>
               </li>
             {% endunless %}
@@ -93,15 +102,17 @@
             <li class="uk-padding-remove uk-margin-remove" uk-slideshow-item="0">
               <a href="#"><img
                   id="thumb_image"
-                  src="{{ 'Spinner.gif' | asset_url }}
-                  "></a>
+                  src="{{ 'Spinner.gif' | asset_url }}"
+                  width="50"
+                  height="50"
+                  alt="{{ product.title }}"></a>
             </li>
             {% assign number = 0 %}
             {% for thumbImage in prodImages %}
               {% unless thumbImage.attached_to_variant? %}
               {% assign number = number | plus: 1 %}
               <li class="uk-padding-remove uk-margin-remove" uk-slideshow-item="{{ number }}">
-                <a href="#"><img src="{{ thumbImage | image_url: width: 50 }}"></a>
+                <a href="#"><img src="{{ thumbImage | image_url: width: 50 }}" width="50" height="50" alt="{{ thumbImage.alt | escape }}"></a>
               </li>
             {% endunless %}
             {% endfor %}
@@ -113,11 +124,32 @@
 
       </div>
       <div class="uk-width-1-3@m">
-        {% if hasVariants %}
+
+        {% if hasVariants %} 
+          {% unless team_bag %}
+            {% comment %} Check to see if this is a team bag
+              Hide Color title if it is 
+            {% endcomment %}
         <p class="uk-margin-small-bottom">Color /
           <span id="variant_name">{{ product.selected_or_first_available_variant.title }}</span>
         </p>
+      {% endunless %}
+
+
+      {% if team_bag %}
+        <ul class="product-selector">
+        {% for variant in product.variants %}
+          <li uk-tooltip="{{ variant.title }}">
+          <a href="{{ variant.url }}"><img class="chngradio" src="{{ variant.featured_image |  image_url: width: 50 }}" width="50" height="80" alt="{{ variant.title }}"></a>
+          </li>
+        {% endfor %}
+        </ul>
       {% endif %}
+
+      {% comment %} End Chekcing if has Variants {% endcomment %}
+      {% endif %}
+
+
         <br>
         <form
           method="post"
@@ -125,6 +157,8 @@
           enctype="multipart/form-data"
           id="addToCartForm-{{ section.id }}"
           class="uk-margin-medium-bottom">
+          {% unless team_bag %}
+            
           <div class="product-selector uk-margin-bottom">
             {% for variant in product.variants %}
 
@@ -136,9 +170,7 @@
             {% endif %}
 
               {% if variant.available %}
-                {% if hasVariants %}
-                  
-                {% endif %}
+
                 <label
                   uk-tooltip="{{ variant.title }}"
                   class="{{ variant.title | replace: ' ', '-' | downcase }}"
@@ -147,7 +179,7 @@
                     style="display:none"
                    {% endunless %}
                   >
-                  <img src="{{ featuredimage | image_url: width: 50 }}">
+                  <img src="{{ featuredimage | image_url: width: 50 }}" width="50" height="50" alt="{{ variant.title }}">
                   <input
                     type="radio"
                     id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
@@ -165,7 +197,7 @@
                   uk-tooltip="{{ variant.title }} - Sold Out"
                   class="disabled {{ variant.title | replace: ' ', '-' | downcase }}"
                   for="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}">
-                  <img src="{{ variant.image | image_url: width: 48 }}">
+                  <img src="{{ variant.image | image_url: width: 48 }}" width="48" height="48" alt="{{ variant.title }}">
                   <input
                     type="radio"
                     id="{{ variant.title | replace: ' ', '-' | downcase }}_{{ variant.id }}"
@@ -181,8 +213,10 @@
               {% endif %}
             {% endfor %}
           </div>
+          {% endunless %}
 
-
+            {% unless team_bag %}
+              
           <label for="Quantity" class="quantity-selector uk-margin-small-bottom">Quantity</label>
           <div class="qtydiv uk-margin-medium-bottom">
             <button
@@ -207,7 +241,10 @@
               class="js-qty__adjust--plus uk-button uk-butotn-default uk-button-small">
               <span uk-icon="icon: plus"></span>
             </button>
+            
           </div>
+
+        {% endunless %}
           {% assign productCollections = product.collections |  map: "handle" %}
           {% if productCollections contains section.settings.collection %}
           <ul uk-accordion>
@@ -223,6 +260,10 @@
           </ul>
           <hr>
             
+        {% endif %}
+
+        {% if team_bag %}
+          <div class="bold_options" data-product-id="{{ product.id }}"></div>
         {% endif %}
 
           <h3 class="uk-text-bold bold_option_price_display">{{ product.price | money }}</h3>
@@ -242,7 +283,7 @@
     el.classList.remove('wrapper', 'main-content')
   })
 
-
+{% unless team_bag %}
 // This function looks at the variant query string in URL and displays the correct variant and selects the correct variant option
   let params = (new URL(document.location)).searchParams;
   let variantID = params.get("variant")
@@ -380,6 +421,7 @@
       quantitySelector.setAttribute('value', quantity);
     }
   }
+{% endunless %}
 </script>
 
 {% schema %}
