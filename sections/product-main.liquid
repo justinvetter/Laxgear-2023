@@ -1,3 +1,5 @@
+
+
 {%- if product.metafields.inventory.ShappifyHidden == 'true' -%}
   {%- break -%}{%- endif -%}
   {% assign numberVariants = product.variants.size %}
@@ -9,6 +11,8 @@
   {% if product.tags contains 'team_bag' %}
     {% assign team_bag = true %}
   {% endif %}
+
+
 <section class="product-main uk-section">
   <div class="uk-container uk-container-large">
     {% render 'breadcrumb-new' %}
@@ -71,17 +75,37 @@
             class="uk-slideshow-items"
             uk-lightbox="animation: slide"
             uk-height-large>
-            <li>
-              <a id="feature_image_link" href="{{ 'Spinner.gif' | asset_url }}">
-                <img
-                  class="uk-height-large uk-object-contain"
-                  id="feature_image"
-                  src="{{ 'Spinner.gif' | asset_url }}"
-                  width="450"
-                  height="450"
-                  alt="{{ product.title }}">
-              </a>
-            </li>
+              
+            
+              {% if team_bag %}
+
+                <li>
+                  <a id="uk-height-large uk-display-block" href="{{ product.selected_or_first_available_variant.featured_image.src | image_url: height: 1000 }}" title="{{ product.title }}">
+                    <img
+                      class="uk-object-contain"
+                      id="feature_image"
+                      src="{{ product.selected_or_first_available_variant.featured_image.src | image_url: height: 1000 }}"
+                      width="1000"
+                      height="1000"
+                      alt="{{ product.title }}">
+                  </a>
+                </li>
+                {% else %}
+                  
+              <li>
+                <a id="feature_image_link" href="{{ 'Spinner.gif' | asset_url }}">
+                  <img
+                    class="uk-height-large uk-object-contain"
+                    id="feature_image"
+                    src="{{ 'Spinner.gif' | asset_url }}"
+                    width="450"
+                    height="450"
+                    alt="{{ product.title }}">
+                </a>
+              </li>
+              {% endif %}
+
+            
             {% assign mainImages = product.images %}
             {% if product.selected_or_first_available_variant.metafields.variantData.custom_bag_variant_type != null %}
               {% assign mainImages = mainImages | concat: product.selected_or_first_available_variant.metafields.variantData.custom_bag_variant_type.value.images %}
@@ -98,7 +122,22 @@
             {% endunless %}
             {% endfor %}
           </ul>
+
+
           <ul class="uk-thumbnav uk-margin-medium-top uk-padding-remove uk-flex-center uk-visible@m">
+
+            {% if team_bag %}
+              <li class="uk-padding-remove uk-margin-remove" uk-slideshow-item="0">
+              <a href="#"><img
+                  id="thumb_image"
+                  src="{{ product.selected_or_first_available_variant.featured_image.src | image_url: height: 50 }}"
+                  width="50"
+                  height="50"
+                  alt="{{ product.title }}"></a>
+            </li>
+              {% else %}
+                
+
             <li class="uk-padding-remove uk-margin-remove" uk-slideshow-item="0">
               <a href="#"><img
                   id="thumb_image"
@@ -107,6 +146,9 @@
                   height="50"
                   alt="{{ product.title }}"></a>
             </li>
+            {% endif %}
+      
+
             {% assign number = 0 %}
             {% for thumbImage in prodImages %}
               {% unless thumbImage.attached_to_variant? %}
@@ -157,6 +199,9 @@
           enctype="multipart/form-data"
           id="addToCartForm-{{ section.id }}"
           class="uk-margin-medium-bottom">
+          {% if team_bag %}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
+          {% endif %}
           {% unless team_bag %}
             
           <div class="product-selector uk-margin-bottom">
