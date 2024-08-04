@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "hero": {
@@ -5,18 +14,29 @@
       "settings": {
         "header": "Hit the field prepared",
         "sub-header": "With The Ultimate Lacrosse Bag",
-        "cta-product": "",
-        "page-toggle": true,
-        "page-link": "team-orders"
-      }
-    },
-    "features": {
-      "type": "home-features",
-      "settings": {
+        "cta-product": "all",
+        "page-toggle": false,
+        "page-link": "team-orders",
+        "button-text": "Shop all bags"
       }
     },
     "team-customs": {
       "type": "home-team-customs-block",
+      "settings": {
+        "left-header": "Team Orders",
+        "left-text": "Choose an off the shelf bag and customize with your team logo, player name, & player numbers.",
+        "left-button-text": "Get started",
+        "left-button-link": "team-orders",
+        "left-image": "shopify:\/\/shop_images\/home-team.png",
+        "right-header": "Customs",
+        "right-text": "Start with a blank bag and create a one-of-a-kind kit for you and your entire team.",
+        "right-button-text": "Get started",
+        "right-button-link": "custom-bag-creator",
+        "right-image": "shopify:\/\/shop_images\/customs-bag-webp.webp"
+      }
+    },
+    "features": {
+      "type": "home-features",
       "settings": {
       }
     },
