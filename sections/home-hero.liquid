@@ -8,7 +8,7 @@
     {% if section.settings.page-toggle %}
       <a class="uk-button uk-button-primary uk-text-bold uk-margin-medium-top" href="{{ section.settings.page-link.url }}">{{ section.settings.page-link.title }}</a>
     {% else %}
-      <a class="uk-button uk-button-primary uk-text-bold uk-margin-medium-top" href="{{ section.settings.cta-product.url }}">{{ section.settings.cta-product.title }}</a>
+      <a class="uk-button uk-button-primary uk-text-bold uk-margin-medium-top" href="{{ section.settings.cta-product.url }}">{{ section.settings.button-text }}</a>
     {% endif %}
   {% endif %}
 </section>
@@ -40,18 +40,23 @@
         "default": "With The Ultimate Lacrosse Bag"
       },
       {
-        "type": "product",
+        "type": "collection",
         "id": "cta-product",
-        "label": "Select Product"
+        "label": "Select Collection"
       },
       {
         "type": "checkbox",
         "id": "page-toggle",
-        "label": "Show page vs product"
+        "label": "Show page vs collection"
       }, {
         "type": "page",
         "id": "page-link",
         "label": "Page Link"
+      },
+      {
+        "type": "text",
+        "id": "button-text",
+        "label": "Button Text",
       }
     ]
   }
