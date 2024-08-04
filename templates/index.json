@@ -15,6 +15,11 @@
       "settings": {
       }
     },
+    "team-customs": {
+      "type": "home-team-customs-block",
+      "settings": {
+      }
+    },
     "carousel": {
       "type": "home-product-carousel",
       "settings": {
@@ -150,6 +155,7 @@
   },
   "order": [
     "hero",
+    "team-customs",
     "features",
     "carousel",
     "quote",
