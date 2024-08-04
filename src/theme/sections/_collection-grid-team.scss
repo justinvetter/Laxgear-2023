@@ -1,0 +1,8 @@
+#main-collection-product-grid{
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    li{
+        width: 50%;
+    }
+}

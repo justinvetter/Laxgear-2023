@@ -1,0 +1,78 @@
+{% schema %}
+{
+  "name": "Product grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ]
+}
+{% endschema %}
+
+
+<section class="uk-section uk-padding-remove-top">
+  <div class="uk-container uk-container-large">
+    {% if collection.title != blank %}
+      <h2>{{ collection.title }}</h2>
+    {% endif %}
+  <div class="product-grid">
+    <input class="uk-search-input" type="text" id="filterSearchInput" onkeyup="searchFilter()" placeholder="Search" aria-label="">
+<br>
+    {% paginate collection.products by 300 %}
+      <ul id="main-collection-product-grid">
+    {% for product in collection.products %}  
+    {% render 'collection-team-list', product: product %}
+    {% endfor %}
+    </ul>
+    {% endpaginate %}
+    </div>
+    </div>
+</section>
+
+
+<script>
+        function searchFilter() {
+          // Declare variables
+          var input, filter, ul, li, a, i, txtValue;
+          input = document.getElementById('filterSearchInput');
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("main-collection-product-grid");
+          li = ul.getElementsByTagName('li');
+        
+          // Loop through all list items, and hide those who don't match the search query
+          for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
+          }
+        }
+
+// document.querySelectorAll('.product-card a').forEach(link => { 
+
+//   const featuredImage = link.querySelector('.featured-image');
+//   const hoverImage = link.querySelector('.hover-image');
+
+//   link.addEventListener('mouseover', () => {
+//     featuredImage.style.display = 'none'; 
+//     hoverImage.style.display = 'block';
+//   });
+
+//   link.addEventListener('mouseout', () => {
+//     featuredImage.style.display = 'block';
+//     hoverImage.style.display = 'none';
+//   });
+
+// });
+
+</script>
