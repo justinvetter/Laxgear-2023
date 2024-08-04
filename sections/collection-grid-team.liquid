@@ -28,6 +28,9 @@
     {% paginate collection.products by 300 %}
       <ul id="main-collection-product-grid">
     {% for product in collection.products %}  
+    {%- comment %}<locksmith:bb5d>{% endcomment -%}
+      {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+    {%- comment %}</locksmith:bb5d>{% endcomment -%}  
     {% render 'collection-team-list', product: product %}
     {% endfor %}
     </ul>
