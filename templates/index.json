@@ -14,10 +14,10 @@
       "settings": {
         "header": "Hit the field prepared",
         "sub-header": "With The Ultimate Lacrosse Bag",
-        "cta-product": "",
-        "page-toggle": true,
+        "cta-product": "all",
+        "page-toggle": false,
         "page-link": "team-orders",
-        "button-text": ""
+        "button-text": "Shop all bags"
       }
     },
     "team-customs": {
