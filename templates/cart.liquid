@@ -12,17 +12,17 @@
 
             <div class="grid-item one-third large--one-quarter">
               <a href="{{ item.url }}" class="cart-image">
-                <img src="{{ item | img_url: 'medium' }}"  alt="{{ item.title | escape }}">
+                <img src="{{ item | img_url: 'medium' }}"  alt="{{ item.title | escape }}" data-mczr="{% if item.properties._mczr_designId %}item_image-{{ item.properties._mczr_designId }}{% else %}item_image-not-mczr{% endif %}">
               </a>
             </div>
 
             <div class="grid-item two-thirds large--three-quarters">
-              <a href="{{ item.url }}" class="cart-product-title">
+              <a href="{{ item.url }}" class="cart-product-title" data-mczr="{% if item.properties._mczr_designId %}item_product_title-{{ item.properties._mczr_designId }}{% else %}item_product_title-not-mczr{% endif %}">
                 {{ item.product.title }}
               </a>
               {% unless item.variant.title contains 'Default' %}
                 <br>
-                <p class="cart-product-variant-title">{{ item.variant.title }}</p>
+                <p class="cart-product-variant-title" data-mczr="{% if item.properties._mczr_designId %}item_variant_title-{{ item.properties._mczr_designId }}{% else %}item_variant_title-not-mczr{% endif %}">{{ item.variant.title }}</p>
               {% endunless %}
 
               {% if settings.product_quantity_message and item.variant.inventory_management and item.variant.inventory_quantity <= 0 and item.variant.incoming %}
@@ -36,7 +36,7 @@
 {% if propertySize > 0 %}
   {% for p in item.properties %}
     {% assign first_character_in_key = p.first | truncate: 1, '' %}
-    {% unless p.last == blank or first_character_in_key == '_' %}
+    {% unless p.last == blank or p.first contains '_mczr' or first_character_in_key == '_' %}
       {{ p.first }}:
       {% if p.last contains '/uploads/' %}
         <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
@@ -62,7 +62,7 @@
             <div class="grid-item one-third medium-down--one-third medium-down--text-left text-right">
 <span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_total" data-item-key="{{item.key}}" style="display:none !important;"></span>
               {% if item.original_line_price != item.line_price %}
-                <small class="cart-item--original-price"><s>{{ item.original_price | money }}</s></small>
+                <small class="cart-item--original-price"><s data-mczr="{% if item.properties._mczr_designId %}item_original_price-{{ item.properties._mczr_designId }}{% else %}item_original_price-not-mczr{% endif %}">{{ item.original_price | money }}</s></small>
               {% endif %}
               <span class="h2">
                 <span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_total" style="display:none !important;"></span>
@@ -145,3 +145,5 @@
   </div>
 
 {% endif %}
+
+{% render "cart-script.mczr" %}
