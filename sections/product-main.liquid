@@ -262,7 +262,9 @@
           </div>
           {% endunless %}
 
-            {% unless team_bag %}
+
+
+          {% unless team_bag %}
               
           <label for="Quantity" class="quantity-selector uk-margin-small-bottom">Quantity</label>
           <div class="qtydiv uk-margin-medium-bottom">
@@ -292,6 +294,7 @@
           </div>
 
         {% endunless %}
+
           {% assign productCollections = product.collections |  map: "handle" %}
           {% if productCollections contains section.settings.collection %}
           <ul uk-accordion>
@@ -310,10 +313,10 @@
         {% endif %}
 
         {% if team_bag %}
-          <div class="bold_options" data-product-id="{{ product.id }}"></div>
+          <div class="bold_options" data-product-id="{{ product.selected_or_first_available_variant.id }}"></div>
         {% endif %}
 
-          <h3 class="uk-text-bold bold_option_price_display">{{ product.price | money }}</h3>
+          <h3 class="uk-text-bold bold_option_price_display">{{ product.selected_or_first_available_variant.price | money }}</h3>
           <button type="submit" class="uk-button uk-button-secondary uk-text-bold uk-width-1-1">
             <span uk-icon="cart" class="uk-padding-small uk-padding-remove-vertical uk-padding-remove-left"></span>
             Add to cart</button>
