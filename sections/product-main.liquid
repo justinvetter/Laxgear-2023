@@ -181,7 +181,7 @@
 
 
       {% if team_bag %}
-        <ul class="product-selector">
+        <ul class="product-selector team-bag-selector">
         {% for variant in product.variants %}
           <li uk-tooltip="{{ variant.title }}">
           <a href="{{ variant.url }}"><img class="chngradio" src="{{ variant.featured_image |  image_url: width: 50 }}" width="50" height="80" alt="{{ variant.title }}"></a>
