@@ -313,7 +313,7 @@
         {% endif %}
 
         {% if team_bag %}
-          <div class="bold_options" data-product-id="{{ product.selected_or_first_available_variant.id }}"></div>
+          <div class="bold_options" data-product-id="{{ product.id }}"></div>
         {% endif %}
 
           <h3 class="uk-text-bold bold_option_price_display">{{ product.selected_or_first_available_variant.price | money }}</h3>
