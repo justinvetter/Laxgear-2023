@@ -35,6 +35,7 @@
             }
 
             &.selected {
+                border: 2px solid $lax-primary;
                 img {
                     opacity: 1
                 }
