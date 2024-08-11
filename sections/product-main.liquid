@@ -120,7 +120,7 @@
                   <img class="uk-object-contain" src="{{ image | image_url: height: 1000 }}" width="1000" height="1000" alt="{{ image.alt | escape }}">
                 </a>
               </li>
-            {% endunless %}
+              {% endunless %}
             {% endfor %}
           </ul>
 
@@ -157,7 +157,7 @@
               <li class="uk-padding-remove uk-margin-remove" uk-slideshow-item="{{ number }}">
                 <a href="#"><img src="{{ thumbImage | image_url: width: 50 }}" width="50" height="50" alt="{{ thumbImage.alt | escape }}"></a>
               </li>
-            {% endunless %}
+              {% endunless %}
             {% endfor %}
           </ul>
           <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-hidden@m" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
@@ -182,7 +182,12 @@
       {% if team_bag %}
         <ul class="product-selector team-bag-selector">
         {% for variant in product.variants %}
-          <li uk-tooltip="{{ variant.title }}">
+          {% if product.selected_or_first_available_variant.id == variant.id %}
+            <li uk-tooltip="{{ variant.title }}" class="selected">
+          {% else %}
+            <li uk-tooltip="{{ variant.title }}">
+          {% endif %}
+          
           <a href="{{ variant.url }}"><img class="chngradio" src="{{ variant.featured_image |  image_url: width: 50 }}" width="50" height="80" alt="{{ variant.title }}"></a>
           </li>
         {% endfor %}
