@@ -1,0 +1,14 @@
+#team-orders-modal{
+    .uk-modal-dialog{
+        width: 850px;
+        padding: 5em 9em;
+        @media (max-width: 890px) {
+            padding: 30px;
+        }
+    }
+    .modal-buttons{
+        display:grid;
+        grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+        gap: 1em;
+    }
+}
