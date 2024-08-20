@@ -1,0 +1,211 @@
+<section class="team-order-main uk-section uk-padding-remove-top">
+  <div class="uk-container-large uk-container">
+    <div class="uk-grid-small uk-grid-match" uk-grid>
+        <div class="uk-width-3-4">
+      <img src="/assets/lax-team-hero.jpg" alt="">
+      </div>
+      <div class="uk-width-1-4 uk-position-center">
+        <div id="page-content"></div>
+        <a
+          href="#my-id"
+          class="uk-button uk-button-primary"
+          uk-toggle>Get started</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- This is the modal -->
+<div
+  id="team-orders-modal"
+  class=""
+  uk-modal="esc-close:false; bg-close:false;">
+  <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
+    <h2 class="uk-modal-title uk-text-center uk-text-bold uk-margin-medium-bottom">Team Orders</h2>
+    <p class="uk-text-center uk-text-bold uk-margin-medium-bottom">Welcome to the LaxGear Team Order page. Here you can order multiples of a bag with your team logo, player names, and player numbers, or setup a My Team Shop where your players, coaches, and fans can purchase their own bags.</p>
+    <p class="uk-text-center modal-buttons uk-margin-medium-top">
+      <button
+        class="uk-button uk-button-primary uk-modal-close uk-width-expand"
+        type="button"
+        onclick="handleButtonClick('teamorder')">I want to place a Team Order</button>
+      <button
+        class="uk-button uk-button-primary uk-modal-close uk-width-expand"
+        type="button"
+        onclick="handleButtonClick('teamshop')">I want to setup My Team Shop</button>
+    </p>
+  </div>
+</div>
+
+<!-- This is the off-canvas form -->
+<div id="my-id" uk-offcanvas="flip: true; bg-close: false; overlay: true;">
+  <div class="uk-offcanvas-bar">
+
+    <button
+      class="uk-offcanvas-close"
+      type="button"
+      uk-close></button>
+    <div id="offcancas-content"></div>
+    {% form 'contact'
+      , class: 'uk-form-stacked uk-container-small ' %}
+
+      {% if form.posted_successfully? %}
+        <p class="note form-success">{{ 'contact.form.post_success' | t }}</p>
+      {% endif %}
+      {% include 'form-errors-custom' %}
+
+      <div id="contactFormWrapper">
+        <h3>
+          <span class="uk-text-meta">Required*</span>
+        </h3>
+
+
+        <div class="uk-flex uk-flex-column" style="gap: 1em;">
+          <div class="uk-width-1-1@s">
+
+            <div class="uk-form-controls">
+              <input
+                type="text"
+                class="uk-input"
+                id="contactFormName"
+                name="contact[name]"
+                placeholder="First and Last name*"
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                required />
+            </div>
+          </div>
+
+          <div class="uk-width-1-1@s">
+
+            <div class="uk-form-controls">
+              <input
+                class="uk-input"
+                type="email"
+                id="contactFormEmail"
+                name="contact[email]"
+                placeholder="Email*"
+                autocorrect="off"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                required />
+            </div>
+          </div>
+
+
+          <div class="uk-width-1-1@s">
+
+            <div class="uk-form-controls">
+              <input
+                type="tel"
+                class="uk-input"
+                id="contactFormPhone"
+                name="contact[phone]"
+                placeholder="Phone Number*"
+                value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                required />
+            </div>
+          </div>
+
+          <div class="uk-width-1-1@s">
+
+            <div class="uk-form-controls">
+              <input
+                type="text"
+                class="uk-input"
+                id="contactFormTeam"
+                name="contact[team]"
+                placeholder="Team/Organization*"
+                required />
+            </div>
+          </div>
+
+          <div class="uk-width-1-1@s">
+            <div class="uk-form-controls">
+              <input
+                type="text"
+                class="uk-input"
+                id="contactFormTeamColor"
+                name="contact[color]"
+                placeholder="Team Colors*"
+                required />
+            </div>
+          </div>
+
+          <div class="uk-width-1-1@s">
+            <div class="uk-form-controls">
+              <input
+                type="text"
+                class="uk-input"
+                id="contactFormTeamLogoUrl"
+                name="contact[logoURL]"
+                placeholder="Team Logo URL/Team Website" />
+            </div>
+          </div>
+
+          <div class="uk-width-1-1@s">
+            <div class="uk-form-controls" id="bags-selector"></div>
+          </div>
+
+
+          <div class="uk-width-1-1">
+            <input
+              class="uk-button uk-button-primary uk-width-1-1"
+              type="submit"
+              value="Submit" />
+          </div>
+        </div>
+      </div>
+    {% endform %}
+  </div>
+</div>
+
+<script>
+
+        const url = new URL(window.location.href);
+        const teamordertype = url.searchParams.get('teamordertype');
+    
+        if (teamordertype !== 'teamorder' && teamordertype !== 'teamshop') {
+            UIkit.modal("#team-orders-modal").show();
+        } else {
+            updatePage(teamordertype);
+            console.log(teamordertype);
+        }
+    
+        function handleButtonClick(teamordertype) {
+          const url = new URL(window.location.href);
+          url.searchParams.set('teamordertype', teamordertype);
+          window.history.pushState({}, '', url);
+          updatePage(teamordertype);
+        }
+    
+        function updatePage(teamordertype) {
+          if (teamordertype === 'teamorder') {
+            // Update page content for team order
+            document.getElementById('page-content').innerHTML = '<h2>Team Orders</h2><p>Create team bags for your players and coaches.</p>';
+            document.getElementById('offcancas-content').innerHTML = '<h3>Start your Order</h3><p>Team orders: Setup your team to look good wherever you go. Start with one of our many bag style options and customize with your team logo, player name and/or number. Our bags are tough and delivered within two weeks. Click Submit to get started with our design specialist for a proof.</p>';
+            document.getElementById('bags-selector').innerHTML = '<select name="contact[bag]" class="uk-select"><option value="" selected="selected" disabled="disabled" hidden>Select Bag Type:</option><option value="Mega Duffle" type="text">Mega Duffle</option><option value="LaxPack" type="text">LaxPack</option><option value="Equipment Bag" type="text">Equipment Bag</option><option value="Laxpack Mini" type="text">Laxpack Mini</option></select>'
+          } else if (teamordertype === 'teamshop') {
+            // Update page content for team shop
+            document.getElementById('page-content').innerHTML = '<h2>My Team Shop</h2><p>Createa a one-stop shop for your team bags this season.</p>';
+            document.getElementById('offcancas-content').innerHTML = '<h3>Activate your shop today</h3><p>With My Team shop you can setup your team to look good wherever they go. Start with one of our many bag styles or pick more than one option and customize with your team logo. Your players, coaches and fans can add a player name and/or number. Our bags are tough and delivered within two weeks. Click submit to get started setting up your team shop today.</p>';
+            document.getElementById('bags-selector').innerHTML = '<p class="uk-margin-small-bottom">Select Bag Types:</p><label><input type="checkbox" class="uk-checkbox" name="contact[contact_bags_1]" value="Mega Duffle" type="text"> Mega Duffle</label><label><input type="checkbox" name="contact[contact_bags_2]" class="uk-checkbox" value="LaxPack" type="text"> LaxPack</label><label><input type="checkbox" name="contact[contact_bags_3]" class="uk-checkbox" value="Equipment Bag" type="text"> Equipment Bag</label><label><input type="checkbox" name="contact[contact_bags_4]" class="uk-checkbox" value="Laxpack Mini" type="text"> Laxpack Mini</label>'
+          }
+        }
+    
+        // Check for teamordertype parameter on page load
+        document.addEventListener('DOMContentLoaded', function() {
+          const urlParams = new URLSearchParams(window.location.search);
+          const teamordertypeParam = urlParams.get('teamordertype');
+          if (teamordertypeParam) {
+            updatePage(teamordertypeParam);
+          } 
+        });
+</script>
+
+{% schema %}
+  {
+        "name": "Team Order Main",
+        "class": "team-order-main",
+        "limit": 1
+      }
+      {% endschema %}
