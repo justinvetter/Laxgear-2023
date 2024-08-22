@@ -1,0 +1,41 @@
+.team-order-main {
+  .team-order-main-container {
+    background-color: $card-primary-background;
+    padding: 5em 3em;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 5em;
+    .team-order-main-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      opacity: 1;
+      transition: opacity 0.15s ease-in-out;
+      h2 {
+         &:after {
+          content: "";
+          background-color: $lax-primary;
+          width: 100px;
+          display: block;
+          height: 3px;
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    @media (max-width: 730px) {
+        grid-template-columns: 1fr;
+      }
+  }
+}
+
+.uk-modal-page{
+    .team-order-main{
+        .team-order-main-container{
+            .team-order-main-content{
+                opacity: 0;
+            }
+        }
+    }
+}
