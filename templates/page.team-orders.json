@@ -1,0 +1,19 @@
+{
+    "sections": {
+      "breadcrumb": {
+        "type": "breadcrumb-newz",
+        "settings": {
+        }
+      },
+      "team-order-main": {
+        "type": "team-order-main",
+        "settings": {
+        }
+      }
+    },
+    "order": [
+      "breadcrumb",
+      "team-order-main"
+    ]
+  }
+  
