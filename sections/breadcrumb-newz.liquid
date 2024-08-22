@@ -16,6 +16,10 @@
       <li>
         <a href="{{ blog.url }}">{{ blog.title }}</a>
       </li>
+      {% elsif template contains 'page' %}
+        <li>
+        <a href="{{ page.url }}">{{ page.title }}</a>
+        </li>
     {% endif %}
   </ul>
 </nav>
