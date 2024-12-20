@@ -12,8 +12,9 @@
     "hero": {
       "type": "home-hero",
       "settings": {
-        "header": "Hit the field prepared",
-        "sub-header": "With The Ultimate Lacrosse Bag",
+        "hero-image": "shopify://shop_images/stick-bag-hero-v2.jpg",
+        "header": "",
+        "sub-header": "",
         "cta-product": "all",
         "page-toggle": false,
         "page-link": "team-orders",
