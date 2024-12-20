@@ -1,10 +1,38 @@
 .home-hero{
-  padding: 20em 15vw 10em 15vw;
+  aspect-ratio: 192/95;
+  background-size: contain;
+  // padding: 20em 15vw 10em 15vw;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  margin-top: 20px;
   h1,p{
     color: white;
     text-shadow: 1px 1px 5px $lax-text-color;
   }
-  @media (max-width: 850px) {
-    padding: 15em 5vw;
+  .hero-button{
+    grid-column-start: 14;
+    grid-column-end: span 4;
+    grid-row-start: 6;
+    grid-row-end: 7;
+    align-self: start;
+    justify-self: start;
+  }
+  @media (max-width: 1600px) {
+    margin-top: 50px;
+  }
+  @media (max-width: 1000px) {
+    margin-top: 70px;
+  }
+  @media (max-width: 819px) {
+    margin-top: 40px;
+    margin-bottom:20px;
+    .hero-button{
+      grid-row-start:10;
+      grid-row-end: 10;
+      grid-column-start: 2;
+      grid-column-end:span 18;
+      justify-self: stretch;
+    }
   }
 }
