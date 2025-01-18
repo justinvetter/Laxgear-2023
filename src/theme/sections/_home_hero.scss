@@ -4,6 +4,9 @@
   
   &.legacy-version {
     padding: 20em 15vw 10em 15vw;
+    max-height: 600px;
+    background-size: cover;
+    width:100%;
     
     @media (max-width: 850px) {
       padding: 15em 5vw;
