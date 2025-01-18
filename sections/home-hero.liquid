@@ -1,18 +1,18 @@
 <section
-  class="home-hero uk-background-top-center@s uk-background-center-center"
-  data-src="{{ section.settings.hero-image | img_url: 'x1920' }}"
+  class="home-hero {% if section.settings.use_legacy_version %}legacy-version{% endif %} uk-background-top-center@s uk-background-center-center"
+  data-src="{% if section.settings.use_legacy_version %}{{ 'hero-bg-80.jpg' | asset_url }}{% else %}{{ section.settings.hero-image | img_url: 'x1920' }}{% endif %}"
   uk-img="loading: eager;">
-  {%  if section.settings.header != blank %}
-  <h1 class="uk-heading-medium uk-text-uppercase uk-text-bold uk-margin-remove-bottom ">{{ section.settings.header }}</h1>
+  {% if section.settings.use_legacy_version and section.settings.header != blank %}
+    <h1 class="uk-heading-medium uk-text-uppercase uk-text-bold uk-margin-remove-bottom ">{{ section.settings.header }}</h1>
   {% endif %}
-  {% if section.settings.sub-header != blank %}
-  <p class="uk-text-large uk-margin-remove uk-text-normal">{{ section.settings.sub-header }}</p>
+  {% if section.settings.use_legacy_version and section.settings.sub-header != blank %}
+    <p class="uk-text-large uk-margin-remove uk-text-normal">{{ section.settings.sub-header }}</p>
   {% endif %}
   {% if section.settings.cta-product != nil or section.settings.page-link != nil %}
     {% if section.settings.page-toggle %}
       <a class="uk-button uk-button-primary uk-text-bold uk-margin-medium-top" href="{{ section.settings.page-link.url }}">{{ section.settings.page-link.title }}</a>
     {% else %}
-      <a class="uk-button uk-button-primary uk-text-bold uk-margin-medium-top hero-button" href="{{ section.settings.cta-product.url }}">{{ section.settings.button-text }}</a>
+      <a class="uk-button uk-button-primary uk-text-bold uk-margin-medium-top {% unless section.settings.use_legacy_version %}hero-button{% endunless %}" href="{{ section.settings.cta-product.url }}">{{ section.settings.button-text }}</a>
     {% endif %}
   {% endif %}
 </section>
@@ -31,6 +31,12 @@
     "name": "Home Hero",
     "limit": 1,
     "settings": [
+      {
+        "type": "checkbox",
+        "id": "use_legacy_version",
+        "label": "Use Legacy Version",
+        "default": false
+      },
       {
         "type": "image_picker",
         "id": "hero-image",
