@@ -3,7 +3,7 @@
   background-size: contain;
   
   &.legacy-version {
-    padding: 20em 15vw 10em 15vw;
+    padding: 20em calc(15% + 20px) 10em calc(15% + 20px);
     max-height: 600px;
     background-size: cover;
     width:100%;
