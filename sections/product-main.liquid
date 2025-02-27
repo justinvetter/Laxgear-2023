@@ -60,7 +60,11 @@
                 uk-icon="minus"></span>
             </a>
             <div class="uk-accordion-content">
+              {% if team_bag %}
+                {{ product.selected_or_first_available_variant.metafields.variantData.custom_bag_variant_type.value.metafields.bag_features.bag_features | metafield_tag }}
+              {% else %}
               {{ prod.metafields.bag_features.bag_features | metafield_tag }}
+              {% endif %}
             </div>
           </li>
         </ul>
