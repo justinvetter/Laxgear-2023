@@ -12,6 +12,7 @@
     "hero": {
       "type": "home-hero",
       "settings": {
+        "use_legacy_version": false,
         "hero-image": "shopify://shop_images/stick-bag-hero-v2.jpg",
         "header": "",
         "sub-header": "",
@@ -49,7 +50,8 @@
           "laxpack-with-cooler",
           "mega-duffel",
           "equipment-bag",
-          "travel-stick-bag"
+          "travel-stick-bag",
+          "slingpack-m2"
         ]
       }
     },
