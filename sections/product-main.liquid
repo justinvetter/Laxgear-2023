@@ -191,13 +191,8 @@
         <p>Bag selected: {{ product.selected_or_first_available_variant.title }}</p>
         <ul class="product-selector team-bag-selector">
         {% for variant in product.variants %}
-          {% if product.selected_or_first_available_variant.id == variant.id %}
-            <li uk-tooltip="{{ variant.title }}" class="selected">
-          {% else %}
-            <li uk-tooltip="{{ variant.title }}">
-          {% endif %}
-          
-          <a href="{{ variant.url }}"><img class="chngradio" src="{{ variant.featured_image |  image_url: width: 50 }}" width="50" height="80" alt="{{ variant.title }}"></a>
+          <li uk-tooltip="{{ variant.title }}" {% if product.selected_or_first_available_variant.id == variant.id %}class="selected"{% endif %}>
+            <a href="{{ variant.url }}"><img class="chngradio" src="{{ variant.featured_image |  image_url: width: 50 }}" width="50" height="80" alt="{{ variant.title }}"></a>
           </li>
         {% endfor %}
         </ul>
@@ -312,10 +307,10 @@
           {% if productCollections contains section.settings.collection %}
           <ul uk-accordion>
             <li>
-              <a class=" uk-margin-top uk-text-center uk-accordion-title uk-background-muted uk-padding-small" href="#">
+              <a class=" uk-margin-top uk-text-center uk-accordion-title uk-background-muted uk-padding-small embroidery-button" href="#">
                 <span uk-icon="plus-circle" class="uk-padding-small uk-padding-remove-vertical uk-padding-remove-left"></span>Add Embroidery</a>
               <div class="uk-accordion-content">
-                <p>Please Note: Personalized embroidery will add 5-7 business days to your order.</p>
+                <p><em>Please Note:</em> Personalized embroidery will add 5-7 business days to your order. All names will be embroidered in <strong>UPPERCASE</strong></p>
 
                 <div class="bold_options" data-product-id="{{ product.id }}"></div>
               </div>
@@ -339,6 +334,17 @@
     </div>
   </div>
 </section>
+
+<!-- Embroidery Modal -->
+<div id="embroidery-modal" class="uk-flex-top" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+    <h2 class="uk-modal-title">Embroidery Information</h2>
+    <p><em>Please Note:</em> Personalized embroidery will add 5-7 business days to your order. All names will be embroidered in <strong>UPPERCASE</strong></p>
+    <div class="uk-text-right">
+      <button class="uk-button uk-button-primary uk-modal-close" type="button">OK</button>
+    </div>
+  </div>
+</div>
 
 <script>
   // This function removes the wrapper and main-content class to let UIKit handle width of the page
@@ -485,6 +491,66 @@
     }
   }
 {% endunless %}
+
+  // Show embroidery modal only once per session
+  document.addEventListener('DOMContentLoaded', function() {
+    const embroideryButton = document.querySelector('.embroidery-button');
+    if (embroideryButton) {
+      embroideryButton.addEventListener('click', function(e) {
+        // Check if modal has been shown in this session
+        if (!sessionStorage.getItem('embroideryModalShown')) {
+          // Open the modal
+          UIkit.modal('#embroidery-modal').show();
+          // Mark as shown in sessionStorage
+          sessionStorage.setItem('embroideryModalShown', 'true');
+        }
+        // Allow accordion to work normally (don't prevent default)
+      });
+    }
+
+    // Convert text inputs in bold_options to uppercase
+    // Use event delegation to handle dynamically loaded form fields
+    function convertToUppercase(input) {
+      if (input && input.type === 'text' && input.closest('.bold_options')) {
+        const cursorPosition = input.selectionStart;
+        input.value = input.value.toUpperCase();
+        // Restore cursor position after converting to uppercase
+        if (document.activeElement === input) {
+          input.setSelectionRange(cursorPosition, cursorPosition);
+        }
+      }
+    }
+
+    // Handle input events (as user types)
+    document.addEventListener('input', function(e) {
+      if (e.target.type === 'text' && e.target.closest('.bold_options')) {
+        convertToUppercase(e.target);
+      }
+    }, true); // Use capture phase to run before plugin handlers
+
+    // Handle blur events (when user leaves the field)
+    document.addEventListener('blur', function(e) {
+      if (e.target.type === 'text' && e.target.closest('.bold_options')) {
+        convertToUppercase(e.target);
+      }
+    }, true);
+
+    // Ensure all values are uppercase before form submission
+    // Find the form that contains bold_options (the add to cart form)
+    document.addEventListener('submit', function(e) {
+      const form = e.target;
+      if (form.tagName === 'FORM' && form.querySelector('.bold_options')) {
+        // Find all text inputs in bold_options and ensure they're uppercase
+        const boldOptionsInputs = form.querySelectorAll('.bold_options input[type="text"]');
+        boldOptionsInputs.forEach(function(input) {
+          if (input.value !== input.value.toUpperCase()) {
+            input.value = input.value.toUpperCase();
+          }
+        });
+        // Allow form to submit normally
+      }
+    }, true); // Use capture phase to run before other handlers
+  });
 </script>
 
 {% schema %}
