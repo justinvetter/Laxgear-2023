@@ -191,13 +191,8 @@
         <p>Bag selected: {{ product.selected_or_first_available_variant.title }}</p>
         <ul class="product-selector team-bag-selector">
         {% for variant in product.variants %}
-          {% if product.selected_or_first_available_variant.id == variant.id %}
-            <li uk-tooltip="{{ variant.title }}" class="selected">
-          {% else %}
-            <li uk-tooltip="{{ variant.title }}">
-          {% endif %}
-          
-          <a href="{{ variant.url }}"><img class="chngradio" src="{{ variant.featured_image |  image_url: width: 50 }}" width="50" height="80" alt="{{ variant.title }}"></a>
+          <li uk-tooltip="{{ variant.title }}" {% if product.selected_or_first_available_variant.id == variant.id %}class="selected"{% endif %}>
+            <a href="{{ variant.url }}"><img class="chngradio" src="{{ variant.featured_image |  image_url: width: 50 }}" width="50" height="80" alt="{{ variant.title }}"></a>
           </li>
         {% endfor %}
         </ul>
