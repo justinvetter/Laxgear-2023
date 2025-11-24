@@ -507,6 +507,49 @@
         // Allow accordion to work normally (don't prevent default)
       });
     }
+
+    // Convert text inputs in bold_options to uppercase
+    // Use event delegation to handle dynamically loaded form fields
+    function convertToUppercase(input) {
+      if (input && input.type === 'text' && input.closest('.bold_options')) {
+        const cursorPosition = input.selectionStart;
+        input.value = input.value.toUpperCase();
+        // Restore cursor position after converting to uppercase
+        if (document.activeElement === input) {
+          input.setSelectionRange(cursorPosition, cursorPosition);
+        }
+      }
+    }
+
+    // Handle input events (as user types)
+    document.addEventListener('input', function(e) {
+      if (e.target.type === 'text' && e.target.closest('.bold_options')) {
+        convertToUppercase(e.target);
+      }
+    }, true); // Use capture phase to run before plugin handlers
+
+    // Handle blur events (when user leaves the field)
+    document.addEventListener('blur', function(e) {
+      if (e.target.type === 'text' && e.target.closest('.bold_options')) {
+        convertToUppercase(e.target);
+      }
+    }, true);
+
+    // Ensure all values are uppercase before form submission
+    // Find the form that contains bold_options (the add to cart form)
+    document.addEventListener('submit', function(e) {
+      const form = e.target;
+      if (form.tagName === 'FORM' && form.querySelector('.bold_options')) {
+        // Find all text inputs in bold_options and ensure they're uppercase
+        const boldOptionsInputs = form.querySelectorAll('.bold_options input[type="text"]');
+        boldOptionsInputs.forEach(function(input) {
+          if (input.value !== input.value.toUpperCase()) {
+            input.value = input.value.toUpperCase();
+          }
+        });
+        // Allow form to submit normally
+      }
+    }, true); // Use capture phase to run before other handlers
   });
 </script>
 
