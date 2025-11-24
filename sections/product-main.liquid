@@ -312,7 +312,7 @@
           {% if productCollections contains section.settings.collection %}
           <ul uk-accordion>
             <li>
-              <a class=" uk-margin-top uk-text-center uk-accordion-title uk-background-muted uk-padding-small" href="#" uk-toggle="target: #embroidery-modal">
+              <a class=" uk-margin-top uk-text-center uk-accordion-title uk-background-muted uk-padding-small embroidery-button" href="#">
                 <span uk-icon="plus-circle" class="uk-padding-small uk-padding-remove-vertical uk-padding-remove-left"></span>Add Embroidery</a>
               <div class="uk-accordion-content">
                 <p><em>Please Note:</em> Personalized embroidery will add 5-7 business days to your order. All names will be embroidered in <strong>UPPERCASE</strong></p>
@@ -494,6 +494,23 @@
     }
   }
 {% endunless %}
+
+  // Show embroidery modal only once per session
+  document.addEventListener('DOMContentLoaded', function() {
+    const embroideryButton = document.querySelector('.embroidery-button');
+    if (embroideryButton) {
+      embroideryButton.addEventListener('click', function(e) {
+        // Check if modal has been shown in this session
+        if (!sessionStorage.getItem('embroideryModalShown')) {
+          // Open the modal
+          UIkit.modal('#embroidery-modal').show();
+          // Mark as shown in sessionStorage
+          sessionStorage.setItem('embroideryModalShown', 'true');
+        }
+        // Allow accordion to work normally (don't prevent default)
+      });
+    }
+  });
 </script>
 
 {% schema %}
