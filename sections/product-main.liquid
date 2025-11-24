@@ -312,10 +312,10 @@
           {% if productCollections contains section.settings.collection %}
           <ul uk-accordion>
             <li>
-              <a class=" uk-margin-top uk-text-center uk-accordion-title uk-background-muted uk-padding-small" href="#">
+              <a class=" uk-margin-top uk-text-center uk-accordion-title uk-background-muted uk-padding-small" href="#" uk-toggle="target: #embroidery-modal">
                 <span uk-icon="plus-circle" class="uk-padding-small uk-padding-remove-vertical uk-padding-remove-left"></span>Add Embroidery</a>
               <div class="uk-accordion-content">
-                <p>Please Note: Personalized embroidery will add 5-7 business days to your order.</p>
+                <p><em>Please Note:</em> Personalized embroidery will add 5-7 business days to your order. All names will be embroidered in <strong>UPPERCASE</strong></p>
 
                 <div class="bold_options" data-product-id="{{ product.id }}"></div>
               </div>
@@ -339,6 +339,15 @@
     </div>
   </div>
 </section>
+
+<!-- Embroidery Modal -->
+<div id="embroidery-modal" uk-modal="center: true">
+  <div class="uk-modal-dialog uk-modal-body">
+    <h2 class="uk-modal-title">Embroidery Information</h2>
+    <p>Personalized embroidery will add 5-7 business days to your order.</p>
+    <button class="uk-button uk-button-primary uk-modal-close" type="button">OK</button>
+  </div>
+</div>
 
 <script>
   // This function removes the wrapper and main-content class to let UIKit handle width of the page
