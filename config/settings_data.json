@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_primary": "#3c3b3b",
@@ -34,12 +34,12 @@
     "type_navigation_transform": true,
     "type_button_size": "14px",
     "type_button_transform": true,
-    "favicon": "shopify:\/\/shop_images\/favicon-final.png",
+    "favicon": "shopify://shop_images/favicon-final.png",
     "cart_notes_enable": false,
     "ajax_cart_method": "modal",
-    "social_instagram_link": "https:\/\/www.instagram.com\/laxgear_laaveg\/?hl=en",
-    "social_facebook_link": "https:\/\/www.facebook.com\/laxgear",
-    "social_twitter_link": "https:\/\/twitter.com\/laxgearbags",
+    "social_instagram_link": "https://www.instagram.com/laxgear_laaveg/?hl=en",
+    "social_facebook_link": "https://www.facebook.com/laxgear",
+    "social_twitter_link": "https://twitter.com/laxgearbags",
     "social_pinterest_link": "",
     "social_google_plus_link": "",
     "social_snapchat_link": "",
@@ -72,11 +72,11 @@
         "type": "header",
         "settings": {
           "menu": "main-menu",
-          "logo": "shopify:\/\/shop_images\/Mountains_and_Logo.jpg",
+          "logo": "shopify://shop_images/Mountains_and_Logo.jpg",
           "logo_max_width": "380",
           "show_announcement": false,
           "announcement_text": "Gift cards now available in $10, $25, $50, and $100 increments!",
-          "announcement_link": "shopify:\/\/products\/laxgear-gift-cards"
+          "announcement_link": "shopify://products/laxgear-gift-cards"
         }
       },
       "footer": {
@@ -105,35 +105,35 @@
             "type": "image",
             "disabled": true,
             "settings": {
-              "slide": "shopify:\/\/shop_images\/LaxGear_Holiday_Web_Graphic_2022.jpg",
-              "link": "shopify:\/\/collections\/all"
+              "slide": "shopify://shop_images/LaxGear_Holiday_Web_Graphic_2022.jpg",
+              "link": "shopify://collections/all"
             }
           },
           "1591730183640": {
             "type": "image",
             "settings": {
-              "slide": "shopify:\/\/shop_images\/3064_Bags_in_Stock_Web_Graphic.jpg",
-              "link": "https:\/\/laxgear.com\/collections\/apparel"
+              "slide": "shopify://shop_images/3064_Bags_in_Stock_Web_Graphic.jpg",
+              "link": "https://laxgear.com/collections/apparel"
             }
           },
           "slide-0": {
             "type": "image",
             "settings": {
-              "slide": "shopify:\/\/shop_images\/LaxGear_Laxpack.jpg",
-              "link": "shopify:\/\/products\/laxpack"
+              "slide": "shopify://shop_images/LaxGear_Laxpack.jpg",
+              "link": "shopify://products/laxpack"
             }
           },
           "1541191016573": {
             "type": "image",
             "settings": {
-              "slide": "shopify:\/\/shop_images\/Laxpack_Cooler_web_slider_2020.jpg",
-              "link": "https:\/\/laxgear.com\/products\/laxpack-with-cooler"
+              "slide": "shopify://shop_images/Laxpack_Cooler_web_slider_2020.jpg",
+              "link": "https://laxgear.com/products/laxpack-with-cooler"
             }
           },
           "88bd422b-b7de-4bbb-971d-f595e386f2b5": {
             "type": "image",
             "settings": {
-              "slide": "shopify:\/\/shop_images\/web_Mega_with_text.jpg",
+              "slide": "shopify://shop_images/web_Mega_with_text.jpg",
               "link": ""
             }
           },
@@ -172,8 +172,7 @@
           "collection-list-0"
         ],
         "disabled": true,
-        "settings": {
-        }
+        "settings": {}
       },
       "collection-row-3": {
         "type": "collection-rows",
@@ -190,7 +189,7 @@
         "type": "featured-content",
         "settings": {
           "section_title": "WELCOME TO LAXGEAR.",
-          "text": "<p>We strive to design and manufacture the best lacrosse bags on the market.<\/p><p>The Ultimate Lacrosse bags with the highest quality and functional storage for traveling.<\/p>",
+          "text": "<p>We strive to design and manufacture the best lacrosse bags on the market.</p><p>The Ultimate Lacrosse bags with the highest quality and functional storage for traveling.</p>",
           "text_size": "large"
         }
       },
@@ -215,7 +214,7 @@
           "1508270519875-0": {
             "type": "html",
             "settings": {
-              "code": "<a href=\"\/pages\/team-orders\"><div style=\"padding: 20px; background-color: #e92829; margin: 0px !important;\"><h2 style=\"text-align: center; color: #fff; font-family: 'Open Sans', arial, serif; font-size: 30px; margin: 0px;\">Here's to another winning strategy for your team!<\/h2><\/div><\/a>",
+              "code": "<a href=\"/pages/team-orders\"><div style=\"padding: 20px; background-color: #e92829; margin: 0px !important;\"><h2 style=\"text-align: center; color: #fff; font-family: 'Open Sans', arial, serif; font-size: 30px; margin: 0px;\">Here's to another winning strategy for your team!</h2></div></a>",
               "width": "100%",
               "alignment": "center"
             }
@@ -225,8 +224,7 @@
           "1508270519875-0"
         ],
         "disabled": true,
-        "settings": {
-        }
+        "settings": {}
       },
       "collection-template": {
         "type": "collection-template",
@@ -246,7 +244,7 @@
           "1508329451429-0": {
             "type": "html",
             "settings": {
-              "code": "<div class=\"products-services-container\">\n        <div class=\"section-header\">\n            <p class=\"h1 section-header--left\">PRODUCTS AND SERVICES<\/p>\n        <\/div>\n        <div class=\"products-services\">\n            <a href=\"\/collections\/all\">\n                <div class=\"prod-col\">\n                    <div class=\"prod-icon-circle\"><i class=\"fa fa-shopping-cart\" aria-hidden=\"true\"><\/i><\/div>\n                    <div class=\"prod-header\">INDIVIDUAL ORDERS<\/div>\n                    <p style=\"color: #DBD9D9;\">Find the perfect bag for you!<\/p>\n                <\/div>\n            <\/a>\n            <a href=\"\/pages\/team-orders\">\n                <div class=\"prod-col\">\n                    <div class=\"prod-icon-circle\"><i class=\"fa fa-certificate\" aria-hidden=\"true\"><\/i><\/div>\n                    <div class=\"prod-header\">TEAM ORDERS<\/div>\n                    <p style=\"color: #DBD9D9;\">Team pride exemplified!<br>You play together, keep your gear together.<\/p>\n                <\/div>\n            <\/a>\n            <a href=\"\/pages\/embroidery\">\n                <div class=\"prod-col\">\n                    <div class=\"prod-icon-circle\"><i class=\"fa fa-star\" aria-hidden=\"true\"><\/i><\/div>\n                    <div class=\"prod-header\">PERSONALIZED EMBROIDERY<\/div>\n                    <p style=\"color: #DBD9D9;\">Options include Team Name, Player Name, Player Number.<br>Make your bag stand out!<\/p>\n                <\/div>\n            <\/a>\n            <a href=\"\/pages\/testimonials\">\n                <div class=\"prod-col\">\n                    <div class=\"prod-icon-circle\"><i class=\"fa fa-thumbs-up\" aria-hidden=\"true\"><\/i><\/div>\n                    <div class=\"prod-header\">TESTIMONIALS<\/div>\n                    <p style=\"color: #DBD9D9;\">See what other coaches and players are saying about our bags!<\/p>\n                <\/div>\n            <\/a>\n        <\/div>\n    <\/div>",
+              "code": "<div class=\"products-services-container\">\n        <div class=\"section-header\">\n            <p class=\"h1 section-header--left\">PRODUCTS AND SERVICES</p>\n        </div>\n        <div class=\"products-services\">\n            <a href=\"/collections/all\">\n                <div class=\"prod-col\">\n                    <div class=\"prod-icon-circle\"><i class=\"fa fa-shopping-cart\" aria-hidden=\"true\"></i></div>\n                    <div class=\"prod-header\">INDIVIDUAL ORDERS</div>\n                    <p style=\"color: #DBD9D9;\">Find the perfect bag for you!</p>\n                </div>\n            </a>\n            <a href=\"/pages/team-orders\">\n                <div class=\"prod-col\">\n                    <div class=\"prod-icon-circle\"><i class=\"fa fa-certificate\" aria-hidden=\"true\"></i></div>\n                    <div class=\"prod-header\">TEAM ORDERS</div>\n                    <p style=\"color: #DBD9D9;\">Team pride exemplified!<br>You play together, keep your gear together.</p>\n                </div>\n            </a>\n            <a href=\"/pages/embroidery\">\n                <div class=\"prod-col\">\n                    <div class=\"prod-icon-circle\"><i class=\"fa fa-star\" aria-hidden=\"true\"></i></div>\n                    <div class=\"prod-header\">PERSONALIZED EMBROIDERY</div>\n                    <p style=\"color: #DBD9D9;\">Options include Team Name, Player Name, Player Number.<br>Make your bag stand out!</p>\n                </div>\n            </a>\n            <a href=\"/pages/testimonials\">\n                <div class=\"prod-col\">\n                    <div class=\"prod-icon-circle\"><i class=\"fa fa-thumbs-up\" aria-hidden=\"true\"></i></div>\n                    <div class=\"prod-header\">TESTIMONIALS</div>\n                    <p style=\"color: #DBD9D9;\">See what other coaches and players are saying about our bags!</p>\n                </div>\n            </a>\n        </div>\n    </div>",
               "width": "100%",
               "alignment": "top-middle"
             }
@@ -255,8 +253,7 @@
         "block_order": [
           "1508329451429-0"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "1508331201830": {
         "type": "advanced-content",
@@ -264,7 +261,7 @@
           "1508331201830-0": {
             "type": "html",
             "settings": {
-              "code": "<div class=\"testimonials-container\">\n    <div class=\"section-header\">\n        <p class=\"h1 section-header--left\">Testimonials<\/p>\n    <\/div>\n    <div class=\"owl-carousel owl-theme\">\n        <div class=\"item\">\n            <p>\"THEY ARE AWESOME!!!!!! I cannot wait for everyone to see them!!!!! I love them! I do merchandise for 8-10 lacrosse teams - can't wait to show them, too!!!!\"<\/p>\n            <h4>Kendra Thomas - Houston Outlaws<\/h4>\n        <\/div>\n        <div class=\"item\">\n            <p>\"My two sons and I just returned from a tournament in Dallas at which it rained the entire time. Due to baggage limits on our airline we were in a jam with gear. I rolled up my new Mega Duffel and packed it in my checked luggage.<br>\n\n            Normally both my sons take their own Laxpacks we got from you but could not on this trip. I just wanted you to know that the three of us lived out of that Mega Duffel for two days in the rain very comfortably. That includes all my coaching gear, the boys helmets, pads, gloves, warm-ups and muddy cleats along with snacks and waters.<br>\n\n            Great bags Aaron, look for a team order from us this spring!\"<\/p>\n            <h4>Barrie<\/h4>\n        <\/div>\n        <div class=\"item\">\n            <p>\"Thank you so much for all your help..... I have been bragging and will continue to tell anyone who listens about your awesome company, customer service and products.\"<\/p>\n            <h4>James Ciaramitaro<\/h4>\n        <\/div>\n        <div class=\"item\">\n            <p>\"I just want to thank you so very much!! We received the bag over a week ago, more than enough time for the Florida trip and just in time for a tournament tomorrow!! It looks great, and we are so thrilled!!<br>\n\n            My grandson did a great job in placing the order with your company!!<br>\n\n            Thank you, Thank you!!\"<\/p>\n        <\/div>\n        <div class=\"item\">\n            <p>\"Laxgear goes above and beyond in customer service. We needed a rush on our lax bag and Laxgear was more than willing to put a rush on it and if it wasn't ready (due to embroidering), they were going to get us a bag to use in the interim (son was traveling to Baltimore). Who does that anymore? Bag made it in time, price and quality are great. Would definitely recommend Laxgear to everyone. Thank you Laxgear\"<\/p>\n            <h4>Christine<\/h4>\n        <\/div>\n        <div class=\"item\">\n            <p>\"Having one of the original mega-duffel LaxGear bags since 2003, I am astounded by its durability and quality! It has endured countless games, numerous tournaments, airline baggage checks, and all types of inclement weather, yet it still zips like new, hasn’t faded, and doesn’t have a single tear. I also own two LaxPacks and love their compartmental pockets and overall functionality. Whether it’s playing, coaching, or even just traveling, I take my LaxGear bags everywhere!\"<\/p>\n            <h4>Bobby Healy - Head Coach of Salesianum<\/h4>\n        <\/div>\n        <div class=\"item\">\n            <p>\"Dakota Ridge High School lacrosse uses the LaxGear \"Laxpack\" and believes that it is the best bag on the market. Well designed with team logo and players name embroidered on the bag. The Lax Pack is easily stowed away on the bus ride to the games and carry to the field. LaxGear bags are the Cadillac of equipment bags.\"<\/p>\n            <h4>Dakota Ridge - Colorado<\/h4>\n        <\/div>\n        <div class=\"item\">\n            <p>\"Mullen Boys Lacrosse has used the LaxGear Mega Duffel for the past 8 years as it is the most durable bag on the market. Incoming Freshman purchase the bag to tote their lacrosse gear around for four years and then pack their clothes into it and head off to college, it is that durable and versatile\" <\/p>\n            <h4>Dave Kurronen<\/h4>\n        <\/div>\n        <div class=\"item\">\n            <p>\"Thanks for the awesome product and customer service!\"<\/p>\n            <h4>Kate - Catholic Memorial<\/h4>\n        <\/div>\n        <div class=\"item\">\n            <p>\"....Everyone loves them. Great quality product and very sharp finish &amp; customization. As expected, those who didn't order one are now starting to ask if they can get one. \"<\/p>\n            <h4>Mark Frantz - Regent Knights - TX<\/h4>\n        <\/div>\n        <div class=\"item\">\n            <p>\"Love your gear! Our son’s Laxpack held up like a tank. He used it for lacrosse and ski racing gear. It works great for both!<br>\n\n            When it came time for a new bag for our other son I headed right back to Laxgear.com.\"<\/p>\n            <h4>Mark Frantz - Regent Knights - TX<\/h4>\n        <\/div>\n        <div class=\"item\">\n            <p>\"They turned out awesome, everyone loves them! Looks like more orders to come also!<br>Thanks!\"<\/p>\n            <h4>Scott - Norrisville Lacrosse<\/h4>\n        <\/div>\n        <div class=\"item\">\n            <p>\"Got the lax bags today. They look awesome! Thank you!\"<\/p>\n            <h4>Rob - Rock Lacrosse<\/h4>\n        <\/div>\n        <div class=\"item\">\n            <p>\"The bags are the best on the market period! My players and sons love them.\"<\/p>\n            <h4>Jamie<\/h4>\n        <\/div>\n<div class=\"item\">\n            <p>\"This is our 2nd bag from you… Wanted the cooler this time. Awesome product!\"<\/p>\n            <h4>Brett<\/h4>\n        <\/div>\n    <\/div>\n<\/div>",
+              "code": "<div class=\"testimonials-container\">\n    <div class=\"section-header\">\n        <p class=\"h1 section-header--left\">Testimonials</p>\n    </div>\n    <div class=\"owl-carousel owl-theme\">\n        <div class=\"item\">\n            <p>\"THEY ARE AWESOME!!!!!! I cannot wait for everyone to see them!!!!! I love them! I do merchandise for 8-10 lacrosse teams - can't wait to show them, too!!!!\"</p>\n            <h4>Kendra Thomas - Houston Outlaws</h4>\n        </div>\n        <div class=\"item\">\n            <p>\"My two sons and I just returned from a tournament in Dallas at which it rained the entire time. Due to baggage limits on our airline we were in a jam with gear. I rolled up my new Mega Duffel and packed it in my checked luggage.<br>\n\n            Normally both my sons take their own Laxpacks we got from you but could not on this trip. I just wanted you to know that the three of us lived out of that Mega Duffel for two days in the rain very comfortably. That includes all my coaching gear, the boys helmets, pads, gloves, warm-ups and muddy cleats along with snacks and waters.<br>\n\n            Great bags Aaron, look for a team order from us this spring!\"</p>\n            <h4>Barrie</h4>\n        </div>\n        <div class=\"item\">\n            <p>\"Thank you so much for all your help..... I have been bragging and will continue to tell anyone who listens about your awesome company, customer service and products.\"</p>\n            <h4>James Ciaramitaro</h4>\n        </div>\n        <div class=\"item\">\n            <p>\"I just want to thank you so very much!! We received the bag over a week ago, more than enough time for the Florida trip and just in time for a tournament tomorrow!! It looks great, and we are so thrilled!!<br>\n\n            My grandson did a great job in placing the order with your company!!<br>\n\n            Thank you, Thank you!!\"</p>\n        </div>\n        <div class=\"item\">\n            <p>\"Laxgear goes above and beyond in customer service. We needed a rush on our lax bag and Laxgear was more than willing to put a rush on it and if it wasn't ready (due to embroidering), they were going to get us a bag to use in the interim (son was traveling to Baltimore). Who does that anymore? Bag made it in time, price and quality are great. Would definitely recommend Laxgear to everyone. Thank you Laxgear\"</p>\n            <h4>Christine</h4>\n        </div>\n        <div class=\"item\">\n            <p>\"Having one of the original mega-duffel LaxGear bags since 2003, I am astounded by its durability and quality! It has endured countless games, numerous tournaments, airline baggage checks, and all types of inclement weather, yet it still zips like new, hasn’t faded, and doesn’t have a single tear. I also own two LaxPacks and love their compartmental pockets and overall functionality. Whether it’s playing, coaching, or even just traveling, I take my LaxGear bags everywhere!\"</p>\n            <h4>Bobby Healy - Head Coach of Salesianum</h4>\n        </div>\n        <div class=\"item\">\n            <p>\"Dakota Ridge High School lacrosse uses the LaxGear \"Laxpack\" and believes that it is the best bag on the market. Well designed with team logo and players name embroidered on the bag. The Lax Pack is easily stowed away on the bus ride to the games and carry to the field. LaxGear bags are the Cadillac of equipment bags.\"</p>\n            <h4>Dakota Ridge - Colorado</h4>\n        </div>\n        <div class=\"item\">\n            <p>\"Mullen Boys Lacrosse has used the LaxGear Mega Duffel for the past 8 years as it is the most durable bag on the market. Incoming Freshman purchase the bag to tote their lacrosse gear around for four years and then pack their clothes into it and head off to college, it is that durable and versatile\" </p>\n            <h4>Dave Kurronen</h4>\n        </div>\n        <div class=\"item\">\n            <p>\"Thanks for the awesome product and customer service!\"</p>\n            <h4>Kate - Catholic Memorial</h4>\n        </div>\n        <div class=\"item\">\n            <p>\"....Everyone loves them. Great quality product and very sharp finish &amp; customization. As expected, those who didn't order one are now starting to ask if they can get one. \"</p>\n            <h4>Mark Frantz - Regent Knights - TX</h4>\n        </div>\n        <div class=\"item\">\n            <p>\"Love your gear! Our son’s Laxpack held up like a tank. He used it for lacrosse and ski racing gear. It works great for both!<br>\n\n            When it came time for a new bag for our other son I headed right back to Laxgear.com.\"</p>\n            <h4>Mark Frantz - Regent Knights - TX</h4>\n        </div>\n        <div class=\"item\">\n            <p>\"They turned out awesome, everyone loves them! Looks like more orders to come also!<br>Thanks!\"</p>\n            <h4>Scott - Norrisville Lacrosse</h4>\n        </div>\n        <div class=\"item\">\n            <p>\"Got the lax bags today. They look awesome! Thank you!\"</p>\n            <h4>Rob - Rock Lacrosse</h4>\n        </div>\n        <div class=\"item\">\n            <p>\"The bags are the best on the market period! My players and sons love them.\"</p>\n            <h4>Jamie</h4>\n        </div>\n<div class=\"item\">\n            <p>\"This is our 2nd bag from you… Wanted the cooler this time. Awesome product!\"</p>\n            <h4>Brett</h4>\n        </div>\n    </div>\n</div>",
               "width": "100%",
               "alignment": "top-middle"
             }
@@ -273,8 +270,7 @@
         "block_order": [
           "1508331201830-0"
         ],
-        "settings": {
-        }
+        "settings": {}
       }
     },
     "content_for_index": [
@@ -288,25 +284,22 @@
     ],
     "blocks": {
       "4372474792694305445": {
-        "type": "shopify:\/\/apps\/also-bought-related-products\/blocks\/app-embed-block\/b94b27b4-738d-4d92-9e60-43c22d1da3f2",
+        "type": "shopify://apps/also-bought-related-products/blocks/app-embed-block/b94b27b4-738d-4d92-9e60-43c22d1da3f2",
         "disabled": true,
-        "settings": {
-        }
+        "settings": {}
       },
       "6897675550240258559": {
-        "type": "shopify:\/\/apps\/promolayer\/blocks\/app-embed\/e4a9128f-b151-4feb-ad9e-ef8fbb63bf07",
+        "type": "shopify://apps/promolayer/blocks/app-embed/e4a9128f-b151-4feb-ad9e-ef8fbb63bf07",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "6406956604159796213": {
-        "type": "shopify:\/\/apps\/smartseo\/blocks\/smartseo\/7b0a6064-ca2e-4392-9a1d-8c43c942357b",
+        "type": "shopify://apps/smartseo/blocks/smartseo/7b0a6064-ca2e-4392-9a1d-8c43c942357b",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "15683396631634586217": {
-        "type": "shopify:\/\/apps\/inbox\/blocks\/chat\/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
         "disabled": false,
         "settings": {
           "button_color": "#000000",
@@ -316,6 +309,11 @@
           "button_vertical_position": "lowest",
           "greeting_message": "👋 Hi, message us with any questions. We're happy to help!"
         }
+      },
+      "4976129024724438625": {
+        "type": "shopify://apps/smartseo/blocks/brokenLinkDetection/7b0a6064-ca2e-4392-9a1d-8c43c942357b",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
@@ -386,7 +384,7 @@
               "type": "text",
               "settings": {
                 "title": "Get in touch",
-                "richtext": "<p>Use this text to share information about your brand with your customers.<\/p>",
+                "richtext": "<p>Use this text to share information about your brand with your customers.</p>",
                 "width": "50%"
               }
             },
@@ -463,8 +461,7 @@
             "collection-list-0",
             "collection-list-1"
           ],
-          "settings": {
-          }
+          "settings": {}
         },
         "collection-row-1": {
           "type": "collection-rows",
@@ -559,7 +556,7 @@
               "type": "text",
               "settings": {
                 "title": "Get in touch",
-                "richtext": "<p>Use this text to share information about your brand with your customers.<\/p>",
+                "richtext": "<p>Use this text to share information about your brand with your customers.</p>",
                 "width": "50%"
               }
             },
@@ -620,8 +617,7 @@
             "collection-list-0",
             "collection-list-1"
           ],
-          "settings": {
-          }
+          "settings": {}
         },
         "collection-row-1": {
           "type": "collection-rows",
@@ -649,8 +645,7 @@
         },
         "featured-content": {
           "type": "featured-content",
-          "settings": {
-          }
+          "settings": {}
         },
         "slideshow-2": {
           "type": "slideshow",
