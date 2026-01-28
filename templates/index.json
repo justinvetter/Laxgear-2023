@@ -12,6 +12,37 @@
     "1769552753f3a0b834": {
       "type": "_blocks",
       "blocks": {
+        "ai_gen_block_594c0f8_NUDKMk": {
+          "type": "ai_gen_block_594c0f8",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/add-these-to-bags-next-to-the-orange-bag-https-laxgear-com-products-laxpack-variant-2574882373655-https-laxgear-com-products-laxpack-variant-2574882570263.png",
+            "min_height": 600,
+            "min_height_mobile": 400,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "heading": "Welcome to our store",
+            "heading_size": 56,
+            "heading_color": "#ffffff",
+            "heading_font_weight": "700",
+            "subheading": "Discover our latest collection",
+            "subheading_size": 20,
+            "text_color": "#ffffff",
+            "button_text": "Shop now",
+            "button_link": "",
+            "button_font_size": 16,
+            "button_padding_vertical": 14,
+            "button_padding_horizontal": 32,
+            "button_background_color": "#e92829",
+            "button_hover_background_color": "#3c3b3b",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 4,
+            "horizontal_alignment": "center",
+            "vertical_alignment": "center",
+            "text_alignment": "center"
+          },
+          "blocks": {}
+        },
         "ai_gen_block_7475007_Rbb8jU": {
           "type": "ai_gen_block_7475007",
           "disabled": true,
@@ -24,7 +55,7 @@
             "hero_height_mobile": 600,
             "header_overlap": 0,
             "header_overlap_mobile": 0,
-            "content_vertical_alignment": "flex-end",
+            "content_vertical_alignment": "center",
             "content_horizontal_alignment": "center",
             "content_max_width": 1200,
             "heading": "Gear Up for the Grind: Spring 2026",
@@ -51,7 +82,12 @@
         }
       },
       "block_order": [
+        "ai_gen_block_594c0f8_NUDKMk",
         "ai_gen_block_7475007_Rbb8jU"
+      ],
+      "custom_css": [
+        "div {margin-top: 160px;}",
+        "h1 {color: white !important;}"
       ],
       "settings": {}
     },
