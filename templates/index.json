@@ -14,7 +14,6 @@
       "blocks": {
         "ai_gen_block_594c0f8_NUDKMk": {
           "type": "ai_gen_block_594c0f8",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/add-these-to-bags-next-to-the-orange-bag-https-laxgear-com-products-laxpack-variant-2574882373655-https-laxgear-com-products-laxpack-variant-2574882570263.png",
             "min_height": 600,
@@ -85,6 +84,7 @@
         "ai_gen_block_594c0f8_NUDKMk",
         "ai_gen_block_7475007_Rbb8jU"
       ],
+      "disabled": true,
       "custom_css": [
         "div {margin-top: 160px;}",
         "h1 {color: white !important;}"
