@@ -70,6 +70,9 @@
     "sections": {
       "header": {
         "type": "header",
+        "custom_css": [
+          "@media (max-width: 767px) {div {}}"
+        ],
         "settings": {
           "menu": "main-menu",
           "logo": "shopify://shop_images/Mountains_and_Logo.jpg",
