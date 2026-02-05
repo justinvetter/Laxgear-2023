@@ -93,6 +93,7 @@
     },
     "hero": {
       "type": "home-hero",
+      "disabled": true,
       "settings": {
         "use_legacy_version": false,
         "hero-image": "shopify://shop_images/stick-bag-hero-v2.jpg",
