@@ -683,7 +683,8 @@
   },
   "platform_customizations": {
     "custom_css": [
-      "@media screen and (max-width: 480px) {body {padding-top: 0px; } header#header {padding: 1em 1em 2em; } .home-hero:not(.legacy-version) {margin-top: 60px !important; }}"
+      "@media screen and (max-width: 480px) {body {padding-top: 0px; } .home-hero:not(.legacy-version) {margin-top: 60px !important; }}",
+      "@media screen and (max-width: 1480px) {header#header {padding: 1em 1em 2em; }}"
     ]
   }
 }
