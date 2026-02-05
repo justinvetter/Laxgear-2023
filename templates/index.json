@@ -85,7 +85,7 @@
         "ai_gen_block_7475007_Rbb8jU"
       ],
       "custom_css": [
-        "div {margin-top: 160px;}",
+        "div {margin-top: 170px;}",
         "h1 {color: white !important;}",
         "@media (max-width: 767px) {div {margin-top: 80px; }}"
       ],
