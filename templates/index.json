@@ -87,6 +87,7 @@
       "custom_css": [
         "div {margin-top: 160px;}",
         "h1 {color: white !important;}",
+        ".main-content {max-width: unset; padding: unset;}",
         "@media (max-width: 767px) {div {margin-top: 80px; }}"
       ],
       "settings": {}
