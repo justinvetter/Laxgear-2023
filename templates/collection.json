@@ -9,26 +9,6 @@
  */
 {
   "sections": {
-    "breadcrumb": {
-      "type": "breadcrumb-newz",
-      "settings": {}
-    },
-    "blocks_j4r9w6": {
-      "type": "_blocks",
-      "custom_css": [
-        "div {margin-top: 170px;}",
-        "h1 {color: white !important;}",
-        "@media (max-width: 767px) {div {margin-top: 80px; }}"
-      ],
-      "settings": {}
-    },
-    "collection-grid": {
-      "type": "collection-grid",
-      "settings": {
-        "title": "Bags",
-        "collection": ""
-      }
-    },
     "1770411416877122a7": {
       "type": "_blocks",
       "blocks": {
@@ -48,7 +28,30 @@
       "block_order": [
         "ai_gen_block_9b35d71_9h36QR"
       ],
+      "custom_css": [
+        "h1 {font-weight:bold;}"
+      ],
       "settings": {}
+    },
+    "breadcrumb": {
+      "type": "breadcrumb-newz",
+      "settings": {}
+    },
+    "blocks_j4r9w6": {
+      "type": "_blocks",
+      "custom_css": [
+        "div {margin-top: 170px;}",
+        "h1 {color: white !important;}",
+        "@media (max-width: 767px) {div {margin-top: 80px; }}"
+      ],
+      "settings": {}
+    },
+    "collection-grid": {
+      "type": "collection-grid",
+      "settings": {
+        "title": "Bags",
+        "collection": ""
+      }
     }
   },
   "order": [
