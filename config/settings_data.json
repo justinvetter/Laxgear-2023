@@ -684,7 +684,7 @@
   "platform_customizations": {
     "custom_css": [
       "#trustpilot-widget-trustbox-1-wrapper {display: none !important;}",
-      ".main-content {max-width: unset; padding: unset;}",
+      "#laxgear-the-ultimate-lacrosse-bag > .main-content {max-width: unset; padding: unset;}",
       "header#header nav {width: 90%;}",
       "@media screen and (max-width: 480px) {body {padding-top: 0px; } .home-hero:not(.legacy-version) {margin-top: 60px !important; }}",
       "@media screen and (max-width: 1480px) {header#header {padding: 1em 2em 2em !important; } #header.uk-section {padding-left: 20px !important; padding-right: 20px !important; }}"
