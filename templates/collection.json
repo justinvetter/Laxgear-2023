@@ -1,19 +1,60 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "breadcrumb": {
       "type": "breadcrumb-newz",
-      "settings": {
-      }
+      "settings": {}
+    },
+    "blocks_j4r9w6": {
+      "type": "_blocks",
+      "custom_css": [
+        "div {margin-top: 170px;}",
+        "h1 {color: white !important;}",
+        "@media (max-width: 767px) {div {margin-top: 80px; }}"
+      ],
+      "settings": {}
     },
     "collection-grid": {
       "type": "collection-grid",
       "settings": {
-        "title": "Bags"
+        "title": "Bags",
+        "collection": ""
       }
+    },
+    "1770411416877122a7": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_9b35d71_9h36QR": {
+          "type": "ai_gen_block_9b35d71",
+          "settings": {
+            "background_image": "shopify://shop_images/lax-gear-hero-2026-1920-950.jpg",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.3,
+            "heading": "Lacrosse Bags Designed for Practice, Travel & Game Day",
+            "heading_color": "#ffffff",
+            "heading_size": 48
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_9b35d71_9h36QR"
+      ],
+      "settings": {}
     }
   },
   "order": [
+    "1770411416877122a7",
     "breadcrumb",
+    "blocks_j4r9w6",
     "collection-grid"
   ]
 }
