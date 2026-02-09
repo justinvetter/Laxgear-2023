@@ -16,7 +16,7 @@
           "type": "ai_gen_block_594c0f8",
           "settings": {
             "image": "shopify://shop_images/lax-gear-hero-2026-1920-950.jpg",
-            "min_height": 600,
+            "min_height": 500,
             "min_height_mobile": 400,
             "overlay_color": "#000000",
             "overlay_opacity": 0,
@@ -24,8 +24,8 @@
             "heading_size": 56,
             "heading_color": "#ffffff",
             "heading_font_weight": "700",
-            "subheading": "Order Your Team Bags Today!",
-            "subheading_size": 20,
+            "subheading": "<strong>Order Your Team Bags Today!</strong>",
+            "subheading_size": 26,
             "text_color": "#ffffff",
             "button_text": "Shop now",
             "button_link": "",
@@ -49,7 +49,8 @@
       "custom_css": [
         "div {margin-top: 170px;}",
         "h1 {color: white !important;}",
-        "@media (max-width: 767px) {div {margin-top: 80px; }}"
+        "@media (max-width: 767px) {div {margin-top: 80px; }}",
+        "h1 {padding-left: 10%; padding-right:10%;}"
       ],
       "settings": {}
     },
