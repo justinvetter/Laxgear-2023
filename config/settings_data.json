@@ -685,6 +685,7 @@
     "custom_css": [
       ".push--large--one-sixth {left: 0;}",
       ".large--two-thirds {width: 100%;}",
+      ".shopify-policy__container {max-width: 1000px;}",
       "#trustpilot-widget-trustbox-1-wrapper {display: none !important;}",
       "#laxgear-the-ultimate-lacrosse-bag > .main-content {max-width: unset; padding: unset;}",
       "header#header nav {width: 90%;}",
