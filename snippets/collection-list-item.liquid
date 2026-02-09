@@ -17,9 +17,6 @@
       Default collection order
     {% endcomment %}
     {% for product in collection.products limit:5 %}
-{%- comment %}<locksmith:2524>{% endcomment -%}
-  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-{%- comment %}</locksmith:2524>{% endcomment -%}
 {%- include 'bold-product' with product, hide_action: 'skip' -%}
       {% include 'product-grid-item' with height: height, width: width %}
     {% endfor %}
@@ -29,9 +26,6 @@
       Custom order collections by 'all-collections' linklist
     {% endcomment %}
     {% for product in collections[collection.handle].products limit:5 %}
-{%- comment %}<locksmith:1740>{% endcomment -%}
-  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections[collection.handle], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-{%- comment %}</locksmith:1740>{% endcomment -%}
 {%- include 'bold-product' with product, hide_action: 'skip' -%}
       {% include 'product-grid-item' with height: height, width: width %}
     {% endfor %}

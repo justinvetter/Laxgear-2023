@@ -25,13 +25,6 @@
             {% if grid_results == false %}
 
               {% for item in search.results %}
-                {%- comment %}<locksmith:cf4b>{% endcomment -%}
-                {%- capture var %}
-                  {% render 'locksmith-variables', scope: 'subject', subject: item, subject_parent: search, variable: 'transparent' %}{% endcapture %}
-                {% if var == "true" %}
-                  {% else %}
-                    {% continue %}{% endif -%}
-                {%- comment %}</locksmith:cf4b>{% endcomment -%}
                 {%- if item.metafields.inventory.ShappifyHidden == 'true' -%}
                   {%- continue -%}{%- endif -%}
                 {% include 'search-result' %}
@@ -41,13 +34,6 @@
 
               <div class="grid-uniform">
                 {% for item in search.results %}
-                  {%- comment %}<locksmith:ebf4>{% endcomment -%}
-                  {%- capture var %}
-                    {% render 'locksmith-variables', scope: 'subject', subject: item, subject_parent: search, variable: 'transparent' %}{% endcapture %}
-                  {% if var == "true" %}
-                    {% else %}
-                      {% continue %}{% endif -%}
-                  {%- comment %}</locksmith:ebf4>{% endcomment -%}
                   {%- if item.metafields.inventory.ShappifyHidden == 'true' -%}
                     {%- continue -%}{%- endif -%}
                   {% assign grid_item_width = 'large--one-fifth medium--one-third small--one-half' %}

@@ -36,9 +36,6 @@
         {% when 'menu' %}
         <ul>
           {% for link in linklists[block.settings.menu].links %}
-            {%- comment %}<locksmith:11ff>{% endcomment -%}
-              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists[block.settings.menu], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-            {%- comment %}</locksmith:11ff>{% endcomment -%}
             <li><a href="{{ link.url }}">{{ link.title }}</a></li>
           {% else %}
             {% capture theme_settings_footer_linklist_path %}<strong>Footer</strong> > <strong>Quick links link list</strong>{% endcapture %}
@@ -73,9 +70,6 @@
 
           <ul class="legal-links inline-list">
             {% for link in linklists[section.settings.legal_menu].links %}
-              {%- comment %}<locksmith:37b4>{% endcomment -%}
-                {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists[section.settings.legal_menu], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-              {%- comment %}</locksmith:37b4>{% endcomment -%}
               <li><a href="{{ link.url }}">{{ link.title }}</a></li>
             {% endfor %}
           </ul>

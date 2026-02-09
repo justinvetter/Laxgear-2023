@@ -1,13 +1,7 @@
 {% include 'breadcrumb' %}
 
 <div class="grid">
-  {%- comment %}<locksmith:718c>{% endcomment -%}
-    {%- assign locksmith_b025_forloop__size = 0 %}{% for product in collections.custom-bag-editor-items.products  %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections.custom-bag-editor-items, variable: 'transparent' %}{% endcapture %}{% if var == 'true' %}{% assign locksmith_b025_forloop__size = locksmith_b025_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_b025_forloop__index = nil -%}
-  {%- comment %}</locksmith:718c>{% endcomment -%}
   {% for product in collections.custom-bag-editor-items.products  %}
-    {%- comment %}<locksmith:a4fa>{% endcomment -%}
-      {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections.custom-bag-editor-items, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% if locksmith_b025_forloop__index == nil %}{% assign locksmith_b025_forloop__index = 1 %}{% assign locksmith_b025_forloop__index0 = 0 %}{% else %}{% assign locksmith_b025_forloop__index = locksmith_b025_forloop__index | plus: 1 %}{% assign locksmith_b025_forloop__index0 = locksmith_b025_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_b025_forloop__index == 1 %}{% assign locksmith_b025_forloop__first = true %}{% else %}{% assign locksmith_b025_forloop__first = false %}{% endif %}{% if locksmith_b025_forloop__index == locksmith_b025_forloop__size %}{% assign locksmith_b025_forloop__last = true %}{% else %}{% assign locksmith_b025_forloop__last = false %}{% endif %}{% assign locksmith_b025_forloop__rindex = locksmith_b025_forloop__size | minus: locksmith_b025_forloop__index | minus: 1 %}{% assign locksmith_b025_forloop__rindex0 = locksmith_b025_forloop__size | minus: locksmith_b025_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
-    {%- comment %}</locksmith:a4fa>{% endcomment -%}
     <!-- Product Images Container -->
     <div id="product-{{product.handle}}" class="grid-item large--two-fifths product-image-container">
       <div class="grid">
@@ -142,9 +136,6 @@
                   <label for="customFormBagType" class="hidden-label">Bag Type:</label>
                   <select name="contact[bagType]" id="customFormBagType" required>
                     {% for product in collections.custom-bag-editor-items.products  %}
-                        {%- comment %}<locksmith:7d15>{% endcomment -%}
-                          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections.custom-bag-editor-items, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-                        {%- comment %}</locksmith:7d15>{% endcomment -%}
                         <option value="{{product.handle}}" type="text" {% if product.handle == "mega-duffel" %} selected="true" {% endif %}>{{product.title}}</option>
                     {% endfor %}
                   </select>

@@ -45,9 +45,6 @@
 
   <div class="grid-uniform row-negative-bottom">
     {% for product in collections[featured_row].products limit: product_limit %}
-{%- comment %}<locksmith:da04>{% endcomment -%}
-  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections[featured_row], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-{%- comment %}</locksmith:da04>{% endcomment -%}
 {%- include 'bold-product' with product, hide_action: 'skip' -%}
       {% assign current_collection = collections[featured_row] %}
         {% include 'product-grid-item' %}

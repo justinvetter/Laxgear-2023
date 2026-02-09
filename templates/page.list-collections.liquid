@@ -24,9 +24,6 @@
     <div class="grid-uniform text-center row-negative-bottom">
 
     {% for link in linklists[page.handle].links %}
-      {%- comment %}<locksmith:07ef>{% endcomment -%}
-        {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists[page.handle], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
-      {%- comment %}</locksmith:07ef>{% endcomment -%}
       {% if link.type == 'collection_link' %}
         {% assign featured = link.object.handle %}
         {% include 'featured-collection' %}
