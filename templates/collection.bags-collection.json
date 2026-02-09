@@ -29,7 +29,7 @@
         "ai_gen_block_9b35d71_9h36QR"
       ],
       "custom_css": [
-        "h1 {font-weight: bold;}"
+        "h1 {font-weight: bold; padding-left:10%; padding-right:10%;}"
       ],
       "settings": {}
     },
