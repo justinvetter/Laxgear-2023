@@ -49,9 +49,7 @@
     },
     "collection-grid": {
       "type": "collection-grid",
-      "custom_css": [
-        "div {padding-top: 40px;}"
-      ],
+      "custom_css": [],
       "settings": {
         "title": "Lacrosse Gear Bags",
         "collection": ""
