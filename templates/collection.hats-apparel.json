@@ -15,10 +15,10 @@
         "ai_gen_block_9b35d71_9h36QR": {
           "type": "ai_gen_block_9b35d71",
           "settings": {
-            "background_image": "shopify://shop_images/gear-bag-on-field-header.jpg",
+            "background_image": "shopify://shop_images/use-my-product.png",
             "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "heading": "Lacrosse Bags Designed for Practice, Travel & Game Day",
+            "overlay_opacity": 0.5,
+            "heading": "LAXGear Lacrosse Apparel for Players, Teams, and Fans",
             "heading_color": "#ffffff",
             "heading_size": 48
           },
@@ -29,7 +29,7 @@
         "ai_gen_block_9b35d71_9h36QR"
       ],
       "custom_css": [
-        "h1 {font-weight: bold; padding-left:10%; padding-right:10%;}"
+        "h1 {font-weight: bold; padding-left: 10%; padding-right: 10%;}"
       ],
       "settings": {}
     },
