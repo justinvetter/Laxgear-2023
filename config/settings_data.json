@@ -683,6 +683,8 @@
   },
   "platform_customizations": {
     "custom_css": [
+      ".push--large--one-sixth {left: 0;}",
+      ".large--two-thirds {width: 100%;}",
       "#trustpilot-widget-trustbox-1-wrapper {display: none !important;}",
       "#laxgear-the-ultimate-lacrosse-bag > .main-content {max-width: unset; padding: unset;}",
       "header#header nav {width: 90%;}",
