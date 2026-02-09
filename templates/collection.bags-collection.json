@@ -35,6 +35,7 @@
     },
     "breadcrumb": {
       "type": "breadcrumb-newz",
+      "disabled": true,
       "settings": {}
     },
     "blocks_j4r9w6": {
@@ -48,8 +49,11 @@
     },
     "collection-grid": {
       "type": "collection-grid",
+      "custom_css": [
+        "div {padding-top: 40px;}"
+      ],
       "settings": {
-        "title": "Bags",
+        "title": "Lacrosse Gear Bags",
         "collection": ""
       }
     }
