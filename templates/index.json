@@ -48,9 +48,8 @@
       ],
       "custom_css": [
         "div {margin-top: 170px;}",
-        "h1 {color: white !important;}",
-        "@media (max-width: 767px) {div {margin-top: 80px; }}",
-        "h1 {padding-left: 10%; padding-right:10%;}"
+        "h1 {color: white !important; padding-left: 10%; padding-right: 10%;}",
+        "@media (max-width: 767px) {div {margin-top: 80px; }}"
       ],
       "settings": {}
     },
