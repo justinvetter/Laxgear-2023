@@ -85,6 +85,14 @@
       "footer": {
         "type": "footer",
         "blocks": {
+          "text_kiVcnK": {
+            "type": "text",
+            "settings": {
+              "title": "",
+              "richtext": "",
+              "width": "50%"
+            }
+          },
           "1508267308740": {
             "type": "newsletter",
             "settings": {
@@ -94,6 +102,7 @@
           }
         },
         "block_order": [
+          "text_kiVcnK",
           "1508267308740"
         ],
         "settings": {
