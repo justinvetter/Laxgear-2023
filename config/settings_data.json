@@ -683,7 +683,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".wrapper {max-width: 100%;}",
+      ".wrapper {/*max-width: 100%;*/}",
       "h1 {margin-bottom: 0px !important;}",
       ".push--large--one-sixth {left: 0;}",
       ".large--two-thirds {width: 100%;}",
