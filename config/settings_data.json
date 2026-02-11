@@ -692,7 +692,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      "#trustpilot-widget-trustbox-6-wrapper {margin-bottom: 40px;}",
+      "#trustpilot-widget-trustbox-6-wrapper {margin-bottom: 40px !important;}",
       ".template-index .wrapper {max-width: 100%; padding: 0;}",
       "h1 {margin-bottom: 0px !important;}",
       ".push--large--one-sixth {left: 0;}",
